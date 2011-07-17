@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE83CAF2-DBA1-4360-AFE5-849D2EB0E027}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KayakoRestApi</RootNamespace>
+    <AssemblyName>KayakoRestApi</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>kayako.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Net\HttpMethod.cs" />
+    <Compile Include="RequestBase\RequestBaseObject.cs" />
+    <Compile Include="RequestBase\Attributes\EitherFieldAttribute.cs" />
+    <Compile Include="RequestBase\RequestTypes.cs" />
+    <Compile Include="RequestBase\Attributes\ResponsePropertyAttribute.cs" />
+    <Compile Include="Core\Constants\DepartmentModule.cs" />
+    <Compile Include="Core\Departments\DepartmentRequest.cs" />
+    <Compile Include="RequestBase\Attributes\OptionalFieldAttribute.cs" />
+    <Compile Include="RequestBase\Attributes\RequiredFieldAttribute.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Core\Constants\TicketCreationType.cs" />
+    <Compile Include="Core\Constants\UserSalutation.cs" />
+    <Compile Include="Core\Constants\UserGroupType.cs" />
+    <Compile Include="Core\Constants\UserOrganizationType.cs" />
+    <Compile Include="Core\Constants\DepartmentType.cs" />
+    <Compile Include="Core\Constants\UserRoles.cs" />
+    <Compile Include="Core\Constants\TicketCustomFieldType.cs" />
+    <Compile Include="Core\Staff\StaffGroupRequest.cs" />
+    <Compile Include="Core\Staff\StaffUserRequest.cs" />
+    <Compile Include="Core\Tickets\TicketAttachment\TicketAttachmentRequest.cs" />
+    <Compile Include="Core\Tickets\TicketCount\TicketCount.cs" />
+    <Compile Include="Core\Tickets\TicketCount\DepartmentSummary.cs" />
+    <Compile Include="Core\Tickets\TicketCount\OwnerStaff.cs" />
+    <Compile Include="Core\Tickets\TicketCount\TicketCountStatus.cs" />
+    <Compile Include="Core\Tickets\TicketCount\TicketCountType.cs" />
+    <Compile Include="Core\Tickets\TicketCount\UnassignedDepartment.cs" />
+    <Compile Include="Core\Tickets\TicketNote\TicketNoteRequest.cs" />
+    <Compile Include="Core\Tickets\TicketPost\TicketPostRequest.cs" />
+    <Compile Include="Core\Tickets\Ticket\TicketRequest.cs" />
+    <Compile Include="Core\Tickets\TicketSearch\TicketSearchQuery.cs" />
+    <Compile Include="Core\Tickets\TicketTimeTrack\TicketTimeTrackRequest.cs" />
+    <Compile Include="Core\Tickets\TicketTimeTrack\TicketTimeTrack.cs" />
+    <Compile Include="Core\Tickets\TicketTimeTrack\TicketTimeTrackCollection.cs" />
+    <Compile Include="Core\Tickets\Ticket\TicketWorkflow.cs" />
+    <Compile Include="Core\Departments\Department.cs" />
+    <Compile Include="Core\Departments\DepartmentCollection.cs" />
+    <Compile Include="Core\Constants\FlagType.cs" />
+    <Compile Include="Core\Tickets\TicketAttachment\TicketAttachment.cs" />
+    <Compile Include="Core\Tickets\TicketAttachment\TicketAttachmentCollection.cs" />
+    <Compile Include="Core\Tickets\TicketCustomField\TicketCustomField.cs" />
+    <Compile Include="Core\Tickets\TicketCustomField\TicketCustomFieldGroup.cs" />
+    <Compile Include="Core\Tickets\TicketCustomField\TicketCustomFields.cs" />
+    <Compile Include="Core\Tickets\TicketPriority\TicketPriorityCollection.cs" />
+    <Compile Include="Core\Tickets\TicketPriority\TicketPriority.cs" />
+    <Compile Include="Core\Tickets\TicketType\TicketType.cs" />
+    <Compile Include="Core\Tickets\TicketType\TicketTypeCollection.cs" />
+    <Compile Include="Core\Tickets\Ticket\TicketWatcher.cs" />
+    <Compile Include="Core\Users\UserGroup.cs" />
+    <Compile Include="Core\Users\UserGroupRequest.cs" />
+    <Compile Include="Core\Users\UserGroupCollection.cs" />
+    <Compile Include="Core\Users\UserOrganization.cs" />
+    <Compile Include="Core\Users\UserOrganizationRequest.cs" />
+    <Compile Include="Core\Users\UserOrganizationCollection.cs" />
+    <Compile Include="Core\Users\UserRequest.cs" />
+    <Compile Include="Data\KNullable.cs" />
+    <Compile Include="Utilities\EnumUtility.cs" />
+    <Compile Include="Text\RequestBodyBuilder.cs" />
+    <Compile Include="KayakoClient.cs" />
+    <Compile Include="Core\Constants\NoteColor.cs" />
+    <Compile Include="Core\Staff\StaffGroup.cs" />
+    <Compile Include="Core\Staff\StaffGroupCollection.cs" />
+    <Compile Include="Core\Tickets\TicketNote\TicketNote.cs" />
+    <Compile Include="Core\Tickets\TicketNote\TicketNoteCollection.cs" />
+    <Compile Include="Core\Tickets\TicketPost\TicketPostCollection.cs" />
+    <Compile Include="Core\Staff\StaffUser.cs" />
+    <Compile Include="Core\Staff\StaffUserCollection.cs" />
+    <Compile Include="Core\Tickets\Ticket\Ticket.cs" />
+    <Compile Include="Core\Tickets\TicketPost\TicketPost.cs" />
+    <Compile Include="Core\Tickets\Ticket\TicketCollection.cs" />
+    <Compile Include="Core\Tickets\TicketStatus\TicketStatus.cs" />
+    <Compile Include="Core\Tickets\TicketStatus\TicketStatusCollection.cs" />
+    <Compile Include="Core\Users\User.cs" />
+    <Compile Include="Core\Users\UserCollection.cs" />
+    <Compile Include="Net\KayakoWebRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\UnixTimeUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kayako.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

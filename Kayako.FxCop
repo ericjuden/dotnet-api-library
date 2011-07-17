@@ -1,0 +1,1504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">c:\program files\microsoft fxcop\microsoft fxcop 1.36\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/KayakoRestAPI/bin/Debug/KayakoRestApi.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Namespaces>
+   <Namespace Name="KayakoRestApi">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2011-06-29 13:28:22Z">
+      <Issue>
+       <Item>KayakoRestApi</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="KayakoRestApi.Core.Departments">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2011-06-29 13:28:22Z">
+      <Issue>
+       <Item>KayakoRestApi.Core.Departments</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="KayakoRestApi.Data">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2011-06-29 13:28:22Z">
+      <Issue>
+       <Item>KayakoRestApi.Data</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="KayakoRestApi.RequestBase">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2011-06-29 13:28:22Z">
+      <Issue>
+       <Item>KayakoRestApi.RequestBase</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+   <Namespace Name="KayakoRestApi.Utilities">
+    <Messages>
+     <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Excluded" Created="2011-06-29 13:28:22Z">
+      <Issue>
+       <Item>KayakoRestApi.Utilities</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+  </Namespaces>
+  <Targets>
+   <Target Name="$(ProjectDir)/KayakoRestAPI/bin/Debug/KayakoRestApi.dll">
+    <Modules>
+     <Module Name="kayakorestapi.dll">
+      <Namespaces>
+       <Namespace Name="KayakoRestApi">
+        <Types>
+         <Type Name="KayakoClient">
+          <Members>
+           <Member Name="#.ctor(System.String,System.String,System.String)">
+            <Messages>
+             <Message Id="2#" TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'apiUrl'</Item>
+               <Item>'KayakoClient.KayakoClient(string, string, string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Controllers">
+        <Types>
+         <Type Name="DepartmentController">
+          <Members>
+           <Member Name="#DeleteDepartment(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DepartmentController.DeleteDepartment(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetDepartment(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DepartmentController.GetDepartment(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetDepartments()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'DepartmentCollection'</Item>
+               <Item>'DepartmentController.GetDepartments()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'DepartmentController.GetDepartments()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateDepartment(KayakoRestApi.Core.Departments.DepartmentRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'DepartmentController.UpdateDepartment(DepartmentRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="StaffController">
+          <Members>
+           <Member Name="#DeleteStaffGroup(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'StaffController.DeleteStaffGroup(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteStaffUser(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'StaffController.DeleteStaffUser(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetStaffGroup(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'StaffController.GetStaffGroup(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetStaffGroups()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'StaffGroupCollection'</Item>
+               <Item>'StaffController.GetStaffGroups()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'StaffController.GetStaffGroups()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetStaffUser(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'StaffController.GetStaffUser(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetStaffUsers()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'StaffUserCollection'</Item>
+               <Item>'StaffController.GetStaffUsers()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'StaffController.GetStaffUsers()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateStaffGroup(KayakoRestApi.Core.Staff.StaffGroupRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'StaffController.UpdateStaffGroup(StaffGroupRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateStaffUser(KayakoRestApi.Core.Staff.StaffUserRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'StaffController.UpdateStaffUser(StaffUserRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketController">
+          <Members>
+           <Member Name="#CreateTicket(KayakoRestApi.Core.Tickets.TicketRequest)">
+            <Messages>
+             <Message Id="System.Convert.ToInt32(System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'Convert.ToInt32(object)'</Item>
+               <Item>'TicketController.CreateTicket(TicketRequest)'</Item>
+               <Item>'Convert.ToInt32(object, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteTicket(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.DeleteTicket(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteTicketAttachment(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-30 12:31:51Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.DeleteTicketAttachment(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteTicketNote(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.DeleteTicketNote(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteTicketPost(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.DeleteTicketPost(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteTicketTimeTrackingNote(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.DeleteTicketTimeTrackingNote(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicket(System.Int32)">
+            <Messages>
+             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'int.ToString()'</Item>
+               <Item>'TicketController.GetTicket(int)'</Item>
+               <Item>'int.ToString(IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketAttachment(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.GetTicketAttachment(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketAttachments(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketAttachments(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketAttachmentCollection'</Item>
+               <Item>'TicketController.GetTicketAttachments(int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketCounts()">
+            <Messages>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'TicketController.GetTicketCounts()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketCustomFields(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketCustomFields(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketNote(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.GetTicketNote(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketNotes(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketNotes(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketNoteCollection'</Item>
+               <Item>'TicketController.GetTicketNotes(int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketPost(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.GetTicketPost(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketPosts(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketPosts(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketPostCollection'</Item>
+               <Item>'TicketController.GetTicketPosts(int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketPriorities()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketPriorityCollection'</Item>
+               <Item>'TicketController.GetTicketPriorities()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'TicketController.GetTicketPriorities()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketPriority(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketPriority(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketRequest(System.String)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketRequest(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTickets(System.Int32[])">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketCollection'</Item>
+               <Item>'TicketController.GetTickets(int[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTickets(System.Int32[],System.Int32[],System.Int32[],System.Int32[])">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'TicketController.GetTickets(int[], int[], int[], int[])'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketCollection'</Item>
+               <Item>'TicketController.GetTickets(int[], int[], int[], int[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketStatus(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketStatus(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketStatuses()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketStatusCollection'</Item>
+               <Item>'TicketController.GetTicketStatuses()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'TicketController.GetTicketStatuses()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketTimeTrack(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'TicketController.GetTicketTimeTrack(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketTimeTracks(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketTimeTracks(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketTimeTrackCollection'</Item>
+               <Item>'TicketController.GetTicketTimeTracks(int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketType(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.GetTicketType(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetTicketTypes()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketTypeCollection'</Item>
+               <Item>'TicketController.GetTicketTypes()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'TicketController.GetTicketTypes()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#JoinIntParameters(System.Int32[])">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Excluded" Created="2011-06-29 13:28:22Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'TicketController.JoinIntParameters(int[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SearchTickets(KayakoRestApi.Core.Tickets.TicketSearchQuery)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCollection'</Item>
+               <Item>'TicketController.SearchTickets(TicketSearchQuery)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateTicket(KayakoRestApi.Core.Tickets.TicketRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TicketController.UpdateTicket(TicketRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="UserController">
+          <Members>
+           <Member Name="#DeleteUser(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.DeleteUser(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteUserGroup(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.DeleteUserGroup(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DeleteUserOrganization(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.DeleteUserOrganization(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUser(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.GetUser(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUserGroup(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.GetUserGroup(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUserGroups()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'UserGroupCollection'</Item>
+               <Item>'UserController.GetUserGroups()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'UserController.GetUserGroups()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUserOrganization(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.GetUserOrganization(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUserOrganizations()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'UserOrganizationCollection'</Item>
+               <Item>'UserController.GetUserOrganizations()'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Certainty="50">
+               <Item>'UserController.GetUserOrganizations()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUsers()">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'UserCollection'</Item>
+               <Item>'UserController.GetUsers()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUsers(System.Int32)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'UserCollection'</Item>
+               <Item>'UserController.GetUsers(int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetUsers(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'UserController.GetUsers(int, int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'UserCollection'</Item>
+               <Item>'UserController.GetUsers(int, int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateUser(KayakoRestApi.Core.Users.UserRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.UpdateUser(UserRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateUserGroup(KayakoRestApi.Core.Users.UserGroupRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.UpdateUserGroup(UserGroupRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UpdateUserOrganization(KayakoRestApi.Core.Users.UserOrganizationRequest)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'UserController.UpdateUserOrganization(UserOrganizationRequest)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Core.Constants">
+        <Types>
+         <Type Name="FlagType">
+          <Messages>
+           <Message Id="Flag" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Excluded" Created="2011-06-29 13:28:22Z">
+            <Issue Name="TypeNoAlternate">
+             <Item>Flag</Item>
+             <Item>'FlagType'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#NoFlag">
+            <Messages>
+             <Message Id="Flag" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="MemberNoAlternate">
+               <Item>Flag</Item>
+               <Item>'FlagType.NoFlag'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="NoteColor">
+          <Messages>
+           <Message TypeName="EnumsShouldHaveZeroValue" Category="Microsoft.Design" CheckId="CA1008" Status="Excluded" Created="2011-06-30 12:13:30Z" FixCategory="NonBreaking">
+            <Issue Name="NotFlagsNoZeroValue">
+             <Item>'NoteColor'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="TicketCustomFieldType">
+          <Messages>
+           <Message TypeName="EnumsShouldHaveZeroValue" Category="Microsoft.Design" CheckId="CA1008" Status="Excluded" Created="2011-06-29 13:28:22Z" FixCategory="NonBreaking">
+            <Issue Name="NotFlagsNoZeroValue">
+             <Item>'TicketCustomFieldType'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#MultiSelect">
+            <Messages>
+             <Message Id="Multi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="Member">
+               <Item>Multi</Item>
+               <Item>'TicketCustomFieldType.MultiSelect'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="UserSalutation">
+          <Members>
+           <Member Name="#Dr">
+            <Messages>
+             <Message Id="Dr" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="Member">
+               <Item>Dr</Item>
+               <Item>'UserSalutation.Dr'</Item>
+               <Item>DR</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Mr">
+            <Messages>
+             <Message Id="Mr" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="Member">
+               <Item>Mr</Item>
+               <Item>'UserSalutation.Mr'</Item>
+               <Item>MR</Item>
+              </Issue>
+             </Message>
+             <Message Id="Mr" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="Member">
+               <Item>Mr</Item>
+               <Item>'UserSalutation.Mr'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Mrs">
+            <Messages>
+             <Message Id="Mrs" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="Member">
+               <Item>Mrs</Item>
+               <Item>'UserSalutation.Mrs'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Ms">
+            <Messages>
+             <Message Id="Ms" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="Member">
+               <Item>Ms</Item>
+               <Item>'UserSalutation.Ms'</Item>
+               <Item>MS</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Core.Departments">
+        <Types>
+         <Type Name="Department">
+          <Members>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-06-29 13:28:22Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'Department.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UserGroups">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'Department.UserGroups'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'List&lt;int&gt;'</Item>
+               <Item>'Department.UserGroups'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="DepartmentRequest">
+          <Members>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-06-29 13:28:22Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'DepartmentRequest.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UserGroups">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'DepartmentRequest.UserGroups'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'List&lt;int&gt;'</Item>
+               <Item>'DepartmentRequest.UserGroups'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Core.Tickets">
+        <Types>
+         <Type Name="DepartmentSummary">
+          <Members>
+           <Member Name="#OwnerStaff">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'DepartmentSummary.OwnerStaff'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TicketStatusSummary">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'DepartmentSummary.TicketStatusSummary'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TicketTypeSummary">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'DepartmentSummary.TicketTypeSummary'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Ticket">
+          <Members>
+           <Member Name="#FlagType">
+            <Messages>
+             <Message Id="Flag" TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue Name="MemberNoAlternate">
+               <Item>Flag</Item>
+               <Item>'Ticket.FlagType'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Notes">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'Ticket.Notes'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketNoteCollection'</Item>
+               <Item>'Ticket.Notes'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Posts">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'Ticket.Posts'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'TicketPostCollection'</Item>
+               <Item>'Ticket.Posts'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketCount">
+          <Members>
+           <Member Name="#Departments">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCount.Departments'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#OwnerStaff">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCount.OwnerStaff'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TicketStatuses">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCount.TicketStatuses'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#UnassignedTickets">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCount.UnassignedTickets'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketCustomField">
+          <Members>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-07-05 11:43:47Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'TicketCustomField.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketCustomFieldGroup">
+          <Members>
+           <Member Name="#Fields">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCustomFieldGroup.Fields'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketCustomFields">
+          <Members>
+           <Member Name="#FieldGroups">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketCustomFields.FieldGroups'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'List&lt;TicketCustomFieldGroup&gt;'</Item>
+               <Item>'TicketCustomFields.FieldGroups'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketNote">
+          <Members>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-07-05 11:43:47Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'TicketNote.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketPriority">
+          <Members>
+           <Member Name="#BgColorCode">
+            <Messages>
+             <Message Id="Bg" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue Name="Member">
+               <Item>Bg</Item>
+               <Item>'TicketPriority.BgColorCode'</Item>
+               <Item>BG</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FrColorCode">
+            <Messages>
+             <Message Id="Fr" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue Name="Member">
+               <Item>Fr</Item>
+               <Item>'TicketPriority.FrColorCode'</Item>
+               <Item>FR</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-07-05 11:43:47Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'TicketPriority.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketSearchQuery">
+          <Members>
+           <Member Name="#SearchFields">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'TicketSearchQuery.SearchFields'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue>
+               <Item>'List&lt;TicketSearchField&gt;'</Item>
+               <Item>'TicketSearchQuery.SearchFields'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketStatus">
+          <Members>
+           <Member Name="#StatusBgColor">
+            <Messages>
+             <Message Id="Bg" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2011-07-05 11:43:47Z">
+              <Issue Name="Member">
+               <Item>Bg</Item>
+               <Item>'TicketStatus.StatusBgColor'</Item>
+               <Item>BG</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-07-05 11:43:47Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'TicketStatus.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TicketType">
+          <Members>
+           <Member Name="#Type">
+            <Messages>
+             <Message TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721" Status="Excluded" Created="2011-07-05 11:43:47Z" FixCategory="NonBreaking">
+              <Issue Name="BaseType">
+               <Item>'TicketType.Type'</Item>
+               <Item>'object.GetType()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Core.Users">
+        <Types>
+         <Type Name="User">
+          <Members>
+           <Member Name="#EmailAddresses">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'User.EmailAddresses'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="UserRequest">
+          <Members>
+           <Member Name="#EmailAddresses">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'UserRequest.EmailAddresses'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Data">
+        <Types>
+         <Type Name="KNullable`1">
+          <Members>
+           <Member Name="#FromKNullable(KayakoRestApi.Data.KNullable`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Excluded" Created="2011-07-05 11:49:01Z">
+              <Issue>
+               <Item>'KNullable&lt;T&gt;.FromKNullable(KNullable&lt;T&gt;)'</Item>
+               <Item>'KNullable&lt;T&gt;'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReadXml(System.Xml.XmlReader)">
+            <Messages>
+             <Message Id="System.Convert.ChangeType(System.Object,System.Type)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'Convert.ChangeType(object, Type)'</Item>
+               <Item>'KNullable&lt;T&gt;.ReadXml(XmlReader)'</Item>
+               <Item>'Convert.ChangeType(object, Type, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ToKNullable(!0)">
+            <Messages>
+             <Message TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000" Status="Excluded" Created="2011-07-05 11:49:01Z">
+              <Issue>
+               <Item>'KNullable&lt;T&gt;.ToKNullable(T)'</Item>
+               <Item>'KNullable&lt;T&gt;'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Net">
+        <Types>
+         <Type Name="KayakoApiRequest">
+          <Members>
+           <Member Name="#AppendSecurityCredentials(System.String,KayakoRestApi.Net.HttpMethod)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-07-05 11:31:14Z">
+              <Issue>
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'KayakoApiRequest.AppendSecurityCredentials(string, HttpMethod)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ExecuteCall`1(System.String,System.String,KayakoRestApi.Net.HttpMethod)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'KayakoApiRequest.ExecuteCall&lt;TTarget&gt;(string, string, HttpMethod)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ExecuteDelete(System.String)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'KayakoApiRequest.ExecuteDelete(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ProcessWebRequest`1(System.Net.WebRequest)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Excluded" Created="2011-06-29 13:28:22Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'KayakoApiRequest.ProcessWebRequest&lt;TTarget&gt;(WebRequest)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.RequestBase">
+        <Types>
+         <Type Name="RequestBaseObject">
+          <Members>
+           <Member Name="#EnsureValidData(KayakoRestApi.RequestBase.RequestTypes)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-30 12:13:06Z">
+              <Issue>
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'RequestBaseObject.EnsureValidData(RequestTypes)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-06-30 12:13:06Z">
+              <Issue>
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'RequestBaseObject.EnsureValidData(RequestTypes)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#FromResponseType`2(!!0)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'RequestBaseObject.FromResponseType&lt;TFrom, TTo&gt;(TFrom)'</Item>
+               <Item>'TTo'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsValid(KayakoRestApi.RequestBase.RequestTypes)">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Excluded" Created="2011-06-30 12:38:24Z">
+              <Issue>
+               <Item>'RequestBaseObject.IsValid(RequestTypes)'</Item>
+               <Item>'object'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ToResponseType`2(!!0)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'RequestBaseObject.ToResponseType&lt;TFrom, TTo&gt;(TFrom)'</Item>
+               <Item>'TTo'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="RequestTypes">
+          <Messages>
+           <Message TypeName="EnumsShouldHaveZeroValue" Category="Microsoft.Design" CheckId="CA1008" Status="Excluded" Created="2011-06-30 12:13:06Z" FixCategory="Breaking">
+            <Issue Name="FlagsRename">
+             <Item>'RequestTypes'</Item>
+             <Item>'RequestTypes.Create'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="KayakoRestApi.Text">
+        <Types>
+         <Type Name="RequestBodyBuilder">
+          <Members>
+           <Member Name="#.ctor(System.String)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Excluded" Created="2011-06-29 13:28:22Z">
+              <Issue>
+               <Item>'RequestBodyBuilder.RequestBodyBuilder(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020">
+    <Resolution Name="Default">Consider merging the types defined in '{0}' with another namespace.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227">
+    <Resolution Name="Default">Change {0} to be read-only by removing the property setter.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+    <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotDeclareStaticMembersOnGenericTypes" Category="Microsoft.Design" CheckId="CA1000">
+    <Resolution Name="Default">Remove {0} from {1} or make it an instance member.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002">
+    <Resolution Name="Default">Change {0} in {1} to use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; or KeyedCollection&lt;K,V&gt;</Resolution>
+   </Rule>
+   <Rule TypeName="EnumsShouldHaveZeroValue" Category="Microsoft.Design" CheckId="CA1008">
+    <Resolution Name="FlagsRename">In enum {0}, change the name of {1} to 'None'.</Resolution>
+    <Resolution Name="NotFlagsNoZeroValue">Add a member to {0} that has a value of zero with a suggested name of 'None'.</Resolution>
+   </Rule>
+   <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
+    <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+    <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819">
+    <Resolution Name="Default">Change {0} to return a collection or make it a method.</Resolution>
+   </Rule>
+   <Rule TypeName="PropertyNamesShouldNotMatchGetMethods" Category="Microsoft.Naming" CheckId="CA1721">
+    <Resolution Name="BaseType">The property name {0} is confusing given the existence of inherited method {1}. Rename or remove this property.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   </Rule>
+   <Rule TypeName="UriParametersShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1054">
+    <Resolution Name="Default">Change the type of parameter {0} of method {1} from string to System.Uri, or provide an overload of {1}, that allows {0} to be passed as a System.Uri object.</Resolution>
+   </Rule>
+   <Rule TypeName="UsePreferredTerms" Category="Microsoft.Naming" CheckId="CA1726">
+    <Resolution Name="MemberNoAlternate">Replace the term '{0}' in member name {1} with an appropriate alternate or remove it entirely.</Resolution>
+    <Resolution Name="TypeNoAlternate">Replace the term '{0}' in type name {1} with an appropriate alternate or remove it entirely.</Resolution>
+   </Rule>
+   <Rule TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024">
+    <Resolution Name="Default">Change {0} to a property if appropriate.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>
