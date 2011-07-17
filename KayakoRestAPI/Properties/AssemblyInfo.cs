@@ -9,7 +9,7 @@ using System;
 [assembly: AssemblyTitle("Kayako REST Api Library")]
 [assembly: AssemblyDescription("C# .NET Implementation of the Kayako REST Api which allows connection and integratation a Kayako helpdesk")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Kayako")]
 [assembly: AssemblyProduct("KayakoRestApi")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
@@ -35,4 +35,4 @@ using System;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.5")]
