@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi", "KayakoRestAPI\KayakoRestApi.csproj", "{AE83CAF2-DBA1-4360-AFE5-849D2EB0E027}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestAPI.Testing", "TestApplication\KayakoRestAPI.Testing.csproj", "{752985BA-E382-4716-966D-F566F7E3489D}"
@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{FAD3
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi.UnitTests", "KayakoRestApi.UnitTests\KayakoRestApi.UnitTests.csproj", "{FE037841-E104-4F7A-9A39-6A03AC32236C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{FC3D4805-75A1-4CBF-89C6-45992AD2B317}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README = README
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
