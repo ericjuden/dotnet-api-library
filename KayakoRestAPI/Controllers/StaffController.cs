@@ -3,6 +3,7 @@ using KayakoRestApi.Core.Staff;
 using KayakoRestApi.Net;
 using KayakoRestApi.RequestBase;
 using KayakoRestApi.Text;
+using System.Net;
 
 namespace KayakoRestApi.Controllers
 {
@@ -11,8 +12,8 @@ namespace KayakoRestApi.Controllers
 	/// </summary>
     public sealed class StaffController : BaseController
     {
-        internal StaffController(string apiKey, string secretKey, string apiUrl)
-            : base(apiKey, secretKey, apiUrl)
+        internal StaffController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
+            : base(apiKey, secretKey, apiUrl, proxy)
         {
         }
 

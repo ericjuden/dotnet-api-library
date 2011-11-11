@@ -73,10 +73,25 @@ namespace KayakoRestApi
         /// <param name="apiUrl">URL of Kayako REST Api</param>
         public KayakoClient(string apiKey, string secretKey, string apiUrl)
         {
-			_departments = new DepartmentController(apiKey, secretKey, apiUrl);
-			_staff = new StaffController(apiKey, secretKey, apiUrl);
-			_tickets = new TicketController(apiKey, secretKey, apiUrl);
-			_users = new UserController(apiKey, secretKey, apiUrl);
+			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null);
+			_staff = new StaffController(apiKey, secretKey, apiUrl, null);
+			_tickets = new TicketController(apiKey, secretKey, apiUrl, null);
+			_users = new UserController(apiKey, secretKey, apiUrl, null);
         }
+
+		/// <summary>
+		/// Initializes a new instance of the KayakoRestApi.KayakoService class.
+		/// </summary>
+		/// <param name="apiKey">Api Key.</param>
+		/// <param name="secretKey">Secret Api Key.</param>
+		/// <param name="apiUrl">URL of Kayako REST Api</param>
+		/// <param name="proxy">An IWebProxy object representing any proxy details required for internet connection</param>
+		public KayakoClient(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
+		{
+			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy);
+			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy);
+			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy);
+			_users = new UserController(apiKey, secretKey, apiUrl, proxy);
+		}
     }
 }
