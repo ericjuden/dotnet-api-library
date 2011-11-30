@@ -168,7 +168,7 @@ namespace KayakoRestApi.Net
 
 				parameters = AppendSecurityCredentials(parameters, httpMethod);
 
-                byte[] bytes = Encoding.ASCII.GetBytes(parameters);
+                byte[] bytes = Encoding.UTF8.GetBytes(parameters);
 
                 request.ContentLength = bytes.Length;
 
