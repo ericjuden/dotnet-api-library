@@ -17,15 +17,17 @@ namespace KayakoRestApi.Net
         private string _apiKey;
         private string _secretKey;
         private string _apiUrl;
+		private IWebProxy _proxy;
         private string _signature;
         private string _encodedSignature;
         private string _salt;
         
-        internal KayakoApiRequest(string apiKey, string secretKey, string apiUrl)
+        internal KayakoApiRequest(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
         {
             _apiKey = apiKey;
             _secretKey = secretKey;
             _apiUrl = apiUrl;
+			_proxy = proxy;
 
             ComputeSaltAndSignature();
         }
@@ -101,7 +103,12 @@ namespace KayakoRestApi.Net
 			requestUrl = AppendSecurityCredentials(requestUrl, HttpMethod.DELETE);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
-            request.Method = "DELETE";
+			request.Method = "DELETE";
+
+			if (_proxy != null)
+			{
+				request.Proxy = _proxy;
+			}
 
             try
             {
@@ -150,13 +157,18 @@ namespace KayakoRestApi.Net
             WebRequest request = WebRequest.Create(requestUrl);
             request.Method = httpMethod.ToString();
 
+			if (_proxy != null)
+			{
+				request.Proxy = _proxy;
+			}
+
             if (httpMethod != HttpMethod.GET)
             {
                 request.ContentType = "application/x-www-form-urlencoded";
 
 				parameters = AppendSecurityCredentials(parameters, httpMethod);
 
-                byte[] bytes = Encoding.ASCII.GetBytes(parameters);
+                byte[] bytes = Encoding.UTF8.GetBytes(parameters);
 
                 request.ContentLength = bytes.Length;
 

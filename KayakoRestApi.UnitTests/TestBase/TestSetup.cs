@@ -12,7 +12,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "d00bb661-765a-cbf4-1daf-168188cfc544";
+				return "2ad89dba-fbf3-dbd4-7985-49d263d6e5b8";
 			}
 		}
 
@@ -20,7 +20,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "YjdiMjI1N2UtNDg4NS1kOGI0LWMxZmItYzFmMTZjMjAwYTIxNGJhMTBiZTYtNjE1NS05NTA0LWQxNjMtYmExOGEyMzcyYjhl";
+				return "YWEzOTk1ODctZjdiNy01YTc0LWExYjItNTY4YmM5MjZlNWE2YzNhM2FmMGEtNTI3MC1iMDM0LWYxNTAtMjg4Nzg5OThiM2Ri";
 			}
 		}
 

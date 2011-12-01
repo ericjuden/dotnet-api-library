@@ -65,7 +65,7 @@ namespace KayakoRestApi.UnitTests
 		[Test]
 		public void GetTicketTimeTrack()
 		{
-			TicketCollection tickets = TestSetup.KayakoApiService.Tickets.GetTickets(new int[] { 1 });
+			TicketCollection tickets = TestSetup.KayakoApiService.Tickets.GetTickets(new int[] { 1, 2 });
 
 			Assert.IsNotNull(tickets, "No tickets were returned");
 			Assert.IsNotEmpty(tickets, "No tickets were returned");

@@ -4,6 +4,7 @@ using KayakoRestApi.Data;
 using KayakoRestApi.Net;
 using KayakoRestApi.Text;
 using KayakoRestApi.RequestBase;
+using System.Net;
 
 namespace KayakoRestApi.Controllers
 {
@@ -12,8 +13,8 @@ namespace KayakoRestApi.Controllers
 	/// </summary>
     public sealed class UserController : BaseController
     {
-        internal UserController(string apiKey, string secretKey, string apiUrl)
-            : base(apiKey, secretKey, apiUrl)
+        internal UserController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
+            : base(apiKey, secretKey, apiUrl, proxy)
         {
         }
 
