@@ -23,28 +23,17 @@ namespace KayakoTestApplication
     /// </summary>
     public class Program
     {
-		const string Api_KEY = "d00bb661-765a-cbf4-1daf-168188cfc544";
-		const string SECRET_KEY = "YjdiMjI1N2UtNDg4NS1kOGI0LWMxZmItYzFmMTZjMjAwYTIxNGJhMTBiZTYtNjE1NS05NTA0LWQxNjMtYmExOGEyMzcyYjhl";
-		const string Api_URL = @"http://contracting.kayako.com/api/index.php"; //Note: No trailing ?
+		const string Api_KEY = "94364841-7542-9e94-d59c-f420554d9a9d";
+		const string SECRET_KEY = "ZjM5OTAzN2YtYjcxNy1jZWQ0LTIxMGEtNGViNzQzNTNhZjAxY2Y3OGVkMmUtN2RmNi05MTQ0LTI5YjctYmM0M2E1OWNlMmU5";
+		const string Api_URL = @"http://apiupdates.kayako.com/api/"; //Note: No trailing ?
 
         static void Main(string[] args)
         {
 			KayakoClient client = new KayakoClient(Api_KEY, SECRET_KEY, Api_URL);
 
-			//Define the search query
-			string query = "firstname";
-			TicketSearchField[] searchFields = new TicketSearchField[] { TicketSearchField.FullName, TicketSearchField.EmailAddress };
+			DepartmentCollection departments = client.Departments.GetDepartments();
 
-			TicketSearchQuery searchQuery = new TicketSearchQuery(query, searchFields);
-
-			//Add areas the ticket search should look in
-			searchQuery.AddSearchField(TicketSearchField.Author);
-			searchQuery.AddSearchField(TicketSearchField.CreatorEmailAddress);
-			searchQuery.AddSearchField(TicketSearchField.EmailAddress);
-			searchQuery.AddSearchField(TicketSearchField.FullName);
-
-			//Get the tickets matching the search criteria
-			TicketCollection matchingTickets = client.Tickets.SearchTickets(searchQuery);
+			OutputData<DepartmentCollection>("Departments: ", departments);
 
             Console.ReadLine();
         }

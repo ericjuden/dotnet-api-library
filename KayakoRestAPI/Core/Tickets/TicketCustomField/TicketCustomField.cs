@@ -16,6 +16,9 @@ namespace KayakoRestApi.Core.Tickets
 		[XmlAttribute("type")]
 		public TicketCustomFieldType Type { get; set; }
 
+		[XmlAttribute("name")]
+		public string Name { get; set; }
+
         [XmlAttribute("title")]
         public string Title { get; set; }
 

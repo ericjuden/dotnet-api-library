@@ -122,6 +122,7 @@ namespace KayakoRestApi.UnitTests
 			Assert.AreEqual(one.DisplayId, two.DisplayId);
 			Assert.AreEqual(one.Email, two.Email);
 			Assert.AreEqual(one.EscalationRuleId, two.EscalationRuleId);
+			Assert.AreEqual(one.TemplateGroupId, two.TemplateGroupId);
 			Assert.AreEqual(one.FlagType, two.FlagType);
 			Assert.AreEqual(one.FullName, two.FullName);
 			Assert.AreEqual(one.Id, two.Id);

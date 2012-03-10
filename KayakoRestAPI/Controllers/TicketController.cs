@@ -701,11 +701,34 @@ namespace KayakoRestApi.Controllers
 
 		#region Ticket Custom Fields Methods
 
+		/// <summary>
+		/// Retrieve a list of a ticket's custom fields.
+		/// </summary>
 		public TicketCustomFields GetTicketCustomFields(int ticketId)
 		{
 			string apiMethod = String.Format("/Tickets/TicketCustomField/{0}", ticketId);
 
 			return _connector.ExecuteGet<TicketCustomFields>(apiMethod);
+		}
+
+		/// <summary>
+		/// Update the custom field values for a ticket. Please note all custom fields for the ticket must be sent through with
+		/// their values.
+		/// </summary>
+		public TicketCustomFields UpdateTicketCustomFields(int ticketId, TicketCustomFields customFields)
+		{
+			string apiMethod = String.Format("/Tickets/TicketCustomField/{0}", ticketId);
+
+			StringBuilder sb = new StringBuilder();
+			foreach(TicketCustomFieldGroup group in customFields.FieldGroups)
+			{
+				foreach(TicketCustomField field in group.Fields)
+				{
+					sb.AppendFormat("{0}={1}", field.FieldContent);
+				}
+			}
+
+			return _connector.ExecutePost<TicketCustomFields>(apiMethod, sb.ToString());
 		}
 
 		#endregion

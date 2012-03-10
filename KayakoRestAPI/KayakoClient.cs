@@ -22,6 +22,7 @@ namespace KayakoRestApi
 	{
 		#region Private Properties
 
+		private CustomFieldController _customFields;
 		private DepartmentController _departments;
 		private StaffController _staff;
 		private TicketController _tickets;
@@ -30,6 +31,14 @@ namespace KayakoRestApi
 		#endregion
 
 		#region Public Properies
+
+		/// <summary>
+		/// Provides access to Custom Field API Methods
+		/// </summary>
+		public CustomFieldController CustomFields
+		{
+			get { return _customFields; }
+		}
 
 		/// <summary>
 		/// Provides access to Deparment API Methods
@@ -73,6 +82,7 @@ namespace KayakoRestApi
         /// <param name="apiUrl">URL of Kayako REST Api</param>
         public KayakoClient(string apiKey, string secretKey, string apiUrl)
         {
+			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, null);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, null);
@@ -88,6 +98,7 @@ namespace KayakoRestApi
 		/// <param name="proxy">An IWebProxy object representing any proxy details required for internet connection</param>
 		public KayakoClient(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
 		{
+			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, proxy);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy);

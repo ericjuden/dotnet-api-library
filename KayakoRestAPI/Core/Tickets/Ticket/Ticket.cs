@@ -198,6 +198,12 @@ namespace KayakoRestApi.Core.Tickets
         [XmlElement("escalationruleid")]
         public int EscalationRuleId { get; set; }
 
+		/// <summary>
+		/// The template group ID of the ticket
+		/// </summary>
+		[XmlElement("templategroupid")]
+		public int TemplateGroupId { get; set; }
+
         /// <summary>
         /// A list of tags associated with ticket
         /// </summary>

@@ -12,7 +12,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "2ad89dba-fbf3-dbd4-7985-49d263d6e5b8";
+				return "94364841-7542-9e94-d59c-f420554d9a9d";
 			}
 		}
 
@@ -20,7 +20,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "YWEzOTk1ODctZjdiNy01YTc0LWExYjItNTY4YmM5MjZlNWE2YzNhM2FmMGEtNTI3MC1iMDM0LWYxNTAtMjg4Nzg5OThiM2Ri";
+				return "ZjM5OTAzN2YtYjcxNy1jZWQ0LTIxMGEtNGViNzQzNTNhZjAxY2Y3OGVkMmUtN2RmNi05MTQ0LTI5YjctYmM0M2E1OWNlMmU5";
 			}
 		}
 
@@ -28,7 +28,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "http://contracting.kayako.com/api/index.php";
+				return "http://apiupdates.kayako.com/api/";
 			}
 		}
 
