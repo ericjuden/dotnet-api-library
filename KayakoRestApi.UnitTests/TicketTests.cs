@@ -53,7 +53,7 @@ namespace KayakoRestApi.UnitTests
 			string fullname = "Ticket FullName";
 			string email = "ticket@email.com";
 			string contents = "Contents of the ticket";
-			int deptId = 1;
+			int deptId = 3;
 			int statusId = 1;
 			int priorityId = 1;
 			int typeId = 1;

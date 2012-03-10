@@ -125,6 +125,11 @@ namespace KayakoRestApi.Controllers
                 parameters.AppendRequestData("ownerstaffid", ticketRequest.OwnerStaffId);
             }
 
+			if (ticketRequest.TemplateGroupId != null)
+			{
+				parameters.AppendRequestData("templategroupid", ticketRequest.TemplateGroupId);
+			}
+
 			if (ticketRequest.CreationType != null)
 			{
 				parameters.AppendRequestData("type", EnumUtility.ToApiString(ticketRequest.CreationType));
@@ -185,6 +190,11 @@ namespace KayakoRestApi.Controllers
             {
 				parameters.AppendRequestData("ownerstaffid", request.OwnerStaffId);
             }
+
+			if (request.TemplateGroupId != null)
+			{
+				parameters.AppendRequestData("templategroupid", request.TemplateGroupId);
+			}
 
 			if (request.UserId != null)
             {
