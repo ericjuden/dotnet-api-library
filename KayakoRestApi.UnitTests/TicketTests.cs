@@ -67,6 +67,7 @@ namespace KayakoRestApi.UnitTests
                 Email = email,
                 Contents = contents,
                 DepartmentId = deptId,
+				TemplateGroupId = 1,
                 TicketStatusId = statusId,
                 TicketPriorityId = priorityId,
                 TicketTypeId = typeId,
@@ -93,6 +94,7 @@ namespace KayakoRestApi.UnitTests
 			request.Subject = "Updated " + subject;
 			request.FullName = "Updated " + fullname;
 			request.Contents = "Updated " + contents;
+			request.TemplateGroupId = 1;
 
 			Ticket updatedTicket = TestSetup.KayakoApiService.Tickets.UpdateTicket(request);
 
