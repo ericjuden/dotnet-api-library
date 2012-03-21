@@ -734,7 +734,7 @@ namespace KayakoRestApi.Controllers
 			{
 				foreach(TicketCustomField field in group.Fields)
 				{
-					sb.AppendFormat("{0}={1}", field.FieldContent);
+					sb.AppendFormat("{0}={1}", field.Name, (field.FieldContent ?? ""));
 				}
 			}
 

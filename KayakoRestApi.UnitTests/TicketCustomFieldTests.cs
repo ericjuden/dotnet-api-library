@@ -48,7 +48,7 @@ namespace KayakoRestApi.UnitTests
 			{
 				TicketCustomFields ticketCustomFields = TestSetup.KayakoApiService.Tickets.GetTicketCustomFields(idToUse);
 
-				TicketCustomFieldGroup group = ticketCustomFields.FieldGroups.FirstOrDefault(customField => customField.Fields.Length > 0);
+				TicketCustomFieldGroup group = ticketCustomFields.FieldGroups.FirstOrDefault(tcf => tcf.Fields.Length > 0 && tcf.Fields.Any(a => a.Type == Core.Constants.TicketCustomFieldType.Text || a.Type == Core.Constants.TicketCustomFieldType.TextArea));
 				TicketCustomField field = group.Fields.FirstOrDefault(type => type.Type == Core.Constants.TicketCustomFieldType.Text || type.Type == Core.Constants.TicketCustomFieldType.TextArea);
 				field.FieldContent = String.Format("This was updated at : {0}", DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
 
