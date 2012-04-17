@@ -18,6 +18,11 @@ namespace KayakoRestApi.Controllers
         {
         }
 
+		internal DepartmentController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
+			: base(apiKey, secretKey, apiUrl, proxy, requestType)
+		{
+		}
+
         #region Api Methods
 
         /// <summary>

@@ -61,6 +61,7 @@
     <Compile Include="Core\CustomFields\CustomFieldOption.cs" />
     <Compile Include="Core\CustomFields\CustomField.cs" />
     <Compile Include="Core\CustomFields\CustomFieldCollection.cs" />
+    <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />
     <Compile Include="Net\KayakoApiRequest.cs" />
     <Compile Include="RequestBase\RequestBaseObject.cs" />

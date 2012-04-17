@@ -95,6 +95,22 @@ namespace KayakoRestApi
 		/// <param name="apiKey">Api Key.</param>
 		/// <param name="secretKey">Secret Api Key.</param>
 		/// <param name="apiUrl">URL of Kayako REST Api</param>
+		/// <param name="requestType">Determines how the request URL is formed</param>
+		public KayakoClient(string apiKey, string secretKey, string apiUrl, ApiRequestType requestType)
+		{
+			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, null, requestType);
+			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null, requestType);
+			_staff = new StaffController(apiKey, secretKey, apiUrl, null, requestType);
+			_tickets = new TicketController(apiKey, secretKey, apiUrl, null, requestType);
+			_users = new UserController(apiKey, secretKey, apiUrl, null, requestType);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the KayakoRestApi.KayakoService class.
+		/// </summary>
+		/// <param name="apiKey">Api Key.</param>
+		/// <param name="secretKey">Secret Api Key.</param>
+		/// <param name="apiUrl">URL of Kayako REST Api</param>
 		/// <param name="proxy">An IWebProxy object representing any proxy details required for internet connection</param>
 		public KayakoClient(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
 		{
@@ -103,6 +119,22 @@ namespace KayakoRestApi
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy);
 			_users = new UserController(apiKey, secretKey, apiUrl, proxy);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the KayakoRestApi.KayakoService class.
+		/// </summary>
+		/// <param name="apiKey">Api Key.</param>
+		/// <param name="secretKey">Secret Api Key.</param>
+		/// <param name="apiUrl">URL of Kayako REST Api</param>
+		/// <param name="requestType">Determines how the request URL is formed</param>
+		public KayakoClient(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
+		{
+			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, proxy, requestType);
+			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy, requestType);
+			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy, requestType);
+			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy, requestType);
+			_users = new UserController(apiKey, secretKey, apiUrl, proxy, requestType);
 		}
     }
 }

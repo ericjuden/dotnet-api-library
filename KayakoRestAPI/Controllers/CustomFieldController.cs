@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using KayakoRestApi.Core.CustomFields;
+using KayakoRestApi.Net;
 
 namespace KayakoRestApi.Controllers
 {
@@ -11,6 +12,11 @@ namespace KayakoRestApi.Controllers
 		internal CustomFieldController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)
         {
+		}
+
+		internal CustomFieldController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
+			: base(apiKey, secretKey, apiUrl, proxy, requestType)
+		{
 		}
 
 		#region Api Methods

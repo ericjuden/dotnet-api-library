@@ -14,6 +14,7 @@ namespace KayakoRestApi.Net
     [Serializable]
     internal class KayakoApiRequest
     {
+		private ApiRequestType _requestType;
         private string _apiKey;
         private string _secretKey;
         private string _apiUrl;
@@ -22,12 +23,13 @@ namespace KayakoRestApi.Net
         private string _encodedSignature;
         private string _salt;
         
-        internal KayakoApiRequest(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
+        internal KayakoApiRequest(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
         {
             _apiKey = apiKey;
             _secretKey = secretKey;
             _apiUrl = apiUrl;
 			_proxy = proxy;
+			_requestType = requestType;
 
             ComputeSaltAndSignature();
         }
@@ -94,8 +96,16 @@ namespace KayakoRestApi.Net
 
 		private string GetRequestUrl(string apiMethod)
 		{
-			//string requestUrl = String.Format("{0}?{1}", _apiUrl, apiMethod);
-			string requestUrl = String.Format("{0}{1}", _apiUrl, apiMethod);
+			string requestUrl = "";
+
+			if (_requestType == ApiRequestType.QueryString)
+			{
+				requestUrl = String.Format("{0}?e={1}", _apiUrl, apiMethod);
+			}
+			else
+			{
+				requestUrl = String.Format("{0}{1}", _apiUrl, apiMethod);
+			}
 
 			return requestUrl;
 		}

@@ -20,6 +20,11 @@ namespace KayakoRestApi.Controllers
         {
         }
 
+		internal TicketController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
+			: base(apiKey, secretKey, apiUrl, proxy, requestType)
+		{
+		}
+
         #region Ticket Api Methods
 
         /// <summary>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KayakoRestApi;
+using KayakoRestApi.Net;
 
 namespace KayakoRestApi.UnitTests
 {
@@ -36,7 +37,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return new KayakoClient(ApiKey, SecretKey, ApiUrl);
+				return new KayakoClient(ApiKey, SecretKey, ApiUrl, ApiRequestType.Url);
 			}
 		}
 	}

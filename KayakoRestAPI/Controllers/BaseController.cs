@@ -13,7 +13,12 @@ namespace KayakoRestApi.Controllers
 
         internal BaseController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
         {
-            _connector = new KayakoApiRequest(apiKey, secretKey, apiUrl, proxy);
+            _connector = new KayakoApiRequest(apiKey, secretKey, apiUrl, proxy, ApiRequestType.QueryString);
         }
+
+		internal BaseController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
+		{
+			_connector = new KayakoApiRequest(apiKey, secretKey, apiUrl, proxy, requestType);
+		}
     }
 }
