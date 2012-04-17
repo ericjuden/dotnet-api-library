@@ -6,6 +6,7 @@ using KayakoRestApi.Net;
 using KayakoRestApi.Text;
 using KayakoRestApi.RequestBase;
 using System.Net;
+using System.Web;
 
 namespace KayakoRestApi.Controllers
 {
@@ -734,7 +735,12 @@ namespace KayakoRestApi.Controllers
 			{
 				foreach(TicketCustomField field in group.Fields)
 				{
-					sb.AppendFormat("{0}={1}", field.Name, (field.FieldContent ?? ""));
+					if(!String.IsNullOrEmpty(sb.ToString()))
+					{
+						sb.Append("&");
+					}
+
+					sb.AppendFormat("{0}={1}", field.Name, HttpUtility.UrlEncode((field.FieldContent ?? "")));
 				}
 			}
 

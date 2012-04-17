@@ -50,11 +50,11 @@ namespace KayakoRestApi.UnitTests
 
 				TicketCustomFieldGroup group = ticketCustomFields.FieldGroups.FirstOrDefault(tcf => tcf.Fields.Length > 0 && tcf.Fields.Any(a => a.Type == Core.Constants.TicketCustomFieldType.Text || a.Type == Core.Constants.TicketCustomFieldType.TextArea));
 				TicketCustomField field = group.Fields.FirstOrDefault(type => type.Type == Core.Constants.TicketCustomFieldType.Text || type.Type == Core.Constants.TicketCustomFieldType.TextArea);
-				field.FieldContent = String.Format("This was updated at : {0}", DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
+				field.FieldContent = String.Format("This was updated at : {0}", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
 				TicketCustomFields updatedTicketCustomFields = TestSetup.KayakoApiService.Tickets.UpdateTicketCustomFields(idToUse, ticketCustomFields);
 
-				TicketCustomFieldGroup updatedGroup = updatedTicketCustomFields.FieldGroups.FirstOrDefault(customField => customField.Fields.Length > 0);
+				TicketCustomFieldGroup updatedGroup = updatedTicketCustomFields.FieldGroups.FirstOrDefault(customField => customField.Fields.Length > 0 && customField.Fields.Any(a => a.Type == Core.Constants.TicketCustomFieldType.Text || a.Type == Core.Constants.TicketCustomFieldType.TextArea));
 				TicketCustomField updatedField = updatedGroup.Fields.FirstOrDefault(type => type.Type == Core.Constants.TicketCustomFieldType.Text || type.Type == Core.Constants.TicketCustomFieldType.TextArea);
 
 				Assert.AreEqual(field.FieldContent, updatedField.FieldContent);
