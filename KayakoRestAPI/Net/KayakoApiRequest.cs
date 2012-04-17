@@ -92,6 +92,14 @@ namespace KayakoRestApi.Net
 
         #endregion
 
+		private string GetRequestUrl(string apiMethod)
+		{
+			//string requestUrl = String.Format("{0}?{1}", _apiUrl, apiMethod);
+			string requestUrl = String.Format("{0}{1}", _apiUrl, apiMethod);
+
+			return requestUrl;
+		}
+
         /// <summary>
         /// Generic method for extracting data via DELETE.
         /// </summary>
@@ -99,7 +107,7 @@ namespace KayakoRestApi.Net
         /// <returns>The success of the delete</returns>
         internal bool ExecuteDelete(string apiMethod)
         {
-            string requestUrl = String.Format("{0}?{1}", _apiUrl, apiMethod);
+			string requestUrl = GetRequestUrl(apiMethod);
 			requestUrl = AppendSecurityCredentials(requestUrl, HttpMethod.DELETE);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
@@ -147,7 +155,7 @@ namespace KayakoRestApi.Net
 
         private TTarget ExecuteCall<TTarget>(string apiMethod, string parameters, HttpMethod httpMethod) where TTarget : class, new()
         {
-			string requestUrl = String.Format("{0}?{1}", _apiUrl, apiMethod);
+			string requestUrl = GetRequestUrl(apiMethod);
 			
             if (httpMethod == HttpMethod.GET)
             {

@@ -91,6 +91,10 @@ namespace KayakoRestApi.Core.Tickets
         [ResponseProperty("OwnerStaffId")]
         public int? OwnerStaffId { get; set; }
 
+		[OptionalField]
+		[ResponseProperty("TemplateGroupId")]
+		public int? TemplateGroupId { get; set; }
+
         /// <summary>
         /// The Id of the creation type
         /// </summary>

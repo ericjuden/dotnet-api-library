@@ -6,6 +6,7 @@ using KayakoRestApi.Net;
 using KayakoRestApi.Text;
 using KayakoRestApi.RequestBase;
 using System.Net;
+using System.Web;
 
 namespace KayakoRestApi.Controllers
 {
@@ -125,6 +126,11 @@ namespace KayakoRestApi.Controllers
                 parameters.AppendRequestData("ownerstaffid", ticketRequest.OwnerStaffId);
             }
 
+			if (ticketRequest.TemplateGroupId != null)
+			{
+				parameters.AppendRequestData("templategroupid", ticketRequest.TemplateGroupId);
+			}
+
 			if (ticketRequest.CreationType != null)
 			{
 				parameters.AppendRequestData("type", EnumUtility.ToApiString(ticketRequest.CreationType));
@@ -185,6 +191,11 @@ namespace KayakoRestApi.Controllers
             {
 				parameters.AppendRequestData("ownerstaffid", request.OwnerStaffId);
             }
+
+			if (request.TemplateGroupId != null)
+			{
+				parameters.AppendRequestData("templategroupid", request.TemplateGroupId);
+			}
 
 			if (request.UserId != null)
             {
@@ -701,11 +712,39 @@ namespace KayakoRestApi.Controllers
 
 		#region Ticket Custom Fields Methods
 
+		/// <summary>
+		/// Retrieve a list of a ticket's custom fields.
+		/// </summary>
 		public TicketCustomFields GetTicketCustomFields(int ticketId)
 		{
 			string apiMethod = String.Format("/Tickets/TicketCustomField/{0}", ticketId);
 
 			return _connector.ExecuteGet<TicketCustomFields>(apiMethod);
+		}
+
+		/// <summary>
+		/// Update the custom field values for a ticket. Please note all custom fields for the ticket must be sent through with
+		/// their values.
+		/// </summary>
+		public TicketCustomFields UpdateTicketCustomFields(int ticketId, TicketCustomFields customFields)
+		{
+			string apiMethod = String.Format("/Tickets/TicketCustomField/{0}", ticketId);
+
+			StringBuilder sb = new StringBuilder();
+			foreach(TicketCustomFieldGroup group in customFields.FieldGroups)
+			{
+				foreach(TicketCustomField field in group.Fields)
+				{
+					if(!String.IsNullOrEmpty(sb.ToString()))
+					{
+						sb.Append("&");
+					}
+
+					sb.AppendFormat("{0}={1}", field.Name, HttpUtility.UrlEncode((field.FieldContent ?? "")));
+				}
+			}
+
+			return _connector.ExecutePost<TicketCustomFields>(apiMethod, sb.ToString());
 		}
 
 		#endregion

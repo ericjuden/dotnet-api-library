@@ -53,7 +53,7 @@ namespace KayakoRestApi.UnitTests
 			string fullname = "Ticket FullName";
 			string email = "ticket@email.com";
 			string contents = "Contents of the ticket";
-			int deptId = 1;
+			int deptId = 3;
 			int statusId = 1;
 			int priorityId = 1;
 			int typeId = 1;
@@ -67,6 +67,7 @@ namespace KayakoRestApi.UnitTests
                 Email = email,
                 Contents = contents,
                 DepartmentId = deptId,
+				TemplateGroupId = 1,
                 TicketStatusId = statusId,
                 TicketPriorityId = priorityId,
                 TicketTypeId = typeId,
@@ -93,6 +94,7 @@ namespace KayakoRestApi.UnitTests
 			request.Subject = "Updated " + subject;
 			request.FullName = "Updated " + fullname;
 			request.Contents = "Updated " + contents;
+			request.TemplateGroupId = 1;
 
 			Ticket updatedTicket = TestSetup.KayakoApiService.Tickets.UpdateTicket(request);
 
@@ -122,6 +124,7 @@ namespace KayakoRestApi.UnitTests
 			Assert.AreEqual(one.DisplayId, two.DisplayId);
 			Assert.AreEqual(one.Email, two.Email);
 			Assert.AreEqual(one.EscalationRuleId, two.EscalationRuleId);
+			Assert.AreEqual(one.TemplateGroupId, two.TemplateGroupId);
 			Assert.AreEqual(one.FlagType, two.FlagType);
 			Assert.AreEqual(one.FullName, two.FullName);
 			Assert.AreEqual(one.Id, two.Id);
