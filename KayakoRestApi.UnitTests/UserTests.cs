@@ -98,6 +98,17 @@ namespace KayakoRestApi.UnitTests
             Assert.IsTrue(success);
         }
 
+		[Test(Description = "Tests searching for a user")]
+		[TestCase("howson")]
+		[TestCase("chris")]
+		public void UserSearch(string query)
+		{
+			UserCollection matchedUsers = TestSetup.KayakoApiService.Users.UserSearch(query);
+
+			Assert.NotNull(matchedUsers);
+			Assert.IsNotEmpty(matchedUsers);
+		}
+
         private void CompareUserGroup(User one, User two)
         {
             Assert.IsTrue(one.Dateline.Equals(two.Dateline), "Dateline is not the same");

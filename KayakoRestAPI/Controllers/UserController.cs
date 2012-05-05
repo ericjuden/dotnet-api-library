@@ -294,6 +294,25 @@ namespace KayakoRestApi.Controllers
 
 		#endregion
 
+		#region User Search
+
+		/// <summary>
+		/// Run a search on Users. You can search users from email, full name, phone, organization name and user group.
+		/// </summary>
+		public UserCollection UserSearch(string query)
+		{
+			string apiMethod = "/Base/UserSearch";
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestData("query", query);
+
+			UserCollection users = _connector.ExecutePost<UserCollection>(apiMethod, parameters.ToString());
+
+			return users;
+		}
+
+		#endregion
+
 		#endregion
 
 		#region Request Parameter Builders
