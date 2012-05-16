@@ -40,5 +40,5 @@ using System;
 //     - MajorVersion - Substantial changes and overhauls
 //     - Feature - When a new feature is added
 //     - MinorVersion - When changing an existing feature
-[assembly: AssemblyVersion("1.2.1")]
-[assembly: AssemblyFileVersion("1.2.1")]
+[assembly: AssemblyVersion("1.2.2")]
+[assembly: AssemblyFileVersion("1.2.2")]
