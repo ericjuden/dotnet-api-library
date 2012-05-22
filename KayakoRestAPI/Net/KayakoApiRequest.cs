@@ -8,6 +8,7 @@ using System.IO;
 using KayakoRestApi.Core;
 using System.Web;
 using KayakoRestApi.Net;
+using KayakoRestApi.Core.Test;
 
 namespace KayakoRestApi.Net
 {
@@ -209,11 +210,19 @@ namespace KayakoRestApi.Net
                     using (StreamReader sr = new StreamReader(webResponse.GetResponseStream()))
                     {
                         string streamContents = sr.ReadToEnd();
-                        using (StringReader serializerStream = new StringReader(streamContents))
-                        {
-                            TTarget responseData = (TTarget)serializer.Deserialize(serializerStream);
-                            return responseData;
-                        }
+
+						if (typeof(TTarget) == typeof(TestData))
+						{
+							return (TTarget)(object)new TestData(streamContents);
+						}
+						else
+						{
+							using (StringReader serializerStream = new StringReader(streamContents))
+							{
+								TTarget responseData = (TTarget)serializer.Deserialize(serializerStream);
+								return responseData;
+							}
+						}
                     }
                 }
             }

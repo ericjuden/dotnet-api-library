@@ -5,6 +5,7 @@ using KayakoRestApi.Net;
 using KayakoRestApi.Text;
 using KayakoRestApi.RequestBase;
 using System.Net;
+using KayakoRestApi.Core.Constants;
 
 namespace KayakoRestApi.Controllers
 {
@@ -30,9 +31,7 @@ namespace KayakoRestApi.Controllers
         /// </summary>
 		public DepartmentCollection GetDepartments()
 		{
-			string apiMethod = "/Base/Department/";
-
-			return _connector.ExecuteGet<DepartmentCollection>(apiMethod);
+			return _connector.ExecuteGet<DepartmentCollection>(ApiBaseMethods.Departments);
 		}
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace KayakoRestApi.Controllers
         /// <returns></returns>
 		public Department GetDepartment(int id)
 		{
-			string apiMethod = String.Format("/Base/Department/{0}", id);
+			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.Departments, id);
 
 			DepartmentCollection depts = _connector.ExecuteGet<DepartmentCollection>(apiMethod);
 
@@ -61,7 +60,7 @@ namespace KayakoRestApi.Controllers
         /// <returns>Department data representing the updated department</returns>
 		public Department UpdateDepartment(DepartmentRequest dept)
 		{
-			string apiMethod = String.Format("/Base/Department/{0}", dept.Id);
+			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.Departments, dept.Id);
 
             RequestBodyBuilder parameters = PopulateRequestParameters(dept, RequestTypes.Update);
 
@@ -82,11 +81,9 @@ namespace KayakoRestApi.Controllers
         /// <returns>Department data representing the department created</returns>
 		public Department CreateDepartment(DepartmentRequest dept)
 		{
-			string apiMethod = "/Base/Department/";
-
             RequestBodyBuilder parameters = PopulateRequestParameters(dept, RequestTypes.Create);
 
-			DepartmentCollection depts = _connector.ExecutePost<DepartmentCollection>(apiMethod, parameters.ToString());
+			DepartmentCollection depts = _connector.ExecutePost<DepartmentCollection>(ApiBaseMethods.Departments, parameters.ToString());
 
 			if (depts != null && depts.Count > 0)
 			{
@@ -103,7 +100,7 @@ namespace KayakoRestApi.Controllers
         /// <returns>The success of the deletion</returns>
 		public bool DeleteDepartment(int id)
 		{
-            string apiMethod = String.Format("/Base/Department/{0}", id);
+			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.Departments, id);
 
 			return _connector.ExecuteDelete(apiMethod);
 		}

@@ -57,10 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CustomFieldController.cs" />
+    <Compile Include="Core\Constants\ApiBaseMethods.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOptionCollection.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOption.cs" />
     <Compile Include="Core\CustomFields\CustomField.cs" />
     <Compile Include="Core\CustomFields\CustomFieldCollection.cs" />
+    <Compile Include="Controllers\CoreController.cs" />
+    <Compile Include="Core\Test\TestData.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />
     <Compile Include="Net\KayakoApiRequest.cs" />

@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using KayakoRestApi.Core.CustomFields;
 using KayakoRestApi.Net;
+using KayakoRestApi.Core.Constants;
 
 namespace KayakoRestApi.Controllers
 {
@@ -26,9 +27,7 @@ namespace KayakoRestApi.Controllers
 		/// </summary>
 		public CustomFieldCollection GetCustomFields()
 		{
-			string apiMethod = "/Base/CustomField";
-
-			return _connector.ExecuteGet<CustomFieldCollection>(apiMethod);
+			return _connector.ExecuteGet<CustomFieldCollection>(ApiBaseMethods.CustomFields);
 		}
 
 		/// <summary>
@@ -36,7 +35,7 @@ namespace KayakoRestApi.Controllers
 		/// </summary>
 		public CustomFieldOptionCollection GetCustomFieldOptions(int customFieldId)
 		{
-			string apiMethod = String.Format("/Base/CustomField/ListOptions/{0}", customFieldId);
+			string apiMethod = String.Format("{0}/ListOptions/{1}", ApiBaseMethods.CustomFields, customFieldId);
 
 			return _connector.ExecuteGet<CustomFieldOptionCollection>(apiMethod);
 		}

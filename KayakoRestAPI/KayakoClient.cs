@@ -9,6 +9,7 @@ using KayakoRestApi.Core;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Net;
 using System.Reflection;
+using KayakoRestApi.Core.Test;
 
 namespace KayakoRestApi
 {
@@ -22,6 +23,7 @@ namespace KayakoRestApi
 	{
 		#region Private Properties
 
+		private CoreController _coreController;
 		private CustomFieldController _customFields;
 		private DepartmentController _departments;
 		private StaffController _staff;
@@ -31,6 +33,14 @@ namespace KayakoRestApi
 		#endregion
 
 		#region Public Properies
+
+		/// <summary>
+		/// Provides access to Core API Methods
+		/// </summary>
+		public CoreController Core
+		{
+			get { return _coreController; }
+		}
 
 		/// <summary>
 		/// Provides access to Custom Field API Methods
@@ -82,6 +92,7 @@ namespace KayakoRestApi
         /// <param name="apiUrl">URL of Kayako REST Api</param>
         public KayakoClient(string apiKey, string secretKey, string apiUrl)
         {
+			_coreController = new CoreController(apiKey, secretKey, apiUrl, null);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, null);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null);
@@ -98,6 +109,7 @@ namespace KayakoRestApi
 		/// <param name="requestType">Determines how the request URL is formed</param>
 		public KayakoClient(string apiKey, string secretKey, string apiUrl, ApiRequestType requestType)
 		{
+			_coreController = new CoreController(apiKey, secretKey, apiUrl, null, requestType);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, null, requestType);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null, requestType);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null, requestType);
@@ -114,6 +126,7 @@ namespace KayakoRestApi
 		/// <param name="proxy">An IWebProxy object representing any proxy details required for internet connection</param>
 		public KayakoClient(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
 		{
+			_coreController = new CoreController(apiKey, secretKey, apiUrl, proxy);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, proxy);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy);
@@ -130,6 +143,7 @@ namespace KayakoRestApi
 		/// <param name="requestType">Determines how the request URL is formed</param>
 		public KayakoClient(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
 		{
+			_coreController = new CoreController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy, requestType);

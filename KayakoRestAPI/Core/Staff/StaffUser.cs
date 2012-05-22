@@ -77,7 +77,7 @@ namespace KayakoRestApi.Core.Staff
         /// <summary>
         /// The signature to append to each reply made by the staff user
         /// </summary>
-        [XmlElement("signature")]
+		[XmlElement("staffsignature")]
         public string Signature { get; set; }
 
         /// <summary>

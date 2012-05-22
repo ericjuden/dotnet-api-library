@@ -20,7 +20,7 @@ namespace KayakoRestApi.UnitTests
 
 		public void OutputMessage(string message)
 		{
-			Trace.WriteLine(message);
+			Console.WriteLine(message);
 		}
 
 		public static void AssertObjectXmlEqual<T>(T expected, T actual)
