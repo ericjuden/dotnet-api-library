@@ -261,7 +261,7 @@ namespace KayakoRestApi.Controllers
 
             if (!String.IsNullOrEmpty(staffUser.Signature))
             {
-                parameters.AppendRequestData("signature", staffUser.Signature);
+				parameters.AppendRequestData("staffsignature", staffUser.Signature);
             }
 
             if (!String.IsNullOrEmpty(staffUser.TimeZone))

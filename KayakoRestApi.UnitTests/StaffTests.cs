@@ -27,7 +27,7 @@ namespace KayakoRestApi.UnitTests
                 staffUser.LastName = "LastName";
                 staffUser.MobileNumber = "012345678911";
 				//Can't test signature as it doesn't come back from the Api
-				staffUser.Signature = "";
+				staffUser.Signature = "My Staff Greeting";
                 staffUser.TimeZone = "GMT";
                 staffUser.UserName = "teststaff";
                 staffUser.FullName = String.Format("{0} {1}", staffUser.FirstName, staffUser.LastName);
