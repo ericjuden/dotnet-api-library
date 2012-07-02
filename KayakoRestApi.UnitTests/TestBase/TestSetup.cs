@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using KayakoRestApi;
@@ -13,7 +14,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "94364841-7542-9e94-d59c-f420554d9a9d";
+                return ReadTextFile("TestBase/ApiKey.txt");
 			}
 		}
 
@@ -21,7 +22,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "ZjM5OTAzN2YtYjcxNy1jZWQ0LTIxMGEtNGViNzQzNTNhZjAxY2Y3OGVkMmUtN2RmNi05MTQ0LTI5YjctYmM0M2E1OWNlMmU5";
+                return ReadTextFile("TestBase/SecretKey.txt");
 			}
 		}
 
@@ -29,7 +30,7 @@ namespace KayakoRestApi.UnitTests
 		{
 			get
 			{
-				return "http://apiupdates.kayako.com/api/";
+				return ReadTextFile("TestBase/ApiUrl.txt");
 			}
 		}
 
@@ -40,5 +41,16 @@ namespace KayakoRestApi.UnitTests
 				return new KayakoClient(ApiKey, SecretKey, ApiUrl, ApiRequestType.Url);
 			}
 		}
+
+        private static string ReadTextFile(string textFilePath)
+        {
+            using(var fileStream = File.OpenRead(textFilePath))
+            {
+                using(var streamReader = new StreamReader(fileStream))
+                {
+                    return streamReader.ReadToEnd();
+                }
+            }
+        }
 	}
 }
