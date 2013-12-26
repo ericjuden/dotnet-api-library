@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
 using System.Net;
 using System.Xml.Serialization;
 using System.IO;
-using KayakoRestApi.Core;
 using System.Web;
-using KayakoRestApi.Net;
 using KayakoRestApi.Core.Test;
 
 namespace KayakoRestApi.Net
@@ -15,11 +12,11 @@ namespace KayakoRestApi.Net
     [Serializable]
     internal class KayakoApiRequest
     {
-		private ApiRequestType _requestType;
-        private string _apiKey;
-        private string _secretKey;
-        private string _apiUrl;
-		private IWebProxy _proxy;
+		private readonly ApiRequestType _requestType;
+        private readonly string _apiKey;
+        private readonly string _secretKey;
+        private readonly string _apiUrl;
+		private readonly IWebProxy _proxy;
         private string _signature;
         private string _encodedSignature;
         private string _salt;

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KayakoRestApi.Controllers;
 using System.Net;
+using KayakoRestApi.Core.Test;
 using KayakoRestApi.Net;
-using KayakoRestApi.Data;
 using KayakoRestApi.Core.Constants;
 
-namespace KayakoRestApi.Core.Test
+namespace KayakoRestApi.Controllers
 {
 	public sealed class CoreController : BaseController
 	{
@@ -28,7 +25,7 @@ namespace KayakoRestApi.Core.Test
 		/// </summary>
 		public string GetListTest()
 		{
-			return _connector.ExecuteGet<TestData>(ApiBaseMethods.CoreTest);
+			return Connector.ExecuteGet<TestData>(ApiBaseMethods.CoreTest);
 		}
 
 		/// <summary>
@@ -38,7 +35,7 @@ namespace KayakoRestApi.Core.Test
 		{
 			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.CoreTest, id);
 
-			return _connector.ExecuteGet<TestData>(apiMethod);
+			return Connector.ExecuteGet<TestData>(apiMethod);
 		}
 
 		/// <summary>
@@ -46,7 +43,7 @@ namespace KayakoRestApi.Core.Test
 		/// </summary>
 		public string PostTest()
 		{
-			return _connector.ExecutePost<TestData>(ApiBaseMethods.CoreTest, "");
+			return Connector.ExecutePost<TestData>(ApiBaseMethods.CoreTest, "");
 		}
 
 		/// <summary>
@@ -56,7 +53,7 @@ namespace KayakoRestApi.Core.Test
 		{
 			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.CoreTest, id);
 
-			return _connector.ExecutePut<TestData>(apiMethod, "");
+			return Connector.ExecutePut<TestData>(apiMethod, "");
 		}
 
 		/// <summary>
@@ -66,7 +63,7 @@ namespace KayakoRestApi.Core.Test
 		{
 			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.CoreTest, id);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion

@@ -57,7 +57,7 @@ namespace KayakoRestApi.Controllers
                 ownerStaffIdParameter,
                 userIdParameter);
 
-            TicketCollection tickets = _connector.ExecuteGet<TicketCollection>(apiMethod);
+            TicketCollection tickets = Connector.ExecuteGet<TicketCollection>(apiMethod);
 
             return tickets;
         }
@@ -86,7 +86,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/Ticket/{0}/", id);
 
-			TicketCollection tickets = _connector.ExecuteGet<TicketCollection>(apiMethod);
+			TicketCollection tickets = Connector.ExecuteGet<TicketCollection>(apiMethod);
 
 			if (tickets.Count > 0)
 			{
@@ -141,7 +141,7 @@ namespace KayakoRestApi.Controllers
 				parameters.AppendRequestData("type", EnumUtility.ToApiString(ticketRequest.CreationType));
 			}
 
-            TicketCollection tickets = _connector.ExecutePost<TicketCollection>(apiMethod, parameters.ToString());
+            TicketCollection tickets = Connector.ExecutePost<TicketCollection>(apiMethod, parameters.ToString());
 
             if (tickets.Count > 0)
             {
@@ -209,7 +209,7 @@ namespace KayakoRestApi.Controllers
 
 			string apiMethod = String.Format("/Tickets/Ticket/{0}", request.Id);
 
-            TicketCollection tickets = _connector.ExecutePut<TicketCollection>(apiMethod, parameters.ToString());
+            TicketCollection tickets = Connector.ExecutePut<TicketCollection>(apiMethod, parameters.ToString());
 
             if (tickets != null && tickets.Count > 0)
             {
@@ -223,7 +223,7 @@ namespace KayakoRestApi.Controllers
         {
 			string apiMethod = String.Format("/Tickets/Ticket/{0}", ticketId);
 
-            return _connector.ExecuteDelete(apiMethod);
+            return Connector.ExecuteDelete(apiMethod);
         }
 
         #endregion
@@ -237,7 +237,7 @@ namespace KayakoRestApi.Controllers
         {
             string apiMethod = "/Tickets/TicketCount/";
             
-            TicketCount ticketCount = _connector.ExecuteGet<TicketCount>(apiMethod);
+            TicketCount ticketCount = Connector.ExecuteGet<TicketCount>(apiMethod);
 
             return ticketCount;
         }
@@ -257,7 +257,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = "/Tickets/TicketPriority/";
 
-			return _connector.ExecuteGet<TicketPriorityCollection>(apiMethod);
+			return Connector.ExecuteGet<TicketPriorityCollection>(apiMethod);
 		}
 
 		/// <summary>
@@ -272,7 +272,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketPriority/{0}", priorityId);
 
-			TicketPriorityCollection priorities = _connector.ExecuteGet<TicketPriorityCollection>(apiMethod);
+			TicketPriorityCollection priorities = Connector.ExecuteGet<TicketPriorityCollection>(apiMethod);
 
 			if (priorities != null && priorities.Count > 0)
 			{
@@ -301,7 +301,7 @@ namespace KayakoRestApi.Controllers
 
             RequestBodyBuilder parameters = query.GetRequestBodyParameters();
 
-            TicketCollection tickets = _connector.ExecutePost<TicketCollection>(apiMethod, parameters.ToString());
+            TicketCollection tickets = Connector.ExecutePost<TicketCollection>(apiMethod, parameters.ToString());
 
             return tickets;
         }
@@ -321,7 +321,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = "/Tickets/TicketStatus/";
 
-			return _connector.ExecuteGet<TicketStatusCollection>(apiMethod);
+			return Connector.ExecuteGet<TicketStatusCollection>(apiMethod);
 		}
 
 		/// <summary>
@@ -336,7 +336,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketStatus/{0}", statusId);
 
-			TicketStatusCollection statuses = _connector.ExecuteGet<TicketStatusCollection>(apiMethod);
+			TicketStatusCollection statuses = Connector.ExecuteGet<TicketStatusCollection>(apiMethod);
 
 			if (statuses != null && statuses.Count > 0)
 			{
@@ -356,7 +356,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketTimeTrack/ListAll/{0}", ticketId);
 
-			TicketTimeTrackCollection ticketTimeTracks = _connector.ExecuteGet<TicketTimeTrackCollection>(apiMethod);
+			TicketTimeTrackCollection ticketTimeTracks = Connector.ExecuteGet<TicketTimeTrackCollection>(apiMethod);
 
 			return ticketTimeTracks;
 		}
@@ -370,7 +370,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketTimeTrack/{0}/{1}", ticketId, timeTrackNoteId);
 
-			TicketTimeTrackCollection ticketTimeTracks = _connector.ExecuteGet<TicketTimeTrackCollection>(apiMethod);
+			TicketTimeTrackCollection ticketTimeTracks = Connector.ExecuteGet<TicketTimeTrackCollection>(apiMethod);
 
 			if (ticketTimeTracks != null && ticketTimeTracks.Count > 0)
 			{
@@ -408,7 +408,7 @@ namespace KayakoRestApi.Controllers
                 parameters.AppendRequestData("notecolor", EnumUtility.ToApiString(request.NoteColor));
 			}
 
-			TicketTimeTrackCollection ticketTimeTracks = _connector.ExecutePost<TicketTimeTrackCollection>(apiMethod, parameters.ToString());
+			TicketTimeTrackCollection ticketTimeTracks = Connector.ExecutePost<TicketTimeTrackCollection>(apiMethod, parameters.ToString());
 
 			if (ticketTimeTracks != null && ticketTimeTracks.Count > 0)
 			{
@@ -427,7 +427,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketTimeTrack/{0}/{1}", ticketId, timeTrackNoteId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
@@ -438,14 +438,14 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = "/Tickets/TicketType/";
 
-			return _connector.ExecuteGet<TicketTypeCollection>(apiMethod);
+			return Connector.ExecuteGet<TicketTypeCollection>(apiMethod);
 		}
 
 		public TicketType GetTicketType(int ticketTypeId)
 		{
 			string apiMethod = String.Format("/Tickets/TicketType/{0}", ticketTypeId);
 
-			TicketTypeCollection ticketTypes = _connector.ExecuteGet<TicketTypeCollection>(apiMethod);
+			TicketTypeCollection ticketTypes = Connector.ExecuteGet<TicketTypeCollection>(apiMethod);
 
 			if (ticketTypes != null && ticketTypes.Count > 0)
 			{
@@ -468,7 +468,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketPost/ListAll/{0}", ticketId);
 
-			TicketPostCollection posts = _connector.ExecuteGet<TicketPostCollection>(apiMethod);
+			TicketPostCollection posts = Connector.ExecuteGet<TicketPostCollection>(apiMethod);
 
 			return posts;
 		}
@@ -483,7 +483,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketPost/{0}/{1}", ticketId, postId);
 
-			TicketPostCollection posts = _connector.ExecuteGet<TicketPostCollection>(apiMethod);
+			TicketPostCollection posts = Connector.ExecuteGet<TicketPostCollection>(apiMethod);
 
 			if (posts.Count > 0)
 			{
@@ -537,7 +537,7 @@ namespace KayakoRestApi.Controllers
                 parameters.AppendRequestData("staffid", request.StaffId.Value);
 			}
 
-			TicketPostCollection posts = _connector.ExecutePost<TicketPostCollection>(apiMethod, parameters.ToString());
+			TicketPostCollection posts = Connector.ExecutePost<TicketPostCollection>(apiMethod, parameters.ToString());
 
 			if (posts.Count > 0)
 			{
@@ -551,7 +551,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketPost/{0}/{1}", ticketId, ticketPostId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
@@ -562,14 +562,14 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Tickets/TicketAttachment/ListAll/{0}", ticketId);
 
-			return _connector.ExecuteGet<TicketAttachmentCollection>(apiMethod);
+			return Connector.ExecuteGet<TicketAttachmentCollection>(apiMethod);
 		}
 
 		public TicketAttachment GetTicketAttachment(int ticketId, int attachmentId)
 		{
             string apiMethod = String.Format("/Tickets/TicketAttachment/{0}/{1}", ticketId, attachmentId);
 
-			TicketAttachmentCollection attachments = _connector.ExecuteGet<TicketAttachmentCollection>(apiMethod);
+			TicketAttachmentCollection attachments = Connector.ExecuteGet<TicketAttachmentCollection>(apiMethod);
 
 			if (attachments != null && attachments.Count > 0)
 			{
@@ -598,7 +598,7 @@ namespace KayakoRestApi.Controllers
             parameters.AppendRequestData("filename", request.FileName);
             parameters.AppendRequestData("contents", request.Contents);
 
-			TicketAttachmentCollection attachments = _connector.ExecutePost<TicketAttachmentCollection>(apiMethod, parameters.ToString());
+			TicketAttachmentCollection attachments = Connector.ExecutePost<TicketAttachmentCollection>(apiMethod, parameters.ToString());
 
 			if (attachments != null && attachments.Count > 0)
 			{
@@ -612,7 +612,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Tickets/TicketAttachment/{0}/{1}", ticketId, attachmentId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
@@ -631,7 +631,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Tickets/TicketNote/ListAll/{0}", ticketId);
 
-			return _connector.ExecuteGet<TicketNoteCollection>(apiMethod);
+			return Connector.ExecuteGet<TicketNoteCollection>(apiMethod);
 		}
 
 		/// <summary>
@@ -644,7 +644,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Tickets/TicketNote/{0}/{1}/", ticketId, noteId);
 
-			TicketNoteCollection notes = _connector.ExecuteGet<TicketNoteCollection>(apiMethod);
+			TicketNoteCollection notes = Connector.ExecuteGet<TicketNoteCollection>(apiMethod);
 
 			if (notes != null && notes.Count > 0)
 			{
@@ -696,7 +696,7 @@ namespace KayakoRestApi.Controllers
                 parameters.AppendRequestData("forstaffid", request.ForStaffId.Value);
 			}
 
-			TicketNoteCollection notes = _connector.ExecutePost<TicketNoteCollection>(apiMethod, parameters.ToString());
+			TicketNoteCollection notes = Connector.ExecutePost<TicketNoteCollection>(apiMethod, parameters.ToString());
 
 			if (notes.Count > 0)
 			{
@@ -710,7 +710,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Tickets/TicketNote/{0}/{1}", ticketId, noteId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
@@ -724,7 +724,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Tickets/TicketCustomField/{0}", ticketId);
 
-			return _connector.ExecuteGet<TicketCustomFields>(apiMethod);
+			return Connector.ExecuteGet<TicketCustomFields>(apiMethod);
 		}
 
 		/// <summary>
@@ -749,7 +749,7 @@ namespace KayakoRestApi.Controllers
 				}
 			}
 
-			return _connector.ExecutePost<TicketCustomFields>(apiMethod, sb.ToString());
+			return Connector.ExecutePost<TicketCustomFields>(apiMethod, sb.ToString());
 		}
 
 		#endregion

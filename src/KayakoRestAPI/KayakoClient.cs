@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Security.Cryptography;
-using System.Net;
-using System.Xml.Serialization;
-using System.IO;
-using KayakoRestApi.Core;
+﻿using System.Net;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Net;
-using System.Reflection;
-using KayakoRestApi.Core.Test;
 
 namespace KayakoRestApi
 {

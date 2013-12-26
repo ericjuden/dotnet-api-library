@@ -53,7 +53,7 @@ namespace KayakoRestApi.Controllers
         {
             string apiMethod = String.Format("/Base/User/Filter/{0}/{1}", filter, max);
 
-            return _connector.ExecuteGet<UserCollection>(apiMethod);
+            return Connector.ExecuteGet<UserCollection>(apiMethod);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace KayakoRestApi.Controllers
         {
             string apiMethod = String.Format("/Base/User/{0}", userId);
 
-            UserCollection users = _connector.ExecuteGet<UserCollection>(apiMethod);
+            UserCollection users = Connector.ExecuteGet<UserCollection>(apiMethod);
 
             if (users != null && users.Count > 0)
             {
@@ -90,7 +90,7 @@ namespace KayakoRestApi.Controllers
 
             parameters.AppendRequestData("sendwelcomeemail", Convert.ToInt32(sendWelcomeEmail));
 
-            UserCollection users = _connector.ExecutePost<UserCollection>(apiMethod, parameters.ToString());
+            UserCollection users = Connector.ExecutePost<UserCollection>(apiMethod, parameters.ToString());
 
             if (users != null && users.Count > 0)
             {
@@ -109,7 +109,7 @@ namespace KayakoRestApi.Controllers
 
             RequestBodyBuilder parameters = PopulateRequestParameters(user, RequestTypes.Update);
 
-            UserCollection users = _connector.ExecutePut<UserCollection>(apiMethod, parameters.ToString());
+            UserCollection users = Connector.ExecutePut<UserCollection>(apiMethod, parameters.ToString());
 
             if (users.Count > 0)
             {
@@ -125,7 +125,7 @@ namespace KayakoRestApi.Controllers
         {
             string url = String.Format("/Base/User/{0}", userId);
 
-            return _connector.ExecuteDelete(url);
+            return Connector.ExecuteDelete(url);
         }
 
 		#endregion
@@ -139,7 +139,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = "/Base/UserGroup/";
 
-			return _connector.ExecuteGet<UserGroupCollection>(apiMethod);
+			return Connector.ExecuteGet<UserGroupCollection>(apiMethod);
 		}
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Base/UserGroup/{0}", userGroupId);
 
-			UserGroupCollection userGroups = _connector.ExecuteGet<UserGroupCollection>(apiMethod);
+			UserGroupCollection userGroups = Connector.ExecuteGet<UserGroupCollection>(apiMethod);
 
 			if (userGroups != null && userGroups.Count > 0)
 			{
@@ -168,7 +168,7 @@ namespace KayakoRestApi.Controllers
 
 			RequestBodyBuilder parameters = PopulateRequestParameters(userGroup, RequestTypes.Create);
 
-			UserGroupCollection userGroups = _connector.ExecutePost<UserGroupCollection>(apiMethod, parameters.ToString());
+			UserGroupCollection userGroups = Connector.ExecutePost<UserGroupCollection>(apiMethod, parameters.ToString());
 
 			if (userGroups != null && userGroups.Count > 0)
 			{
@@ -187,7 +187,7 @@ namespace KayakoRestApi.Controllers
 
             RequestBodyBuilder parameters = PopulateRequestParameters(userGroup, RequestTypes.Create);
 
-			UserGroupCollection userGroups = _connector.ExecutePut<UserGroupCollection>(apiMethod, parameters.ToString());
+			UserGroupCollection userGroups = Connector.ExecutePut<UserGroupCollection>(apiMethod, parameters.ToString());
 
 			if (userGroups.Count > 0)
 			{
@@ -203,7 +203,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Base/UserGroup/{0}", userGroupId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
@@ -218,7 +218,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = "/Base/UserOrganization/";
 
-			UserOrganizationCollection orgs = _connector.ExecuteGet<UserOrganizationCollection>(apiMethod);
+			UserOrganizationCollection orgs = Connector.ExecuteGet<UserOrganizationCollection>(apiMethod);
 
 			return orgs;
 		}
@@ -231,7 +231,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Base/UserOrganization/{0}", id);
 
-			UserOrganizationCollection orgs = _connector.ExecuteGet<UserOrganizationCollection>(apiMethod);
+			UserOrganizationCollection orgs = Connector.ExecuteGet<UserOrganizationCollection>(apiMethod);
 
 			if (orgs != null && orgs.Count > 0)
 			{
@@ -255,7 +255,7 @@ namespace KayakoRestApi.Controllers
 
 			RequestBodyBuilder parameters = PopulateRequestParameters(org, RequestTypes.Create);
 
-			UserOrganizationCollection orgs = _connector.ExecutePost<UserOrganizationCollection>(apiMethod, parameters.ToString());
+			UserOrganizationCollection orgs = Connector.ExecutePost<UserOrganizationCollection>(apiMethod, parameters.ToString());
 
 			if (orgs.Count > 0)
 			{
@@ -275,7 +275,7 @@ namespace KayakoRestApi.Controllers
 
 			RequestBodyBuilder parameters = PopulateRequestParameters(org, RequestTypes.Update);
 
-			UserOrganizationCollection orgs = _connector.ExecutePut<UserOrganizationCollection>(apiMethod, parameters.ToString());
+			UserOrganizationCollection orgs = Connector.ExecutePut<UserOrganizationCollection>(apiMethod, parameters.ToString());
 
 			if (orgs != null && orgs.Count > 0)
 			{
@@ -289,7 +289,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Base/UserOrganization/{0}", id);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
@@ -306,7 +306,7 @@ namespace KayakoRestApi.Controllers
 			RequestBodyBuilder parameters = new RequestBodyBuilder();
 			parameters.AppendRequestData("query", query);
 
-			UserCollection users = _connector.ExecutePost<UserCollection>(apiMethod, parameters.ToString());
+			UserCollection users = Connector.ExecutePost<UserCollection>(apiMethod, parameters.ToString());
 
 			return users;
 		}
@@ -335,7 +335,7 @@ namespace KayakoRestApi.Controllers
 
             if (user.EmailAddresses != null && user.EmailAddresses.Length > 0)
             {
-                parameters.AppendRequestDataArray<string>("email[]", user.EmailAddresses);
+                parameters.AppendRequestDataArray("email[]", user.EmailAddresses);
             }
 
 			if (user.OrganizationId != null && user.OrganizationId.HasValue && user.OrganizationId.Value > 0)

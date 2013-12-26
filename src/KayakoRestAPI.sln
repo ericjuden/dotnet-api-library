@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi", "KayakoRestAPI\KayakoRestApi.csproj", "{AE83CAF2-DBA1-4360-AFE5-849D2EB0E027}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestAPI.Testing", "TestApplication\KayakoRestAPI.Testing.csproj", "{752985BA-E382-4716-966D-F566F7E3489D}"
@@ -12,13 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{FAD3
 		Library\nunit.mocks.dll = Library\nunit.mocks.dll
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi.UnitTests", "KayakoRestApi.UnitTests\KayakoRestApi.UnitTests.csproj", "{FE037841-E104-4F7A-9A39-6A03AC32236C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{FC3D4805-75A1-4CBF-89C6-45992AD2B317}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README = README
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi.IntegrationTests", "KayakoRestApi.IntegrationTests\KayakoRestApi.IntegrationTests.csproj", "{FE037841-E104-4F7A-9A39-6A03AC32236C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

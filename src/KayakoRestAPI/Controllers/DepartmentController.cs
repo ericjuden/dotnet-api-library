@@ -31,7 +31,7 @@ namespace KayakoRestApi.Controllers
         /// </summary>
 		public DepartmentCollection GetDepartments()
 		{
-			return _connector.ExecuteGet<DepartmentCollection>(ApiBaseMethods.Departments);
+			return Connector.ExecuteGet<DepartmentCollection>(ApiBaseMethods.Departments);
 		}
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.Departments, id);
 
-			DepartmentCollection depts = _connector.ExecuteGet<DepartmentCollection>(apiMethod);
+			DepartmentCollection depts = Connector.ExecuteGet<DepartmentCollection>(apiMethod);
 
 			if(depts != null && depts.Count > 0)
 			{
@@ -64,7 +64,7 @@ namespace KayakoRestApi.Controllers
 
             RequestBodyBuilder parameters = PopulateRequestParameters(dept, RequestTypes.Update);
 
-			DepartmentCollection depts = _connector.ExecutePut<DepartmentCollection>(apiMethod, parameters.ToString());
+			DepartmentCollection depts = Connector.ExecutePut<DepartmentCollection>(apiMethod, parameters.ToString());
 
 			if (depts != null && depts.Count > 0)
 			{
@@ -83,7 +83,7 @@ namespace KayakoRestApi.Controllers
 		{
             RequestBodyBuilder parameters = PopulateRequestParameters(dept, RequestTypes.Create);
 
-			DepartmentCollection depts = _connector.ExecutePost<DepartmentCollection>(ApiBaseMethods.Departments, parameters.ToString());
+			DepartmentCollection depts = Connector.ExecutePost<DepartmentCollection>(ApiBaseMethods.Departments, parameters.ToString());
 
 			if (depts != null && depts.Count > 0)
 			{
@@ -102,7 +102,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("{0}/{1}", ApiBaseMethods.Departments, id);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion

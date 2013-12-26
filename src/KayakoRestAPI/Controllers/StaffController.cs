@@ -34,7 +34,7 @@ namespace KayakoRestApi.Controllers
         {
             string apiMethod = "/Base/Staff/";
 
-            return _connector.ExecuteGet<StaffUserCollection>(apiMethod);
+            return Connector.ExecuteGet<StaffUserCollection>(apiMethod);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace KayakoRestApi.Controllers
         {
             string apiMethod = String.Format("/Base/Staff/{0}", staffId);
 
-            StaffUserCollection users = _connector.ExecuteGet<StaffUserCollection>(apiMethod);
+            StaffUserCollection users = Connector.ExecuteGet<StaffUserCollection>(apiMethod);
 
             if (users != null && users.Count > 0)
             {
@@ -69,7 +69,7 @@ namespace KayakoRestApi.Controllers
 
             RequestBodyBuilder parameters = PopulateRequestParameters(staffUser, RequestTypes.Update);
 
-            StaffUserCollection users = _connector.ExecutePut<StaffUserCollection>(apiMethod, parameters.ToString());
+            StaffUserCollection users = Connector.ExecutePut<StaffUserCollection>(apiMethod, parameters.ToString());
 
             if (users.Count > 0)
             {
@@ -90,7 +90,7 @@ namespace KayakoRestApi.Controllers
 
             RequestBodyBuilder parameters = PopulateRequestParameters(staffUser, RequestTypes.Create);
 
-            StaffUserCollection staff = _connector.ExecutePost<StaffUserCollection>(apiMethod, parameters.ToString());
+            StaffUserCollection staff = Connector.ExecutePost<StaffUserCollection>(apiMethod, parameters.ToString());
 
             if (staff != null && staff.Count > 0)
             {
@@ -109,7 +109,7 @@ namespace KayakoRestApi.Controllers
         {
             string apiMethod = String.Format("/Base/Staff/{0}", staffId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
         }
 
 		#endregion
@@ -124,7 +124,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = "/Base/StaffGroup/";
 
-			return _connector.ExecuteGet<StaffGroupCollection>(apiMethod);
+			return Connector.ExecuteGet<StaffGroupCollection>(apiMethod);
 		}
 
 		/// <summary>
@@ -136,7 +136,7 @@ namespace KayakoRestApi.Controllers
 		{
             string apiMethod = String.Format("/Base/StaffGroup/{0}/", groupId);
 
-			StaffGroupCollection grps = _connector.ExecuteGet<StaffGroupCollection>(apiMethod);
+			StaffGroupCollection grps = Connector.ExecuteGet<StaffGroupCollection>(apiMethod);
 
 			if (grps != null && grps.Count > 0)
 			{
@@ -157,7 +157,7 @@ namespace KayakoRestApi.Controllers
 
 			RequestBodyBuilder parameters = PopulateRequestParameters(staffGroup, RequestTypes.Create);
 
-			StaffGroupCollection staffGroups = _connector.ExecutePost<StaffGroupCollection>(apiMethod, parameters.ToString());
+			StaffGroupCollection staffGroups = Connector.ExecutePost<StaffGroupCollection>(apiMethod, parameters.ToString());
 
 			if (staffGroups != null && staffGroups.Count > 0)
 			{
@@ -178,7 +178,7 @@ namespace KayakoRestApi.Controllers
 
 			RequestBodyBuilder parameters = PopulateRequestParameters(staffGroup, RequestTypes.Update);
 
-			StaffGroupCollection staffGroups = _connector.ExecutePut<StaffGroupCollection>(apiMethod, parameters.ToString());
+			StaffGroupCollection staffGroups = Connector.ExecutePut<StaffGroupCollection>(apiMethod, parameters.ToString());
 
 			if (staffGroups != null && staffGroups.Count > 0)
 			{
@@ -197,7 +197,7 @@ namespace KayakoRestApi.Controllers
 		{
 			string apiMethod = String.Format("/Base/StaffGroup/{0}", staffGroupId);
 
-			return _connector.ExecuteDelete(apiMethod);
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion

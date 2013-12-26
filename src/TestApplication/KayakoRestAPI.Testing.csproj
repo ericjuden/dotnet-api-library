@@ -60,10 +60,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KayakoRestApi.UnitTests\KayakoRestApi.UnitTests.csproj">
-      <Project>{FE037841-E104-4F7A-9A39-6A03AC32236C}</Project>
-      <Name>KayakoRestApi.UnitTests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KayakoRestAPI\KayakoRestApi.csproj">
       <Project>{AE83CAF2-DBA1-4360-AFE5-849D2EB0E027}</Project>
       <Name>KayakoRestApi</Name>

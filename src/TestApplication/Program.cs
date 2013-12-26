@@ -4,17 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using KayakoRestApi;
-using KayakoRestApi.Core.Users;
-using KayakoRestApi.Core.Constants;
-using KayakoRestApi.Controllers;
-using KayakoRestApi.UnitTests;
-using KayakoRestApi.Net;
-using KayakoRestApi.Utilities;
 using KayakoRestApi.Core.Departments;
-using KayakoRestApi.RequestBase;
-using KayakoRestApi.Core.Staff;
-using KayakoRestApi.Core.Tickets;
-using KayakoRestApi.Data;
 
 namespace KayakoTestApplication
 {
