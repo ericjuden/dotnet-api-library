@@ -1,0 +1,8 @@
+#Visual Studio files
+bin
+[Oo]bj/
+
+#Test API Files
+src/KayakoRestApi.UnitTests/TestBase/ApiKey.txt
+src/KayakoRestApi.UnitTests/TestBase/ApiUrl.txt
+src/KayakoRestApi.UnitTests/TestBase/SecretKey.txt
