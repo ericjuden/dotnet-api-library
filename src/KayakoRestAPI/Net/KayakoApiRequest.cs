@@ -9,8 +9,19 @@ using KayakoRestApi.Core.Test;
 
 namespace KayakoRestApi.Net
 {
+	internal interface IKayakoApiRequest
+	{
+		TTarget ExecutePut<TTarget>(string apiMethod, string parameters) where TTarget : class, new();
+
+		TTarget ExecutePost<TTarget>(string apiMethod, string parameters) where TTarget : class, new();
+
+		TTarget ExecuteGet<TTarget>(string apiMethod) where TTarget : class, new();
+
+		bool ExecuteDelete(string apiMethod);
+	}
+
     [Serializable]
-    internal class KayakoApiRequest
+	internal class KayakoApiRequest : IKayakoApiRequest
     {
 		private readonly ApiRequestType _requestType;
         private readonly string _apiKey;
@@ -62,7 +73,7 @@ namespace KayakoRestApi.Net
         /// <param name="requestUrl">URL to request data.</param>
         /// <param name="parameters">Parameters to post.</param>
         /// <returns>TTarget result of the extraction</returns>
-        internal TTarget ExecutePut<TTarget>(string apiMethod, string parameters) where TTarget : class, new()
+        public TTarget ExecutePut<TTarget>(string apiMethod, string parameters) where TTarget : class, new()
         {
             return ExecuteCall<TTarget>(apiMethod, parameters, HttpMethod.PUT);
         }
@@ -74,7 +85,7 @@ namespace KayakoRestApi.Net
         /// <param name="apiMethod">URL to request data.</param>
         /// <param name="parameters">Parameters to post.</param>
         /// <returns>TTarget result of the extraction</returns>
-        internal TTarget ExecutePost<TTarget>(string apiMethod, string parameters) where TTarget : class, new()
+        public TTarget ExecutePost<TTarget>(string apiMethod, string parameters) where TTarget : class, new()
         {
             return ExecuteCall<TTarget>(apiMethod, parameters, HttpMethod.POST);
         }
@@ -85,10 +96,49 @@ namespace KayakoRestApi.Net
         /// <typeparam name="TTarget">Target type to extract</typeparam>
         /// <param name="requestUrl">URL to request data.</param>
         /// <returns>TTarget result of the extraction</returns>
-        internal TTarget ExecuteGet<TTarget>(string apiMethod) where TTarget : class, new()
+        public TTarget ExecuteGet<TTarget>(string apiMethod) where TTarget : class, new()
         {
             return ExecuteCall<TTarget>(apiMethod, "", HttpMethod.GET);
         }
+
+		/// <summary>
+		/// Generic method for extracting data via DELETE.
+		/// </summary>
+		/// <param name="apiMethod">URL to request data</param>
+		/// <returns>The success of the delete</returns>
+		public bool ExecuteDelete(string apiMethod)
+		{
+			string requestUrl = GetRequestUrl(apiMethod);
+			requestUrl = AppendSecurityCredentials(requestUrl, HttpMethod.DELETE);
+
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+			request.Method = "DELETE";
+
+			if (_proxy != null)
+			{
+				request.Proxy = _proxy;
+			}
+
+			try
+			{
+				using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+				{
+					if (response.StatusCode == HttpStatusCode.OK)
+					{
+						return true;
+					}
+				}
+			}
+			catch (WebException ex)
+			{
+				StreamReader sr = new StreamReader(ex.Response.GetResponseStream());
+				string s = sr.ReadToEnd();
+
+				throw new InvalidOperationException(s, ex);
+			}
+
+			return false;
+		}
 
         #endregion
 
@@ -107,45 +157,6 @@ namespace KayakoRestApi.Net
 
 			return requestUrl;
 		}
-
-        /// <summary>
-        /// Generic method for extracting data via DELETE.
-        /// </summary>
-        /// <param name="apiMethod">URL to request data</param>
-        /// <returns>The success of the delete</returns>
-        internal bool ExecuteDelete(string apiMethod)
-        {
-			string requestUrl = GetRequestUrl(apiMethod);
-			requestUrl = AppendSecurityCredentials(requestUrl, HttpMethod.DELETE);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
-			request.Method = "DELETE";
-
-			if (_proxy != null)
-			{
-				request.Proxy = _proxy;
-			}
-
-            try
-            {
-                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        return true;
-                    }
-                }
-            }
-            catch (WebException ex)
-            {
-                StreamReader sr = new StreamReader(ex.Response.GetResponseStream());
-                string s = sr.ReadToEnd();
-
-                throw new InvalidOperationException(s, ex);
-            }
-
-            return false;
-        }
 
 		private string AppendSecurityCredentials(string inputString, HttpMethod httpMethod)
 		{

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<departments>
+  <department>
+    <id>2</id>
+    <title>Title</title>
+    <type>private</type>
+    <module>livechat</module>
+    <displayorder>3</displayorder>
+    <parentdepartmentid>1</parentdepartmentid>
+    <uservisibilitycustom>false</uservisibilitycustom>
+    <usergroups>
+      <id>1</id>
+      <id>2</id>
+      <id>3</id>
+    </usergroups>
+  </department>
+</departments>

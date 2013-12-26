@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using KayakoRestApi;
 using KayakoRestApi.Core.Departments;
+using KayakoRestApi.Net;
 
 namespace KayakoTestApplication
 {
@@ -13,17 +14,17 @@ namespace KayakoTestApplication
     /// </summary>
     public class Program
     {
-		const string Api_KEY = "94364841-7542-9e94-d59c-f420554d9a9d";
-		const string SECRET_KEY = "ZjM5OTAzN2YtYjcxNy1jZWQ0LTIxMGEtNGViNzQzNTNhZjAxY2Y3OGVkMmUtN2RmNi05MTQ0LTI5YjctYmM0M2E1OWNlMmU5";
-		const string Api_URL = @"http://apiupdates.kayako.com/api/"; //Note: No trailing ?
+		const string Api_KEY = "8c75489a-45c6-b114-e597-88c5f462ff53";
+		const string SECRET_KEY = "NWQ3N2YyMzEtNTYwMi1lMzE0LWQ1OTAtMGM1ZGQyZDdjYmVkZTIyZGVlMTMtZDJiOS01OTk0LTg5ZmMtMjE4MmNjMjZkMmIx";
+		const string Api_URL = @"http://jamietestingagain.kayako.com/api/"; //Note: No trailing ?
 
         static void Main(string[] args)
         {
-			KayakoClient client = new KayakoClient(Api_KEY, SECRET_KEY, Api_URL);
+			KayakoClient client = new KayakoClient(Api_KEY, SECRET_KEY, Api_URL, ApiRequestType.Url);
 
-			DepartmentCollection departments = client.Departments.GetDepartments();
+			string getTest = client.Core.GetTest(1);
 
-			OutputData<DepartmentCollection>("Departments: ", departments);
+			OutputData<string>("Get Test: ", getTest);
 
             Console.ReadLine();
         }

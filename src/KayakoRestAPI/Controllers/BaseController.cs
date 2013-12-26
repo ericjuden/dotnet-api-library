@@ -5,7 +5,7 @@ namespace KayakoRestApi.Controllers
 {
     public class BaseController
     {
-        internal KayakoApiRequest Connector { get; set;}
+        internal IKayakoApiRequest Connector { get; set;}
 
         internal BaseController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
         {
@@ -15,6 +15,11 @@ namespace KayakoRestApi.Controllers
 		internal BaseController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
 		{
 			Connector = new KayakoApiRequest(apiKey, secretKey, apiUrl, proxy, requestType);
+		}
+
+		internal BaseController(IKayakoApiRequest kayakoApiRequest)
+		{
+			Connector = kayakoApiRequest;
 		}
     }
 }

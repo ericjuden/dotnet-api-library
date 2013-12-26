@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KayakoRestApi.Core.Constants
+﻿namespace KayakoRestApi.Core.Constants
 {
 	public static class ApiBaseMethods
 	{

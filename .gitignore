@@ -5,9 +5,9 @@ bin
 *.suo
 
 #Test API Files
-src/KayakoRestApi.UnitTests/TestBase/ApiKey.txt
-src/KayakoRestApi.UnitTests/TestBase/ApiUrl.txt
-src/KayakoRestApi.UnitTests/TestBase/SecretKey.txt
+src/KayakoRestApi.IntegrationTests/TestBase/ApiKey.txt
+src/KayakoRestApi.IntegrationTests/TestBase/ApiUrl.txt
+src/KayakoRestApi.IntegrationTests/TestBase/SecretKey.txt
 
 #NuGet
 packages/

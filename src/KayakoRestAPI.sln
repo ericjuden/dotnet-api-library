@@ -5,13 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi", "KayakoRest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestAPI.Testing", "TestApplication\KayakoRestAPI.Testing.csproj", "{752985BA-E382-4716-966D-F566F7E3489D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{FAD30B46-E9D8-432D-BC04-DB949E0E26A6}"
-	ProjectSection(SolutionItems) = preProject
-		Library\nunit.framework.dll = Library\nunit.framework.dll
-		Library\nunit.framework.xml = Library\nunit.framework.xml
-		Library\nunit.mocks.dll = Library\nunit.mocks.dll
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{FC3D4805-75A1-4CBF-89C6-45992AD2B317}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
@@ -19,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{FC3D4805
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi.IntegrationTests", "KayakoRestApi.IntegrationTests\KayakoRestApi.IntegrationTests.csproj", "{FE037841-E104-4F7A-9A39-6A03AC32236C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KayakoRestApi.UnitTests", "KayakoRestApi.UnitTests\KayakoRestApi.UnitTests.csproj", "{967820D0-6450-4871-94A9-C6666EBA3947}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +55,16 @@ Global
 		{FE037841-E104-4F7A-9A39-6A03AC32236C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{FE037841-E104-4F7A-9A39-6A03AC32236C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FE037841-E104-4F7A-9A39-6A03AC32236C}.Release|x86.ActiveCfg = Release|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{967820D0-6450-4871-94A9-C6666EBA3947}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

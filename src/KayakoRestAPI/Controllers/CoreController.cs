@@ -6,7 +6,20 @@ using KayakoRestApi.Core.Constants;
 
 namespace KayakoRestApi.Controllers
 {
-	public sealed class CoreController : BaseController
+	public interface ICoreController
+	{
+		string GetListTest();
+
+		string GetTest(int id);
+
+		string PostTest();
+
+		string PutTest(int id);
+
+		bool DeleteTest(int id);
+	}
+
+	public sealed class CoreController : BaseController, ICoreController
 	{
 		internal CoreController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)
@@ -15,6 +28,11 @@ namespace KayakoRestApi.Controllers
 
 		internal CoreController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
 			: base(apiKey, secretKey, apiUrl, proxy, requestType)
+		{
+		}
+
+		internal CoreController(IKayakoApiRequest kayakoApiRequest) 
+			: base(kayakoApiRequest)
 		{
 		}
 

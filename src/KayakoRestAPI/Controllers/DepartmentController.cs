@@ -9,10 +9,23 @@ using KayakoRestApi.Core.Constants;
 
 namespace KayakoRestApi.Controllers
 {
+	public interface IDepartmentController
+	{
+		DepartmentCollection GetDepartments();
+
+		Department GetDepartment(int id);
+
+		Department UpdateDepartment(DepartmentRequest dept);
+
+		Department CreateDepartment(DepartmentRequest dept);
+
+		bool DeleteDepartment(int id);
+	}
+
 	/// <summary>
 	/// Provides access to Deparment API Methods
 	/// </summary>
-    public sealed class DepartmentController : BaseController
+    public sealed class DepartmentController : BaseController, IDepartmentController
 	{
         internal DepartmentController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)
@@ -21,6 +34,11 @@ namespace KayakoRestApi.Controllers
 
 		internal DepartmentController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy, ApiRequestType requestType)
 			: base(apiKey, secretKey, apiUrl, proxy, requestType)
+		{
+		}
+
+		internal DepartmentController(IKayakoApiRequest kayakoApiRequest) 
+			: base(kayakoApiRequest)
 		{
 		}
 

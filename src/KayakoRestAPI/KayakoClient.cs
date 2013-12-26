@@ -1,25 +1,31 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Net;
 
 namespace KayakoRestApi
 {
+	public interface IKayakoClient
+	{
+		ICoreController Core { get; }
+	}
+
     /// <summary>
     /// This service allows the interaction with the Kayako REST Api.
     /// </summary>
     /// <remarks>
     /// See - http://wiki.kayako.com/display/DEV/REST+Api
     /// </remarks>
-    public class KayakoClient
+    public class KayakoClient : IKayakoClient
 	{
 		#region Private Properties
 
-		private CoreController _coreController;
-		private CustomFieldController _customFields;
-		private DepartmentController _departments;
-		private StaffController _staff;
-		private TicketController _tickets;
-		private UserController _users;
+		private readonly ICoreController _coreController;
+		private readonly CustomFieldController _customFields;
+		private readonly IDepartmentController _departments;
+		private readonly StaffController _staff;
+		private readonly TicketController _tickets;
+		private readonly UserController _users;
 
 		#endregion
 
@@ -28,7 +34,7 @@ namespace KayakoRestApi
 		/// <summary>
 		/// Provides access to Core API Methods
 		/// </summary>
-		public CoreController Core
+		public ICoreController Core
 		{
 			get { return _coreController; }
 		}
@@ -44,7 +50,7 @@ namespace KayakoRestApi
 		/// <summary>
 		/// Provides access to Deparment API Methods
 		/// </summary>
-		public DepartmentController Departments
+		public IDepartmentController Departments
 		{ 
 			get { return _departments; }
 		}
