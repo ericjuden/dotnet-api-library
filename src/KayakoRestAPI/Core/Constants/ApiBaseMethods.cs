@@ -6,7 +6,7 @@ namespace KayakoRestApi.Core.Constants
 {
 	public static class ApiBaseMethods
 	{
-		public const string CoreTest = "/Core/Test";
+		public const string CoreTest = "/Core/TestAPI";
 
 		public const string CustomFields = "/Base/CustomField";
 
