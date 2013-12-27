@@ -8,6 +8,7 @@ namespace KayakoRestApi.Core.Tickets
 		/// The unique numeric identifier of the ticket
 		/// </summary>
 		[RequiredField(RequestTypes.Update)]
+		[ResponseProperty("Id")]
 		public int Id { get; set; }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace KayakoRestApi.Core.Tickets
         /// The Id of user who created the ticket
         /// </summary>
         [ResponseProperty("UserId")]
-        [EitherFieldAttribute("AutoUserId|StaffId")]
+        [EitherFieldAttribute("AutoUserId|UserId")]
         public int? StaffId { get; set; }
 
         /// <summary>
