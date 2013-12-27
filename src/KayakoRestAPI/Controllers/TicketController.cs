@@ -27,40 +27,68 @@ namespace KayakoRestApi.Controllers
 
         #region Ticket Api Methods
 
-        /// <summary>
-        /// Retrieve a filtered list of tickets from the help desk.
-        /// </summary>
-        /// <param name="departmentIds">Filter the tickets by the specified department id(s)</param>
-        public TicketCollection GetTickets(int[] departmentIds)
-        {
-            return GetTickets(departmentIds, null, null, null);
-        }
+		/// <summary>
+		/// Retrieve a filtered list of tickets from the help desk.
+		/// </summary>
+		/// <param name="departmentIds">Filter the tickets by the specified department id(s)</param>
+		public TicketCollection GetTickets(int[] departmentIds)
+		{
+			return GetTickets(departmentIds, null, null, null, -1, -1);
+		}
 
-        /// <summary>
-        /// Retrieve a filtered list of tickets from the help desk.
-        /// </summary>
-        /// <param name="departmentIds">Filter the tickets by the specified department id(s)</param>
-        /// <param name="ticketStatusIds">Filter the tickets by the specified ticket status id(s). Pass null or empty array for no filter</param>
-        /// <param name="ownerStaffIds">Filter the tickets by the specified owner staff id(s). Pass null or empty array for no filter</param>
-        /// <param name="userIds">Filter the tickets by the specified user id(s). Pass null or empty array for no filter</param>
-        /// <returns></returns>
-        public TicketCollection GetTickets(int[] departmentIds, int[] ticketStatusIds, int[] ownerStaffIds, int[] userIds)
-        {
-            string deptIdParameter = JoinIntParameters(departmentIds);
-            string ticketStatusIdParameter = JoinIntParameters(ticketStatusIds);
-            string ownerStaffIdParameter = JoinIntParameters(ownerStaffIds);
-            string userIdParameter = JoinIntParameters(userIds);
+		/// <summary>
+		/// Retrieve a filtered list of tickets from the help desk.
+		/// </summary>
+		/// <param name="departmentIds">Filter the tickets by the specified department id(s)</param>
+		/// <param name="count">Total ticket count for retrieval</param>
+		/// <param name="start">Start ticket for retrieval</param>
+		/// <returns></returns>
+		public TicketCollection GetTickets(int[] departmentIds, int count, int start)
+		{
+			return GetTickets(departmentIds, null, null, null, count, start);
+		}
 
-			string apiMethod = String.Format("/Tickets/Ticket/ListAll/{0}/{1}/{2}/{3}", 
-                deptIdParameter,
-                ticketStatusIdParameter,
-                ownerStaffIdParameter,
-                userIdParameter);
+		/// <summary>
+		/// Retrieve a filtered list of tickets from the help desk.
+		/// </summary>
+		/// <param name="departmentIds">Filter the tickets by the specified department id(s)</param>
+		/// <param name="ticketStatusIds">Filter the tickets by the specified ticket status id(s). Pass null or empty array for no filter</param>
+		/// <param name="ownerStaffIds">Filter the tickets by the specified owner staff id(s). Pass null or empty array for no filter</param>
+		/// <param name="userIds">Filter the tickets by the specified user id(s). Pass null or empty array for no filter</param>
+		/// <returns></returns>
+		public TicketCollection GetTickets(int[] departmentIds, int[] ticketStatusIds, int[] ownerStaffIds, int[] userIds)
+		{
+			return GetTickets(departmentIds, ticketStatusIds, ownerStaffIds, userIds, -1, -1);
+		}
 
-            TicketCollection tickets = _connector.ExecuteGet<TicketCollection>(apiMethod);
+		/// <summary>
+		/// Retrieve a filtered list of tickets from the help desk.
+		/// </summary>
+		/// <param name="departmentIds">Filter the tickets by the specified department id(s)</param>
+		/// <param name="ticketStatusIds">Filter the tickets by the specified ticket status id(s). Pass null or empty array for no filter</param>
+		/// <param name="ownerStaffIds">Filter the tickets by the specified owner staff id(s). Pass null or empty array for no filter</param>
+		/// <param name="userIds">Filter the tickets by the specified user id(s). Pass null or empty array for no filter</param>
+		/// <param name="count">Total ticket count for retrieval</param>
+		/// <param name="start">Start ticket for retrieval</param>
+		public TicketCollection GetTickets(int[] departmentIds, int[] ticketStatusIds, int[] ownerStaffIds, int[] userIds, int count, int start)
+		{
+			string deptIdParameter = JoinIntParameters(departmentIds);
+			string ticketStatusIdParameter = JoinIntParameters(ticketStatusIds);
+			string ownerStaffIdParameter = JoinIntParameters(ownerStaffIds);
+			string userIdParameter = JoinIntParameters(userIds);
 
-            return tickets;
-        }
+			string apiMethod = String.Format("/Tickets/Ticket/ListAll/{0}/{1}/{2}/{3}/{4}/{5}",
+				deptIdParameter,
+				ticketStatusIdParameter,
+				ownerStaffIdParameter,
+				userIdParameter,
+				count,
+				start);
+
+			TicketCollection tickets = _connector.ExecuteGet<TicketCollection>(apiMethod);
+
+			return tickets;
+		}
 
         /// <summary>
         /// Retrieve the ticket identified by <paramref name="ticketId"/>.
