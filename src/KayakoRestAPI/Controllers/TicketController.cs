@@ -136,6 +136,11 @@ namespace KayakoRestApi.Controllers
 				parameters.AppendRequestData("templategroupid", ticketRequest.TemplateGroupId);
 			}
 
+			if (ticketRequest.IgnoreAutoResponder != null)
+			{
+				parameters.AppendRequestData("ignoreautoresponder", Convert.ToInt32(ticketRequest.IgnoreAutoResponder));
+			}
+
 			if (ticketRequest.CreationType != null)
 			{
 				parameters.AppendRequestData("type", EnumUtility.ToApiString(ticketRequest.CreationType));
