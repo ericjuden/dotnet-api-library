@@ -6,7 +6,14 @@ using KayakoRestApi.Core.Constants;
 
 namespace KayakoRestApi.Controllers
 {
-	public sealed class CustomFieldController : BaseController
+	public interface ICustomFieldController
+	{
+		CustomFieldCollection GetCustomFields();
+
+		CustomFieldOptionCollection GetCustomFieldOptions(int customFieldId);
+	}
+
+	public sealed class CustomFieldController : BaseController, ICustomFieldController
 	{
 		internal CustomFieldController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)

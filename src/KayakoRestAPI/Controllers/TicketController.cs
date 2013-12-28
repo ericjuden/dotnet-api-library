@@ -10,10 +10,123 @@ using System.Web;
 
 namespace KayakoRestApi.Controllers
 {
+	public interface ITicketController
+	{
+		#region Ticket Api Methods
+
+		TicketCollection GetTickets(int[] departmentIds);
+
+		TicketCollection GetTickets(int[] departmentIds, int[] ticketStatusIds, int[] ownerStaffIds, int[] userIds);
+
+		Ticket GetTicket(int ticketId);
+
+		Ticket GetTicket(string displayId);
+
+		Ticket CreateTicket(TicketRequest ticketRequest);
+
+		Ticket UpdateTicket(TicketRequest request);
+
+		bool DeleteTicket(int ticketId);
+
+		#endregion
+
+		#region Ticket Count Api Methods
+
+		TicketCount GetTicketCounts();
+
+		#endregion
+
+		#region Ticket Priority Methods
+
+		TicketPriorityCollection GetTicketPriorities();
+
+		TicketPriority GetTicketPriority(int priorityId);
+
+		#endregion
+
+		#region Ticket Search Methods
+
+		TicketCollection SearchTickets(TicketSearchQuery query);
+
+		#endregion
+
+		#region Ticket Status Methods
+
+		TicketStatusCollection GetTicketStatuses();
+
+		TicketStatus GetTicketStatus(int statusId);
+
+		#endregion
+
+		#region Ticket Time Track Methods
+
+		TicketTimeTrackCollection GetTicketTimeTracks(int ticketId);
+
+		TicketTimeTrack GetTicketTimeTrack(int ticketId, int timeTrackNoteId);
+
+		TicketTimeTrack AddTicketTimeTrackingNote(TicketTimeTrackRequest request);
+
+		bool DeleteTicketTimeTrackingNote(int ticketId, int timeTrackNoteId);
+
+		#endregion
+
+		#region Ticket Type Methods
+
+		TicketTypeCollection GetTicketTypes();
+
+		TicketType GetTicketType(int ticketTypeId);
+
+		#endregion
+
+		#region Ticket Posts Methods
+
+		TicketPostCollection GetTicketPosts(int ticketId);
+
+		TicketPost GetTicketPost(int ticketId, int postId);
+
+		TicketPost AddTicketPost(TicketPostRequest request);
+
+		bool DeleteTicketPost(int ticketId, int ticketPostId);
+
+		#endregion
+
+		#region Ticket Attachments Methods
+
+		TicketAttachmentCollection GetTicketAttachments(int ticketId);
+
+		TicketAttachment GetTicketAttachment(int ticketId, int attachmentId);
+
+		TicketAttachment AddTicketAttachment(TicketAttachmentRequest request);
+
+		bool DeleteTicketAttachment(int ticketId, int attachmentId);
+
+		#endregion
+
+		#region Ticket Note Methods
+
+		TicketNoteCollection GetTicketNotes(int ticketId);
+
+		TicketNote GetTicketNote(int ticketId, int noteId);
+
+		TicketNote AddTicketNote(TicketNoteRequest request);
+
+		bool DeleteTicketNote(int ticketId, int noteId);
+
+		#endregion
+
+		#region Ticket Custom Fields Methods
+
+		TicketCustomFields GetTicketCustomFields(int ticketId);
+
+		TicketCustomFields UpdateTicketCustomFields(int ticketId, TicketCustomFields customFields);
+
+		#endregion
+	}
+
 	/// <summary>
 	/// Provides access to Ticket API Methods
 	/// </summary>
-    public sealed class TicketController : BaseController
+    public sealed class TicketController : BaseController, ITicketController
     {
         internal TicketController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)

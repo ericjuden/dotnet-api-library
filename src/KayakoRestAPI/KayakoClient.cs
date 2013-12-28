@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Net;
 
@@ -8,6 +7,16 @@ namespace KayakoRestApi
 	public interface IKayakoClient
 	{
 		ICoreController Core { get; }
+
+		ICustomFieldController CustomFields { get; }
+
+		IDepartmentController Departments { get; }
+
+		IStaffController Staff { get; }
+
+		ITicketController Tickets { get; }
+
+		IUserController Users { get; }
 	}
 
     /// <summary>
@@ -21,11 +30,11 @@ namespace KayakoRestApi
 		#region Private Properties
 
 		private readonly ICoreController _coreController;
-		private readonly CustomFieldController _customFields;
+		private readonly ICustomFieldController _customFields;
 		private readonly IDepartmentController _departments;
-		private readonly StaffController _staff;
-		private readonly TicketController _tickets;
-		private readonly UserController _users;
+		private readonly IStaffController _staff;
+		private readonly ITicketController _tickets;
+		private readonly IUserController _users;
 
 		#endregion
 
@@ -42,7 +51,7 @@ namespace KayakoRestApi
 		/// <summary>
 		/// Provides access to Custom Field API Methods
 		/// </summary>
-		public CustomFieldController CustomFields
+		public ICustomFieldController CustomFields
 		{
 			get { return _customFields; }
 		}
@@ -58,7 +67,7 @@ namespace KayakoRestApi
 		/// <summary>
 		/// Provides access to Staff API Methods
 		/// </summary>
-		public StaffController Staff
+		public IStaffController Staff
 		{
 			get { return _staff; }
 		}
@@ -66,7 +75,7 @@ namespace KayakoRestApi
 		/// <summary>
 		/// Provides access to Ticket API Methods
 		/// </summary>
-		public TicketController Tickets
+		public ITicketController Tickets
 		{
 			get { return _tickets; }
 		}
@@ -74,7 +83,7 @@ namespace KayakoRestApi
 		/// <summary>
 		/// Provides access to User API Methods
 		/// </summary>
-		public UserController Users
+		public IUserController Users
 		{
 			get { return _users; }
 		}

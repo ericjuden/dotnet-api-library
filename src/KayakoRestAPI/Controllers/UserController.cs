@@ -8,10 +8,65 @@ using System.Net;
 
 namespace KayakoRestApi.Controllers
 {
+	public interface IUserController
+	{
+		#region User Methods
+
+		UserCollection GetUsers();
+
+		UserCollection GetUsers(int filter);
+
+		UserCollection GetUsers(int filter, int max);
+
+		User GetUser(int userId);
+
+		User CreateUser(UserRequest user, string password, bool sendWelcomeEmail);
+
+		User UpdateUser(UserRequest user);
+
+		bool DeleteUser(int userId);
+
+		#endregion
+
+		#region User Group Methods
+
+		UserGroupCollection GetUserGroups();
+
+		UserGroup GetUserGroup(int userGroupId);
+
+		UserGroup CreateUserGroup(UserGroupRequest userGroup);
+
+		UserGroup UpdateUserGroup(UserGroupRequest userGroup);
+
+		bool DeleteUserGroup(int userGroupId);
+
+		#endregion
+
+		#region User Organization Methods
+
+		UserOrganizationCollection GetUserOrganizations();
+
+		UserOrganization GetUserOrganization(int id);
+
+		UserOrganization CreateUserOrganization(UserOrganizationRequest org);
+
+		UserOrganization UpdateUserOrganization(UserOrganizationRequest org);
+
+		bool DeleteUserOrganization(int id);
+
+		#endregion
+
+		#region User Search Methods
+
+		UserCollection UserSearch(string query);
+
+		#endregion
+	}
+
 	/// <summary>
 	/// Provides access to User API Methods
 	/// </summary>
-    public sealed class UserController : BaseController
+    public sealed class UserController : BaseController, IUserController
     {
         internal UserController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)
@@ -294,7 +349,7 @@ namespace KayakoRestApi.Controllers
 
 		#endregion
 
-		#region User Search
+		#region User Search Methods
 
 		/// <summary>
 		/// Run a search on Users. You can search users from email, full name, phone, organization name and user group.

@@ -7,10 +7,33 @@ using System.Net;
 
 namespace KayakoRestApi.Controllers
 {
+	public interface IStaffController
+	{
+		StaffUserCollection GetStaffUsers();
+
+		StaffUser GetStaffUser(int staffId);
+
+		StaffUser UpdateStaffUser(StaffUserRequest staffUser);
+
+		StaffUser CreateStaffUser(StaffUserRequest staffUser);
+
+		bool DeleteStaffUser(int staffId);
+
+		StaffGroupCollection GetStaffGroups();
+
+		StaffGroup GetStaffGroup(int groupId);
+
+		StaffGroup CreateStaffGroup(StaffGroupRequest staffGroup);
+
+		StaffGroup UpdateStaffGroup(StaffGroupRequest staffGroup);
+
+		bool DeleteStaffGroup(int staffGroupId);
+	}
+
 	/// <summary>
 	/// Provides access to Staff API Methods
 	/// </summary>
-    public sealed class StaffController : BaseController
+    public sealed class StaffController : BaseController, IStaffController
     {
         internal StaffController(string apiKey, string secretKey, string apiUrl, IWebProxy proxy)
             : base(apiKey, secretKey, apiUrl, proxy)
