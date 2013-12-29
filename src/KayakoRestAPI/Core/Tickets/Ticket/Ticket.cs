@@ -204,6 +204,12 @@ namespace KayakoRestApi.Core.Tickets
 		[XmlElement("templategroupid")]
 		public int TemplateGroupId { get; set; }
 
+		/// <summary>
+		/// The template group name of the ticket
+		/// </summary>
+		[XmlElement("templategroupname")]
+		public string TemplateGroupName { get; set; }
+
         /// <summary>
         /// A list of tags associated with ticket
         /// </summary>

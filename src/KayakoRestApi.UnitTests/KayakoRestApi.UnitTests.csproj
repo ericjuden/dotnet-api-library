@@ -59,6 +59,7 @@
     <Compile Include="Departments\DepartmentControllerTests.cs" />
     <Compile Include="Departments\DepartmentCollectionSerializationTests.cs" />
     <Compile Include="Departments\DepartmentRequestTests.cs" />
+    <Compile Include="Tickets\TicketControllerTests.cs" />
     <Compile Include="Utilities\AssertUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\XmlDataUtility.cs" />
