@@ -2,7 +2,7 @@
 
 namespace KayakoRestApi.Core.Constants
 {
-	public enum DepartmentType
+	public enum NewsCategoryVisibilityType
 	{
 		[XmlEnum(Name = "public")]
 		Public,

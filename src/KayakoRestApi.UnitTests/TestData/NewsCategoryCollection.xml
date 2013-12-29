@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<newscategories>
+  <newscategory>
+    <id><![CDATA[1]]></id>
+    <title><![CDATA[First]]></title>
+    <newsitemcount><![CDATA[14]]></newsitemcount>
+    <visibilitytype><![CDATA[public]]></visibilitytype>
+  </newscategory>
+  <newscategory>
+    <id><![CDATA[2]]></id>
+    <title><![CDATA[Second]]></title>
+    <newsitemcount><![CDATA[14]]></newsitemcount>
+    <visibilitytype><![CDATA[private]]></visibilitytype>
+  </newscategory>
+</newscategories>

@@ -3,19 +3,11 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 using NUnit.Framework;
-using log4net.Config;
 
 namespace KayakoRestApi.IntegrationTests
 {
 	public class UnitTestBase
 	{
-		[SetUp]
-		public void Setup()
-		{
-			BasicConfigurator.Configure();
-			XmlConfigurator.Configure();
-		}
-
 		public void OutputMessage<T>(string preMessage, T dataToOutput)
 		{
 			string serializedObject = SerializeObject<T>(dataToOutput);

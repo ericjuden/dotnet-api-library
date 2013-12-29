@@ -12,6 +12,8 @@ namespace KayakoRestApi
 
 		IDepartmentController Departments { get; }
 
+		INewsController News { get; }
+
 		IStaffController Staff { get; }
 
 		ITicketController Tickets { get; }
@@ -32,6 +34,7 @@ namespace KayakoRestApi
 		private readonly ICoreController _coreController;
 		private readonly ICustomFieldController _customFields;
 		private readonly IDepartmentController _departments;
+		private readonly INewsController _news;
 		private readonly IStaffController _staff;
 		private readonly ITicketController _tickets;
 		private readonly IUserController _users;
@@ -62,6 +65,14 @@ namespace KayakoRestApi
 		public IDepartmentController Departments
 		{ 
 			get { return _departments; }
+		}
+
+		/// <summary>
+		/// Provides access to News API Methods
+		/// </summary>
+		public INewsController News
+		{
+			get { return _news; }
 		}
 
 		/// <summary>
@@ -101,6 +112,7 @@ namespace KayakoRestApi
 			_coreController = new CoreController(apiKey, secretKey, apiUrl, null);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, null);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null);
+			_news = new NewsController(apiKey, secretKey, apiUrl, null);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, null);
 			_users = new UserController(apiKey, secretKey, apiUrl, null);
@@ -118,6 +130,7 @@ namespace KayakoRestApi
 			_coreController = new CoreController(apiKey, secretKey, apiUrl, null, requestType);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, null, requestType);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, null, requestType);
+			_news = new NewsController(apiKey, secretKey, apiUrl, null, requestType);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null, requestType);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, null, requestType);
 			_users = new UserController(apiKey, secretKey, apiUrl, null, requestType);
@@ -135,6 +148,7 @@ namespace KayakoRestApi
 			_coreController = new CoreController(apiKey, secretKey, apiUrl, proxy);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, proxy);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy);
+			_news = new NewsController(apiKey, secretKey, apiUrl, proxy);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy);
 			_users = new UserController(apiKey, secretKey, apiUrl, proxy);
@@ -152,6 +166,7 @@ namespace KayakoRestApi
 			_coreController = new CoreController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_customFields = new CustomFieldController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_departments = new DepartmentController(apiKey, secretKey, apiUrl, proxy, requestType);
+			_news = new NewsController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_users = new UserController(apiKey, secretKey, apiUrl, proxy, requestType);

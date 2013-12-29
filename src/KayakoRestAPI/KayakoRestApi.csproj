@@ -51,9 +51,6 @@
     <AssemblyOriginatorKeyFile>kayako.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.3\lib\net20-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
@@ -61,12 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CustomFieldController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Core\Constants\ApiBaseMethods.cs" />
+    <Compile Include="Core\Constants\NewsCategoryVisibilityType.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOptionCollection.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOption.cs" />
     <Compile Include="Core\CustomFields\CustomField.cs" />
     <Compile Include="Core\CustomFields\CustomFieldCollection.cs" />
     <Compile Include="Controllers\CoreController.cs" />
+    <Compile Include="Core\News\NewsCategory.cs" />
+    <Compile Include="Core\News\NewsCategoryCollection.cs" />
     <Compile Include="Core\Test\TestData.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />
@@ -152,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="kayako.snk" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
