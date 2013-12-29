@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using KayakoRestApi.Core.News;
+using KayakoRestApi.Data;
 using KayakoRestApi.Net;
+using KayakoRestApi.RequestBase;
+using KayakoRestApi.Text;
 
 namespace KayakoRestApi.Controllers
 {
@@ -12,6 +13,12 @@ namespace KayakoRestApi.Controllers
 		NewsCategoryCollection GetNewsCategories();
 
 		NewsCategory GetNewsCategory(int newsCategoryId);
+
+		NewsCategory CreateNewsCategory(NewsCategoryRequest newsCategoryRequest);
+
+		NewsCategory UpdateNewsCategory(NewsCategoryRequest newsCategoryRequest);
+
+		bool DeleteNewsCategory(int newsCategoryId);
 	}
 
 	public sealed class NewsController : BaseController, INewsController
@@ -31,16 +38,18 @@ namespace KayakoRestApi.Controllers
 		{
 		}
 
+		private const string NewsCategoryBaseUrl = "/News/Category";
+
 		#region News Category Methods
 
 		public NewsCategoryCollection GetNewsCategories()
 		{
-			return Connector.ExecuteGet<NewsCategoryCollection>("/News/Category");
+			return Connector.ExecuteGet<NewsCategoryCollection>(NewsCategoryBaseUrl);
 		}
 
 		public NewsCategory GetNewsCategory(int newsCategoryId)
 		{
-			string apiMethod = String.Format("/News/Category/{0}", newsCategoryId);
+			string apiMethod = String.Format("{0}/{1}", NewsCategoryBaseUrl, newsCategoryId);
 
 			NewsCategoryCollection newsCategories = Connector.ExecuteGet<NewsCategoryCollection>(apiMethod);
 
@@ -50,6 +59,58 @@ namespace KayakoRestApi.Controllers
 			}
 
 			return null;
+		}
+
+		public NewsCategory CreateNewsCategory(NewsCategoryRequest newsCategoryRequest)
+		{
+			RequestBodyBuilder parameters = PopulateRequestParameters(newsCategoryRequest, RequestTypes.Create);
+
+			NewsCategoryCollection newsCategories = Connector.ExecutePost<NewsCategoryCollection>(NewsCategoryBaseUrl, parameters.ToString());
+
+			if (newsCategories != null && newsCategories.Count > 0)
+			{
+				return newsCategories[0];
+			}
+
+			return null;
+		}
+
+		public NewsCategory UpdateNewsCategory(NewsCategoryRequest newsCategoryRequest)
+		{
+			string apiMethod = String.Format("{0}/{1}", NewsCategoryBaseUrl, newsCategoryRequest.Id);
+			RequestBodyBuilder parameters = PopulateRequestParameters(newsCategoryRequest, RequestTypes.Update);
+
+			NewsCategoryCollection newsCategories = Connector.ExecutePut<NewsCategoryCollection>(apiMethod, parameters.ToString());
+
+			if (newsCategories != null && newsCategories.Count > 0)
+			{
+				return newsCategories[0];
+			}
+
+			return null;
+		}
+
+		public bool DeleteNewsCategory(int newsCategoryId)
+		{
+			string apiMethod = String.Format("{0}/{1}", NewsCategoryBaseUrl, newsCategoryId);
+
+			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private static RequestBodyBuilder PopulateRequestParameters(NewsCategoryRequest newsCategory, RequestTypes requestType)
+		{
+			newsCategory.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+
+			if (!String.IsNullOrEmpty(newsCategory.Title))
+			{
+				parameters.AppendRequestData("title", newsCategory.Title);
+			}
+
+			parameters.AppendRequestData("visibilitytype", EnumUtility.ToApiString(newsCategory.VisibilityType));
+
+			return parameters;
 		}
 
 		#endregion

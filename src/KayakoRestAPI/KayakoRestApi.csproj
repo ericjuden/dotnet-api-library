@@ -68,6 +68,7 @@
     <Compile Include="Controllers\CoreController.cs" />
     <Compile Include="Core\News\NewsCategory.cs" />
     <Compile Include="Core\News\NewsCategoryCollection.cs" />
+    <Compile Include="Core\News\NewsCategoryRequest.cs" />
     <Compile Include="Core\Test\TestData.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />

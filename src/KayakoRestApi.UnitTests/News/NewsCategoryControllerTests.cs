@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using KayakoRestApi.Controllers;
+using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.News;
 using KayakoRestApi.Net;
 using Moq;
@@ -53,6 +54,62 @@ namespace KayakoRestApi.UnitTests.News
 			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsCategoryCollection>(apiMethod), Times.Once());
 
 			Assert.That(newsCategory, Is.EqualTo(_responseNewsCategoryCollection.First()));
+		}
+
+		[Test]
+		public void CreateNewsCategory()
+		{
+			var newsCategoryRequest = new NewsCategoryRequest
+				{
+					Title = "TitleCategory",
+					VisibilityType = NewsCategoryVisibilityType.Private
+				};
+
+			string apiMethod = "/News/Category";
+			string parameters = "title=TitleCategory&visibilitytype=private";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<NewsCategoryCollection>(apiMethod, parameters)).Returns(_responseNewsCategoryCollection);
+
+			var newsCategory = _newsController.CreateNewsCategory(newsCategoryRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<NewsCategoryCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsCategory, Is.EqualTo(_responseNewsCategoryCollection.FirstOrDefault()));
+		}
+
+		[Test]
+		public void UpdateNewsCategory()
+		{
+			var newsCategoryRequest = new NewsCategoryRequest
+			{
+				Id = 1,
+				Title = "TitleCategory",
+				VisibilityType = NewsCategoryVisibilityType.Private
+			};
+
+			string apiMethod = string.Format("/News/Category/{0}", newsCategoryRequest.Id);
+			string parameters = "title=TitleCategory&visibilitytype=private";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePut<NewsCategoryCollection>(apiMethod, parameters)).Returns(_responseNewsCategoryCollection);
+
+			var newsCategory = _newsController.UpdateNewsCategory(newsCategoryRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePut<NewsCategoryCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsCategory, Is.EqualTo(_responseNewsCategoryCollection.FirstOrDefault()));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void DeleteNewsCategory(int newsCategoryId)
+		{
+			string apiMethod = string.Format("/News/Category/{0}", newsCategoryId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
+
+			var deleteSuccess = _newsController.DeleteNewsCategory(newsCategoryId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
+			Assert.IsTrue(deleteSuccess);
 		}
 	}
 }
