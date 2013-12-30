@@ -23,6 +23,13 @@ namespace KayakoRestApi.Controllers
 		NewsItemCollection GetNewsItems(int newsItemId);
 
 		NewsItemCollection GetNewsItems();
+
+		NewsItem GetNewsItem(int newsItemId);
+
+		//TODO: Create
+		//TODO: Update
+
+		bool DeleteNewsItem(int newsItemId);
 	}
 
 	public sealed class NewsController : BaseController, INewsController
@@ -132,6 +139,27 @@ namespace KayakoRestApi.Controllers
 		public NewsItemCollection GetNewsItems()
 		{
 			return Connector.ExecuteGet<NewsItemCollection>(NewsItemBaseUrl);
+		}
+
+		public NewsItem GetNewsItem(int newsItemId)
+		{
+			string apiMethod = String.Format("{0}/{1}", NewsItemBaseUrl, newsItemId);
+
+			var newsItems = Connector.ExecuteGet<NewsItemCollection>(apiMethod);
+
+			if (newsItems != null && newsItems.Count > 0)
+			{
+				return newsItems[0];
+			}
+
+			return null;
+		}
+
+		public bool DeleteNewsItem(int newsItemId)
+		{
+			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemId);
+
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion

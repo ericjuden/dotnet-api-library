@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.News;
@@ -151,6 +152,48 @@ namespace KayakoRestApi.UnitTests.News
 			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsItemCollection>(apiMethod), Times.Once());
 
 			Assert.That(newsItems, Is.EqualTo(_responseNewsItemCollection));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetNewsItem(int newsItemId)
+		{
+			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsItemCollection>(apiMethod)).Returns(_responseNewsItemCollection);
+
+			var newsItem = _newsController.GetNewsItem(newsItemId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsItemCollection>(apiMethod), Times.Once());
+
+			Assert.That(newsItem, Is.EqualTo(_responseNewsItemCollection.FirstOrDefault()));
+		}
+
+		[Ignore]
+		public void CreateNewsItem()
+		{
+			throw new NotImplementedException();
+		}
+
+		[Ignore]
+		public void UpdateNewsItem()
+		{
+			throw new NotImplementedException();
+		}
+
+		[TestCase(1, true)]
+		[TestCase(2, false)]
+		[TestCase(3, true)]
+		public void DeleteNewsItem(int newsItemId, bool success)
+		{
+			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(success);
+
+			var deleteSuccess = _newsController.DeleteNewsItem(newsItemId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
+			Assert.That(deleteSuccess, Is.EqualTo(success));
 		}
 
 		#endregion
