@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<newsitems>
+  <newsitem>
+    <id><![CDATA[41]]></id>
+    <staffid><![CDATA[1]]></staffid>
+    <newstype><![CDATA[1]]></newstype>
+    <newsstatus><![CDATA[2]]></newsstatus>
+    <author><![CDATA[Author full name]]></author>
+    <email><![CDATA[author@domain.com]]></email>
+    <subject><![CDATA[News subject]]></subject>
+    <emailsubject />
+    <dateline><![CDATA[1338237929]]></dateline>
+    <expiry><![CDATA[0]]></expiry>
+    <issynced><![CDATA[0]]></issynced>
+    <totalcomments><![CDATA[0]]></totalcomments>
+    <uservisibilitycustom><![CDATA[1]]></uservisibilitycustom>
+    <usergroupidlist>
+      <usergroupid><![CDATA[1]]></usergroupid>
+      <usergroupid><![CDATA[2]]></usergroupid>
+      <usergroupid><![CDATA[3]]></usergroupid>
+    </usergroupidlist>
+    <staffvisibilitycustom><![CDATA[1]]></staffvisibilitycustom>
+    <staffgroupidlist>
+      <staffgroupid><![CDATA[1]]></staffgroupid>
+      <staffgroupid><![CDATA[2]]></staffgroupid>
+    </staffgroupidlist>
+    <allowcomments><![CDATA[1]]></allowcomments>
+    <contents><![CDATA[Test]]></contents>
+    <categories>
+      <categoryid><![CDATA[1]]></categoryid>
+      <categoryid><![CDATA[2]]></categoryid>
+    </categories>
+  </newsitem>
+</newsitems>

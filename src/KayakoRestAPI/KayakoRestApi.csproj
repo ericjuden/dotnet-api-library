@@ -61,6 +61,8 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Core\Constants\ApiBaseMethods.cs" />
     <Compile Include="Core\Constants\NewsCategoryVisibilityType.cs" />
+    <Compile Include="Core\Constants\NewsItemType.cs" />
+    <Compile Include="Core\Constants\NewsItemStatus.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOptionCollection.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOption.cs" />
     <Compile Include="Core\CustomFields\CustomField.cs" />
@@ -69,7 +71,10 @@
     <Compile Include="Core\News\NewsCategory.cs" />
     <Compile Include="Core\News\NewsCategoryCollection.cs" />
     <Compile Include="Core\News\NewsCategoryRequest.cs" />
+    <Compile Include="Core\News\NewsItem.cs" />
+    <Compile Include="Core\News\NewsItemCollection.cs" />
     <Compile Include="Core\Test\TestData.cs" />
+    <Compile Include="Data\UnixDateTime.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />
     <Compile Include="Net\KayakoApiRequest.cs" />

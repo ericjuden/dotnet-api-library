@@ -14,6 +14,7 @@ namespace KayakoRestApi.UnitTests.News
 		private INewsController _newsController;
 		private Mock<IKayakoApiRequest> _kayakoApiRequest;
 		private NewsCategoryCollection _responseNewsCategoryCollection;
+		private NewsItemCollection _responseNewsItemCollection;
 
 		[SetUp]
 		public void Setup()
@@ -26,7 +27,15 @@ namespace KayakoRestApi.UnitTests.News
 					new NewsCategory(),
 					new NewsCategory()
 				};
+
+			_responseNewsItemCollection = new NewsItemCollection
+				{
+					new NewsItem(),
+					new NewsItem()
+				};
 		}
+
+		#region News Category Tests
 
 		[Test]
 		public void GetNewsCategories()
@@ -111,5 +120,39 @@ namespace KayakoRestApi.UnitTests.News
 			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
 			Assert.IsTrue(deleteSuccess);
 		}
+
+		#endregion
+
+		#region News Item Tests
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetNewsItemsByCategoryId(int newsCategoryId)
+		{
+			string apiMethod = string.Format("/News/NewsItem/ListAll/{0}", newsCategoryId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsItemCollection>(apiMethod)).Returns(_responseNewsItemCollection);
+
+			var newsItems = _newsController.GetNewsItems(newsCategoryId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsItemCollection>(apiMethod), Times.Once());
+
+			Assert.That(newsItems, Is.EqualTo(_responseNewsItemCollection));
+		}
+
+		[Test]
+		public void GetNewsItems()
+		{
+			string apiMethod = "/News/NewsItem";
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsItemCollection>(apiMethod)).Returns(_responseNewsItemCollection);
+
+			var newsItems = _newsController.GetNewsItems();
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsItemCollection>(apiMethod), Times.Once());
+
+			Assert.That(newsItems, Is.EqualTo(_responseNewsItemCollection));
+		}
+
+		#endregion
 	}
 }

@@ -19,6 +19,10 @@ namespace KayakoRestApi.Controllers
 		NewsCategory UpdateNewsCategory(NewsCategoryRequest newsCategoryRequest);
 
 		bool DeleteNewsCategory(int newsCategoryId);
+
+		NewsItemCollection GetNewsItems(int newsItemId);
+
+		NewsItemCollection GetNewsItems();
 	}
 
 	public sealed class NewsController : BaseController, INewsController
@@ -39,6 +43,7 @@ namespace KayakoRestApi.Controllers
 		}
 
 		private const string NewsCategoryBaseUrl = "/News/Category";
+		private const string NewsItemBaseUrl = "/News/NewsItem";
 
 		#region News Category Methods
 
@@ -111,6 +116,22 @@ namespace KayakoRestApi.Controllers
 			parameters.AppendRequestData("visibilitytype", EnumUtility.ToApiString(newsCategory.VisibilityType));
 
 			return parameters;
+		}
+
+		#endregion
+
+		#region News Item Methods
+
+		public NewsItemCollection GetNewsItems(int newsItemId)
+		{
+			string apiMethod = String.Format("{0}/ListAll/{1}", NewsItemBaseUrl, newsItemId);
+
+			return Connector.ExecuteGet<NewsItemCollection>(apiMethod);
+		}
+
+		public NewsItemCollection GetNewsItems()
+		{
+			return Connector.ExecuteGet<NewsItemCollection>(NewsItemBaseUrl);
 		}
 
 		#endregion
