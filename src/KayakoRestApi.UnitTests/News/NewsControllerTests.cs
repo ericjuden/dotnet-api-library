@@ -18,6 +18,7 @@ namespace KayakoRestApi.UnitTests.News
 		private Mock<IKayakoApiRequest> _kayakoApiRequest;
 		private NewsCategoryCollection _responseNewsCategoryCollection;
 		private NewsItemCollection _responseNewsItemCollection;
+		private NewsSubscriberCollection _responseNewsSubscriberCollection;
 
 		[SetUp]
 		public void Setup()
@@ -35,6 +36,13 @@ namespace KayakoRestApi.UnitTests.News
 				{
 					new NewsItem(),
 					new NewsItem()
+				};
+
+			_responseNewsSubscriberCollection = new NewsSubscriberCollection
+				{
+					new NewsSubscriber(),
+					new NewsSubscriber(),
+					new NewsSubscriber()
 				};
 		}
 
@@ -253,6 +261,90 @@ namespace KayakoRestApi.UnitTests.News
 
 			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
 			Assert.That(deleteSuccess, Is.EqualTo(success));
+		}
+
+		#endregion
+
+		#region News Subscriber Tests
+
+		[Test]
+		public void GetNewsSubscribers()
+		{
+			string apiMethod = "/News/Subscriber";
+
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsSubscriberCollection>(apiMethod)).Returns(_responseNewsSubscriberCollection);
+
+			var newsSubscribers = _newsController.GetNewsSubscribers();
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsSubscriberCollection>(apiMethod), Times.Once());
+			Assert.That(newsSubscribers, Is.EqualTo(_responseNewsSubscriberCollection));
+		}
+
+		[TestCase(1)]
+		public void GetNewsSubscriber(int newsSubscriberId)
+		{
+			string apiMethod = string.Format("/News/Subscriber/{0}", newsSubscriberId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsSubscriberCollection>(apiMethod)).Returns(_responseNewsSubscriberCollection);
+
+			var newsSubscriber = _newsController.GetNewsSubscriber(newsSubscriberId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsSubscriberCollection>(apiMethod), Times.Once());
+			Assert.That(newsSubscriber, Is.EqualTo(_responseNewsSubscriberCollection.FirstOrDefault()));
+		}
+
+		[Test]
+		public void CreateNewsSubscriber()
+		{
+			var apiMethod = "/News/Subscriber";
+			var parameters = "email=email@domain.com&isvalidated=1";
+
+			var newsSubscriberRequest = new NewsSubscriberRequest
+				{
+					Email = "email@domain.com",
+					IsValidated = true
+				};
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<NewsSubscriberCollection>(apiMethod, parameters)).Returns(_responseNewsSubscriberCollection);
+
+			var newsSubscriber = _newsController.CreateNewsSubscriber(newsSubscriberRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<NewsSubscriberCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsSubscriber, Is.EqualTo(_responseNewsSubscriberCollection.FirstOrDefault()));
+		}
+
+		[Test]
+		public void UpdateNewsSubscriber()
+		{
+			var newsSubscriberRequest = new NewsSubscriberRequest
+			{
+				Id = 1,
+				Email = "email@domain.com",
+			};
+
+			const string apiMethod = "/News/Subscriber/1";
+			const string parameters = "email=email@domain.com";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePut<NewsSubscriberCollection>(apiMethod, parameters)).Returns(_responseNewsSubscriberCollection);
+
+			var newsSubscriber = _newsController.UpdateNewsSubscriber(newsSubscriberRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePut<NewsSubscriberCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsSubscriber, Is.EqualTo(_responseNewsSubscriberCollection.FirstOrDefault()));
+		}
+
+		[TestCase(1, true)]
+		[TestCase(2, false)]
+		[TestCase(3, true)]
+		public void DeleteNewsSubscriber(int newsSubscriberId, bool success)
+		{
+			var apiMethod = string.Format("/News/Subscriber/{0}", newsSubscriberId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(success);
+
+			var deleteResult = _newsController.DeleteNewsSubscriber(newsSubscriberId);
+
+			Assert.That(deleteResult, Is.EqualTo(success));
 		}
 
 		#endregion

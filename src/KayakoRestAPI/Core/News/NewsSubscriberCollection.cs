@@ -4,18 +4,18 @@ using System.Xml.Serialization;
 namespace KayakoRestApi.Core.News
 {
 	/// <summary>
-	/// Represents a list of news categories within the helpdesk
+	/// Represents a list of news subscriber within the helpdesk
 	/// <remarks>
-	/// see: http://wiki.kayako.com/display/DEV/REST+-+NewsCategory#REST-NewsCategory-Response
+	/// see: http://wiki.kayako.com/display/DEV/REST+-+NewsSubscriber#REST-NewsSubscriber-Response
 	/// </remarks>
 	/// </summary>
-	[XmlRoot("newscategories")]
-	public class NewsCategoryCollection : List<NewsCategory>
+	[XmlRoot("newssubscribers")]
+	public class NewsSubscriberCollection : List<NewsSubscriber>
 	{
 		/// <summary>
         /// Create a list of news categories.
         /// </summary>
-		public NewsCategoryCollection()
+		public NewsSubscriberCollection()
         {
         }
 	}

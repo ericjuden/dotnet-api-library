@@ -38,7 +38,7 @@ namespace KayakoRestApi.IntegrationTests.News
 			Assert.IsNotEmpty(newsItems, "No news items were returned");
 
 			NewsItem newsItemToGet = newsItems[new Random().Next(newsItems.Count)];
-			Trace.WriteLine("GetNewsCategory using news item id: " + newsItemToGet.Id);
+			Trace.WriteLine("GetNewsItem using news item id: " + newsItemToGet.Id);
 
 			NewsItem newsItem = TestSetup.KayakoApiService.News.GetNewsItem(newsItemToGet.Id);
 

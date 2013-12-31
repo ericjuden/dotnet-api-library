@@ -31,6 +31,16 @@ namespace KayakoRestApi.Controllers
 		NewsItem UpdateNewsItem(NewsItemRequest newsItemRequest);
 
 		bool DeleteNewsItem(int newsItemId);
+
+		NewsSubscriberCollection GetNewsSubscribers();
+
+		NewsSubscriber GetNewsSubscriber(int newsSubscriberId);
+
+		NewsSubscriber CreateNewsSubscriber(NewsSubscriberRequest newsSubscriberRequest);
+
+		NewsSubscriber UpdateNewsSubscriber(NewsSubscriberRequest newsSubscriberRequest);
+
+		bool DeleteNewsSubscriber(int newsSubscriberId);
 	}
 
 	public sealed class NewsController : BaseController, INewsController
@@ -52,6 +62,7 @@ namespace KayakoRestApi.Controllers
 
 		private const string NewsCategoryBaseUrl = "/News/Category";
 		private const string NewsItemBaseUrl = "/News/NewsItem";
+		private const string NewsSubscriberBaseUrl = "/News/Subscriber";
 
 		#region News Category Methods
 
@@ -172,7 +183,7 @@ namespace KayakoRestApi.Controllers
 
 		public NewsItem UpdateNewsItem(NewsItemRequest newsItemRequest)
 		{
-			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemRequest.Id);
+			string apiMethod = string.Format("{0}/{1}", NewsItemBaseUrl, newsItemRequest.Id);
 
 			RequestBodyBuilder parameters = PopulateRequestParameters(newsItemRequest, RequestTypes.Update);
 
@@ -188,7 +199,7 @@ namespace KayakoRestApi.Controllers
 
 		public bool DeleteNewsItem(int newsItemId)
 		{
-			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemId);
+			string apiMethod = string.Format("{0}/{1}", NewsItemBaseUrl, newsItemId);
 
 			return Connector.ExecuteDelete(apiMethod);
 		}
@@ -229,6 +240,81 @@ namespace KayakoRestApi.Controllers
 			parameters.AppendRequestDataArrayCommaSeparated("newscategoryidlist", newsItem.Categories);
 			
 			return parameters;
+		}
+
+		#endregion
+
+		#region News Subscriber Methods
+
+		public NewsSubscriberCollection GetNewsSubscribers()
+		{
+			return Connector.ExecuteGet<NewsSubscriberCollection>(NewsSubscriberBaseUrl);
+		}
+
+		public NewsSubscriber GetNewsSubscriber(int newsSubscriberId)
+		{
+			string apiMethod = String.Format("{0}/{1}", NewsSubscriberBaseUrl, newsSubscriberId);
+
+			var newsSubscribers = Connector.ExecuteGet<NewsSubscriberCollection>(apiMethod);
+
+			if (newsSubscribers != null && newsSubscribers.Count > 0)
+			{
+				return newsSubscribers[0];
+			}
+
+			return null;
+		}
+
+		public NewsSubscriber CreateNewsSubscriber(NewsSubscriberRequest newsSubscriberRequest)
+		{
+			RequestBodyBuilder parameters = PopulateRequestParameters(newsSubscriberRequest, RequestTypes.Create);
+
+			NewsSubscriberCollection newsSubscriber = Connector.ExecutePost<NewsSubscriberCollection>(NewsSubscriberBaseUrl, parameters.ToString());
+
+			if (newsSubscriber != null && newsSubscriber.Count > 0)
+			{
+				return newsSubscriber[0];
+			}
+
+			return null;
+		}
+
+		public NewsSubscriber UpdateNewsSubscriber(NewsSubscriberRequest newsSubscriberRequest)
+		{
+			string apiMethod = string.Format("{0}/{1}", NewsSubscriberBaseUrl, newsSubscriberRequest.Id);
+
+			RequestBodyBuilder parameters = PopulateRequestParameters(newsSubscriberRequest, RequestTypes.Update);
+
+			NewsSubscriberCollection newsSubscriber = Connector.ExecutePut<NewsSubscriberCollection>(apiMethod, parameters.ToString());
+
+			if (newsSubscriber != null && newsSubscriber.Count > 0)
+			{
+				return newsSubscriber[0];
+			}
+
+			return null;
+		}
+
+		public bool DeleteNewsSubscriber(int newsSubscriberId)
+		{
+			string apiMethod = string.Format("{0}/{1}", NewsSubscriberBaseUrl, newsSubscriberId);
+
+			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private RequestBodyBuilder PopulateRequestParameters(NewsSubscriberRequest newsSubscriberRequest, RequestTypes requestTypes)
+		{
+			newsSubscriberRequest.EnsureValidData(requestTypes);
+
+			var requestBodyBuilder = new RequestBodyBuilder();
+			requestBodyBuilder.AppendRequestDataNonEmptyString("email", newsSubscriberRequest.Email);
+
+			if (requestTypes == RequestTypes.Create)
+			{
+				requestBodyBuilder.AppendRequestDataBool("isvalidated", newsSubscriberRequest.IsValidated);
+			}
+
+			return requestBodyBuilder;
 		}
 
 		#endregion

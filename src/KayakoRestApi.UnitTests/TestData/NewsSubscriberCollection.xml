@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<newssubscribers>
+  <newssubscriber>
+    <id>1</id>
+    <tgroupid>1</tgroupid>
+    <userid>0</userid>
+    <email><![CDATA[john.doe@kayako.com]]></email>
+    <isvalidated>0</isvalidated>
+    <usergroupid>1</usergroupid>
+  </newssubscriber>
+  <newssubscriber>
+    <id>2</id>
+    <tgroupid>1</tgroupid>
+    <userid>0</userid>
+    <email><![CDATA[rohan.sharma@kayako.com]]></email>
+      <isvalidated>1</isvalidated>
+      <usergroupid>1</usergroupid>
+    </newssubscriber>
+  <newssubscriber>
+    <id>3</id>
+    <tgroupid>1</tgroupid>
+    <userid>0</userid>
+    <email><![CDATA[email@domain.com]]></email>
+      <isvalidated>0</isvalidated>
+      <usergroupid>1</usergroupid>
+  </newssubscriber>
+</newssubscribers>

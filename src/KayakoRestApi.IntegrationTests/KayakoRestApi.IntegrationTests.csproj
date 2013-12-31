@@ -47,6 +47,7 @@
     <Compile Include="CustomFieldTests.cs" />
     <Compile Include="News\NewsCategoryTests.cs" />
     <Compile Include="News\NewsItemTests.cs" />
+    <Compile Include="News\NewsSubscriberTests.cs" />
     <Compile Include="TicketTests.cs" />
     <Compile Include="TicketAttachmentTests.cs" />
     <Compile Include="TicketCustomFieldTests.cs" />

@@ -68,12 +68,15 @@
     <Compile Include="Core\CustomFields\CustomField.cs" />
     <Compile Include="Core\CustomFields\CustomFieldCollection.cs" />
     <Compile Include="Controllers\CoreController.cs" />
+    <Compile Include="Core\News\NewsSubscriber.cs" />
+    <Compile Include="Core\News\NewsSubscriberCollection.cs" />
     <Compile Include="Core\News\NewsCategory.cs" />
     <Compile Include="Core\News\NewsCategoryCollection.cs" />
     <Compile Include="Core\News\NewsCategoryRequest.cs" />
     <Compile Include="Core\News\NewsItem.cs" />
     <Compile Include="Core\News\NewsItemCollection.cs" />
     <Compile Include="Core\News\NewsItemRequest.cs" />
+    <Compile Include="Core\News\NewsSubscriberRequest.cs" />
     <Compile Include="Core\Test\TestData.cs" />
     <Compile Include="Data\UnixDateTime.cs" />
     <Compile Include="Net\ApiRequestType.cs" />

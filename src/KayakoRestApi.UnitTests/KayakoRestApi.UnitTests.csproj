@@ -60,6 +60,7 @@
     <Compile Include="News\NewsItemCollectionSerializationTests.cs" />
     <Compile Include="News\NewsCategoryCollectionSerializationTests.cs" />
     <Compile Include="News\NewsControllerTests.cs" />
+    <Compile Include="News\NewsSubscriberCollectionSerializationTests.cs" />
     <Compile Include="Utilities\AssertUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\XmlDataUtility.cs" />
@@ -75,6 +76,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\NewsSubscriberCollection.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\NewsItemCollection.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
