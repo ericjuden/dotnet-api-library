@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\CoreControllerTests.cs" />
+    <Compile Include="Data\UnixDateTimeTests.cs" />
     <Compile Include="Departments\DepartmentControllerTests.cs" />
     <Compile Include="Departments\DepartmentCollectionSerializationTests.cs" />
     <Compile Include="Departments\DepartmentRequestTests.cs" />

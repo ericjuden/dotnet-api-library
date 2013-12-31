@@ -69,7 +69,7 @@ namespace KayakoRestApi.IntegrationTests.News
 			Assert.That(newsItem.NewsItemType, Is.EqualTo(newsItemRequest.NewsItemType));
 			Assert.That(newsItem.NewsItemStatus, Is.EqualTo(newsItemRequest.NewsItemStatus));
 			Assert.That(newsItem.AllowComments, Is.EqualTo(newsItemRequest.AllowComments));
-			Assert.That(newsItem.Expiry.EpochValue, Is.EqualTo(newsItemRequest.Expiry.EpochValue));
+			Assert.That(newsItem.Expiry.UnixTimeStamp, Is.EqualTo(newsItemRequest.Expiry.UnixTimeStamp));
 
 			newsItemRequest = NewsItemRequest.FromResponseData(newsItem);
 			newsItemRequest.Contents = "Contents Updated";

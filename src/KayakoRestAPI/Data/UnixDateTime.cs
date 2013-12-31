@@ -24,7 +24,7 @@ namespace KayakoRestApi.Data
 		}
 
 		[XmlIgnore]
-		public long EpochValue
+		public long UnixTimeStamp
 		{
 			get { return _unixDateTime; }
 			set { _unixDateTime = value; }
