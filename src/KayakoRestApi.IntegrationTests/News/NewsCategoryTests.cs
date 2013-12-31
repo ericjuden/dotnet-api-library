@@ -30,9 +30,9 @@ namespace KayakoRestApi.IntegrationTests.News
 
 			Trace.WriteLine("GetNewsCategory using news category id: " + newsCategoryToGet.Id);
 
-			NewsCategory dept = TestSetup.KayakoApiService.News.GetNewsCategory(newsCategoryToGet.Id);
+			NewsCategory newsCategory = TestSetup.KayakoApiService.News.GetNewsCategory(newsCategoryToGet.Id);
 
-			AssertObjectXmlEqual(dept, newsCategoryToGet);
+			AssertObjectXmlEqual(newsCategory, newsCategoryToGet);
 		}
 
 		[Test(Description = "Tests creating, updating and deleting news categories")]

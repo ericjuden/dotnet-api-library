@@ -26,8 +26,9 @@ namespace KayakoRestApi.Controllers
 
 		NewsItem GetNewsItem(int newsItemId);
 
-		//TODO: Create
-		//TODO: Update
+		NewsItem CreateNewsItem(NewsItemRequest newsItemRequest);
+
+		NewsItem UpdateNewsItem(NewsItemRequest newsItemRequest);
 
 		bool DeleteNewsItem(int newsItemId);
 	}
@@ -155,11 +156,79 @@ namespace KayakoRestApi.Controllers
 			return null;
 		}
 
+		public NewsItem CreateNewsItem(NewsItemRequest newsItemRequest)
+		{
+			RequestBodyBuilder parameters = PopulateRequestParameters(newsItemRequest, RequestTypes.Create);
+
+			NewsItemCollection newsItems = Connector.ExecutePost<NewsItemCollection>(NewsItemBaseUrl, parameters.ToString());
+
+			if (newsItems != null && newsItems.Count > 0)
+			{
+				return newsItems[0];
+			}
+
+			return null;
+		}
+
+		public NewsItem UpdateNewsItem(NewsItemRequest newsItemRequest)
+		{
+			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemRequest.Id);
+
+			RequestBodyBuilder parameters = PopulateRequestParameters(newsItemRequest, RequestTypes.Update);
+
+			NewsItemCollection newsItems = Connector.ExecutePut<NewsItemCollection>(apiMethod, parameters.ToString());
+
+			if (newsItems != null && newsItems.Count > 0)
+			{
+				return newsItems[0];
+			}
+
+			return null;
+		}
+
 		public bool DeleteNewsItem(int newsItemId)
 		{
 			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemId);
 
 			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private static RequestBodyBuilder PopulateRequestParameters(NewsItemRequest newsItem, RequestTypes requestType)
+		{
+			newsItem.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestDataNonEmptyString("subject", newsItem.Subject);
+			parameters.AppendRequestDataNonEmptyString("contents", newsItem.Contents);
+
+			if (requestType == RequestTypes.Create)
+			{
+				parameters.AppendRequestDataNonNegativeInt("staffid", newsItem.StaffId);
+			}
+			else
+			{
+				parameters.AppendRequestDataNonNegativeInt("editedstaffid", newsItem.StaffId);
+			}
+
+			if (requestType == RequestTypes.Create)
+			{
+				parameters.AppendRequestData("newstype", EnumUtility.ToApiString(newsItem.NewsItemType));
+			}
+
+			parameters.AppendRequestData("newsstatus", EnumUtility.ToApiString(newsItem.NewsItemStatus));
+			parameters.AppendRequestDataNonEmptyString("fromname", newsItem.FromName);
+			parameters.AppendRequestDataNonEmptyString("email", newsItem.Email);
+			parameters.AppendRequestDataNonEmptyString("customemailsubject", newsItem.CustomEmailSubject);
+			parameters.AppendRequestDataBool("sendemail", newsItem.SendEmail);
+			parameters.AppendRequestDataBool("allowcomments", newsItem.AllowComments);
+			parameters.AppendRequestDataBool("uservisibilitycustom", newsItem.UserVisibilityCustom);
+			parameters.AppendRequestDataArrayCommaSeparated("usergroupidlist", newsItem.UserGroupIdList);
+			parameters.AppendRequestDataBool("staffvisibilitycustom", newsItem.StaffVisibilityCustom);
+			parameters.AppendRequestDataArrayCommaSeparated("staffgroupidlist", newsItem.StaffGroupIdList);
+			parameters.AppendRequestData("expiry", newsItem.Expiry.DateTime.ToString("M/d/yyyy"));
+			parameters.AppendRequestDataArrayCommaSeparated("newscategoryidlist", newsItem.Categories);
+			
+			return parameters;
 		}
 
 		#endregion

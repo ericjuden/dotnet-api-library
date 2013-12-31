@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.News;
+using KayakoRestApi.Data;
 using KayakoRestApi.Net;
 using Moq;
 using NUnit.Framework;
@@ -10,7 +12,7 @@ using NUnit.Framework;
 namespace KayakoRestApi.UnitTests.News
 {
 	[TestFixture]
-	public class NewsCategoryControllerTests
+	public class NewsControllerTests
 	{
 		private INewsController _newsController;
 		private Mock<IKayakoApiRequest> _kayakoApiRequest;
@@ -169,16 +171,73 @@ namespace KayakoRestApi.UnitTests.News
 			Assert.That(newsItem, Is.EqualTo(_responseNewsItemCollection.FirstOrDefault()));
 		}
 
-		[Ignore]
+		[Test]
 		public void CreateNewsItem()
 		{
-			throw new NotImplementedException();
+			string apiMethod = "/News/NewsItem";
+			string parameters = @"subject=Subject&contents=Contents&staffid=1&newstype=3&newsstatus=1&fromname=FromName&email=email@domain.com&customemailsubject=CustomEmailSubject&sendemail=0&allowcomments=1&uservisibilitycustom=1&usergroupidlist=1,2&staffvisibilitycustom=1&staffgroupidlist=1,2&expiry=12/31/2015&newscategoryidlist=1";
+
+			var newsItemRequest = new NewsItemRequest
+				{
+					Subject = "Subject",
+					Contents = "Contents",
+					StaffId = 1,
+					NewsItemType = NewsItemType.Private,
+					NewsItemStatus = NewsItemStatus.Draft,
+					FromName = "FromName",
+					Email = "email@domain.com",
+					CustomEmailSubject = "CustomEmailSubject",
+					SendEmail = false,
+					AllowComments = true,
+					UserVisibilityCustom = true,
+					UserGroupIdList = new[] {1, 2},
+					StaffVisibilityCustom = true,
+					StaffGroupIdList = new[] {1, 2},
+					Expiry = new UnixDateTime(DateTime.Parse("31/12/2015 15:30:00", CultureInfo.CreateSpecificCulture("en-GB"))),
+					Categories = new[] {1}
+				};
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<NewsItemCollection>(apiMethod, parameters)).Returns(_responseNewsItemCollection);
+
+			var newsItem = _newsController.CreateNewsItem(newsItemRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<NewsItemCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsItem, Is.EqualTo(_responseNewsItemCollection.FirstOrDefault()));
 		}
 
-		[Ignore]
+		[Test]
 		public void UpdateNewsItem()
 		{
-			throw new NotImplementedException();
+			var newsItemRequest = new NewsItemRequest
+			{
+				Id = 1,
+				Subject = "Subject",
+				Contents = "Contents",
+				StaffId = 1,
+				NewsItemType = NewsItemType.Private,
+				NewsItemStatus = NewsItemStatus.Draft,
+				FromName = "FromName",
+				Email = "email@domain.com",
+				CustomEmailSubject = "CustomEmailSubject",
+				SendEmail = false,
+				AllowComments = true,
+				UserVisibilityCustom = true,
+				UserGroupIdList = new[] { 1, 2 },
+				StaffVisibilityCustom = true,
+				StaffGroupIdList = new[] { 1, 2 },
+				Expiry = new UnixDateTime(DateTime.Parse("31/12/2015 15:30:00", CultureInfo.CreateSpecificCulture("en-GB"))),
+				Categories = new[] { 1 }
+			};
+
+			string apiMethod = string.Format("/News/NewsItem/{0}", newsItemRequest.Id);
+			string parameters = @"subject=Subject&contents=Contents&editedstaffid=1&newsstatus=1&fromname=FromName&email=email@domain.com&customemailsubject=CustomEmailSubject&sendemail=0&allowcomments=1&uservisibilitycustom=1&usergroupidlist=1,2&staffvisibilitycustom=1&staffgroupidlist=1,2&expiry=12/31/2015&newscategoryidlist=1";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePut<NewsItemCollection>(apiMethod, parameters)).Returns(_responseNewsItemCollection);
+
+			var newsItem = _newsController.UpdateNewsItem(newsItemRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePut<NewsItemCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsItem, Is.EqualTo(_responseNewsItemCollection.FirstOrDefault()));
 		}
 
 		[TestCase(1, true)]

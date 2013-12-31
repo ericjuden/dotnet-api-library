@@ -18,7 +18,7 @@ namespace KayakoRestApi.Text
             _sb = new StringBuilder(value);
         }
 
-        internal void AppendRequestData(string key, object value)
+		internal void AppendRequestData(string key, object value)
         {
             if (!String.IsNullOrEmpty(_sb.ToString()))
             {
@@ -40,6 +40,57 @@ namespace KayakoRestApi.Text
                 _sb.AppendFormat("{0}={1}", key, value);
             }
         }
+
+		internal void AppendRequestDataNonEmptyString(string key, string value)
+		{
+			if (string.IsNullOrEmpty(value))
+			{
+				return;
+			}
+
+			AppendRequestData(key, value);
+		}
+
+		internal void AppendRequestDataNonNegativeInt(string key, int value)
+		{
+			if (value <= 0)
+			{
+				return;
+			}
+
+			AppendRequestData(key, value);
+		}
+
+		internal void AppendRequestDataBool(string key, bool value)
+		{
+			int requestValue = value ? 1 : 0;
+
+			AppendRequestData(key, requestValue);
+		}
+
+		internal void AppendRequestDataArrayCommaSeparated<T>(string key, IEnumerable<T> values)
+		{
+			if (values == null)
+			{
+				return;
+			}
+
+			StringBuilder sb = new StringBuilder();
+			foreach (object value in values)
+			{
+				if (!string.IsNullOrEmpty(sb.ToString()))
+				{
+					sb.Append(",");
+				}
+
+				sb.Append(value.ToString());
+			}
+
+			if (!string.IsNullOrEmpty(sb.ToString()))
+			{
+				AppendRequestData(key, sb.ToString());
+			}
+		}
 
         public override string ToString()
         {

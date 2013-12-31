@@ -73,6 +73,7 @@
     <Compile Include="Core\News\NewsCategoryRequest.cs" />
     <Compile Include="Core\News\NewsItem.cs" />
     <Compile Include="Core\News\NewsItemCollection.cs" />
+    <Compile Include="Core\News\NewsItemRequest.cs" />
     <Compile Include="Core\Test\TestData.cs" />
     <Compile Include="Data\UnixDateTime.cs" />
     <Compile Include="Net\ApiRequestType.cs" />

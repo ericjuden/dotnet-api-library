@@ -13,6 +13,11 @@ namespace KayakoRestApi.Data
 		{
 		}
 
+		public UnixDateTime(DateTime dateTime)
+		{
+			_unixDateTime = UnixTimeUtility.ToUnixTime(dateTime);
+		}
+
 		public UnixDateTime(long epochDateTime)
 		{
 			_unixDateTime = epochDateTime;
