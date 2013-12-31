@@ -24,11 +24,11 @@ namespace KayakoRestApi.Core.News
 
 		[OptionalField]
 		[ResponseProperty("NewsItemType")]
-		public NewsItemType NewsItemType { get; set; }
+		public NewsItemType? NewsItemType { get; set; }
 
 		[OptionalField]
 		[ResponseProperty("NewsItemStatus")]
-		public NewsItemStatus NewsItemStatus { get; set; }
+		public NewsItemStatus? NewsItemStatus { get; set; }
 
 		[OptionalField]
 		public string FromName { get; set; }
@@ -42,15 +42,15 @@ namespace KayakoRestApi.Core.News
 		public string CustomEmailSubject { get; set; }
 
 		[OptionalField]
-		public bool SendEmail { get; set; }
+		public bool? SendEmail { get; set; }
 		
 		[OptionalField]
 		[ResponseProperty("AllowComments")]
-		public bool AllowComments { get; set; }
+		public bool? AllowComments { get; set; }
 
 		[OptionalField]
 		[ResponseProperty("UserVisibilityCustom")]
-		public bool UserVisibilityCustom { get; set; }
+		public bool? UserVisibilityCustom { get; set; }
 
 		[OptionalField]
 		[ResponseProperty("UserGroupIdList")]
@@ -58,7 +58,7 @@ namespace KayakoRestApi.Core.News
 
 		[OptionalField]
 		[ResponseProperty("StaffVisibilityCustom")]
-		public bool StaffVisibilityCustom { get; set; }
+		public bool? StaffVisibilityCustom { get; set; }
 
 		[OptionalField]
 		[ResponseProperty("StaffGroupIdList")]

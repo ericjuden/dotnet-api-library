@@ -57,6 +57,7 @@
     <Compile Include="Departments\DepartmentControllerTests.cs" />
     <Compile Include="Departments\DepartmentCollectionSerializationTests.cs" />
     <Compile Include="Departments\DepartmentRequestTests.cs" />
+    <Compile Include="News\NewsItemCommentCollectionSerializationTests.cs" />
     <Compile Include="News\NewsItemCollectionSerializationTests.cs" />
     <Compile Include="News\NewsCategoryCollectionSerializationTests.cs" />
     <Compile Include="News\NewsControllerTests.cs" />
@@ -76,6 +77,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\NewsItemCommentCollection.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\NewsSubscriberCollection.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -60,7 +60,9 @@
     <Compile Include="Controllers\CustomFieldController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Core\Constants\ApiBaseMethods.cs" />
+    <Compile Include="Core\Constants\NewsItemCommentStatus.cs" />
     <Compile Include="Core\Constants\NewsCategoryVisibilityType.cs" />
+    <Compile Include="Core\Constants\NewsItemCommentCreatorType.cs" />
     <Compile Include="Core\Constants\NewsItemType.cs" />
     <Compile Include="Core\Constants\NewsItemStatus.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOptionCollection.cs" />
@@ -68,6 +70,9 @@
     <Compile Include="Core\CustomFields\CustomField.cs" />
     <Compile Include="Core\CustomFields\CustomFieldCollection.cs" />
     <Compile Include="Controllers\CoreController.cs" />
+    <Compile Include="Core\News\NewsItemComment.cs" />
+    <Compile Include="Core\News\NewsItemCommentCollection.cs" />
+    <Compile Include="Core\News\NewsItemCommentRequest.cs" />
     <Compile Include="Core\News\NewsSubscriber.cs" />
     <Compile Include="Core\News\NewsSubscriberCollection.cs" />
     <Compile Include="Core\News\NewsCategory.cs" />

@@ -19,6 +19,7 @@ namespace KayakoRestApi.UnitTests.News
 		private NewsCategoryCollection _responseNewsCategoryCollection;
 		private NewsItemCollection _responseNewsItemCollection;
 		private NewsSubscriberCollection _responseNewsSubscriberCollection;
+		private NewsItemCommentCollection _responseNewsItemCommentCollection;
 
 		[SetUp]
 		public void Setup()
@@ -43,6 +44,12 @@ namespace KayakoRestApi.UnitTests.News
 					new NewsSubscriber(),
 					new NewsSubscriber(),
 					new NewsSubscriber()
+				};
+
+			_responseNewsItemCommentCollection = new NewsItemCommentCollection
+				{
+					new NewsItemComment(),
+					new NewsItemComment()
 				};
 		}
 
@@ -345,6 +352,75 @@ namespace KayakoRestApi.UnitTests.News
 			var deleteResult = _newsController.DeleteNewsSubscriber(newsSubscriberId);
 
 			Assert.That(deleteResult, Is.EqualTo(success));
+		}
+
+		#endregion
+
+		#region News Item Comment Tests
+
+		[TestCase(1)]
+		[TestCase(2)]
+		public void GetNewsItemComments(int newsItemId)
+		{
+			string apiMethod = string.Format("/News/Comment/ListAll/{0}", newsItemId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsItemCommentCollection>(apiMethod)).Returns(_responseNewsItemCommentCollection);
+
+			var newsItemComments = _newsController.GetNewsItemComments(newsItemId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsItemCommentCollection>(apiMethod), Times.Once());
+			Assert.That(newsItemComments, Is.EqualTo(_responseNewsItemCommentCollection));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		public void GetNewsItemComment(int newsItemCommentId)
+		{
+			string apiMethod = string.Format("/News/Comment/{0}", newsItemCommentId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<NewsItemCommentCollection>(apiMethod)).Returns(_responseNewsItemCommentCollection);
+
+			var newsItemComment = _newsController.GetNewsItemComment(newsItemCommentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<NewsItemCommentCollection>(apiMethod), Times.Once());
+			Assert.That(newsItemComment, Is.EqualTo(_responseNewsItemCommentCollection.FirstOrDefault()));
+		}
+
+		[Test]
+		public void CreateNewsItemComment()
+		{
+			var newsItemCommentRequest = new NewsItemCommentRequest
+				{
+					NewsItemId = 1,
+					Contents = "Contents",
+					CreatorType = NewsItemCommentCreatorType.Staff,
+					CreatorId = 1,
+					FullName = "FullName",
+					Email = "email@domain.com",
+					ParentCommentId = 3
+				};
+
+			const string apiMethod = "/News/Comment";
+			const string parameters = "newsitemid=1&contents=Contents&creatortype=1&creatorid=1&email=email@domain.com&parentcommentid=3";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<NewsItemCommentCollection>(apiMethod, parameters)).Returns(_responseNewsItemCommentCollection);
+
+			var newsItemComment = _newsController.CreateNewsItemComment(newsItemCommentRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<NewsItemCommentCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(newsItemComment, Is.EqualTo(_responseNewsItemCommentCollection.FirstOrDefault()));
+		}
+
+		[TestCase(1, true)]
+		[TestCase(2, false)]
+		[TestCase(3, true)]
+		public void DeleteNewsItemComment(int newsItemCommentId, bool success)
+		{
+			string apiMethod = string.Format("/News/Comment/{0}", newsItemCommentId);
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(success);
+
+			var deleteSuccess = _newsController.DeleteNewsItemComment(newsItemCommentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
+			Assert.That(deleteSuccess, Is.EqualTo(success));
 		}
 
 		#endregion

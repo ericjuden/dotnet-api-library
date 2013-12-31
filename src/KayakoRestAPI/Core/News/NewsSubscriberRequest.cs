@@ -14,7 +14,7 @@ namespace KayakoRestApi.Core.News
 
 		[OptionalField]
 		[ResponseProperty("IsValidated")]
-		public bool IsValidated { get; set; }
+		public bool? IsValidated { get; set; }
 
 		public static NewsSubscriberRequest FromResponseData(NewsSubscriber responseData)
 		{

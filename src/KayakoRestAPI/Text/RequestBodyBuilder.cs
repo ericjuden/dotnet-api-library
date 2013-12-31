@@ -61,6 +61,16 @@ namespace KayakoRestApi.Text
 			AppendRequestData(key, value);
 		}
 
+		internal void AppendRequestDataBool(string key, bool? value)
+		{
+			if (value == null)
+			{
+				return;
+			}
+
+			AppendRequestDataBool(key, value.Value);
+		}
+
 		internal void AppendRequestDataBool(string key, bool value)
 		{
 			int requestValue = value ? 1 : 0;

@@ -41,6 +41,14 @@ namespace KayakoRestApi.Controllers
 		NewsSubscriber UpdateNewsSubscriber(NewsSubscriberRequest newsSubscriberRequest);
 
 		bool DeleteNewsSubscriber(int newsSubscriberId);
+
+		NewsItemCommentCollection GetNewsItemComments(int newsItemId);
+		
+		NewsItemComment GetNewsItemComment(int newsItemCommentId);
+
+		NewsItemComment CreateNewsItemComment(NewsItemCommentRequest newsItemCommentRequest);
+
+		bool DeleteNewsItemComment(int newsItemCommentId);
 	}
 
 	public sealed class NewsController : BaseController, INewsController
@@ -63,6 +71,7 @@ namespace KayakoRestApi.Controllers
 		private const string NewsCategoryBaseUrl = "/News/Category";
 		private const string NewsItemBaseUrl = "/News/NewsItem";
 		private const string NewsSubscriberBaseUrl = "/News/Subscriber";
+		private const string NewsItemCommentBaseUrl = "/News/Comment";
 
 		#region News Category Methods
 
@@ -221,12 +230,16 @@ namespace KayakoRestApi.Controllers
 				parameters.AppendRequestDataNonNegativeInt("editedstaffid", newsItem.StaffId);
 			}
 
-			if (requestType == RequestTypes.Create)
+			if (requestType == RequestTypes.Create && newsItem.NewsItemType.HasValue)
 			{
 				parameters.AppendRequestData("newstype", EnumUtility.ToApiString(newsItem.NewsItemType));
 			}
 
-			parameters.AppendRequestData("newsstatus", EnumUtility.ToApiString(newsItem.NewsItemStatus));
+			if (newsItem.NewsItemStatus.HasValue)
+			{
+				parameters.AppendRequestData("newsstatus", EnumUtility.ToApiString(newsItem.NewsItemStatus));
+			}
+
 			parameters.AppendRequestDataNonEmptyString("fromname", newsItem.FromName);
 			parameters.AppendRequestDataNonEmptyString("email", newsItem.Email);
 			parameters.AppendRequestDataNonEmptyString("customemailsubject", newsItem.CustomEmailSubject);
@@ -315,6 +328,69 @@ namespace KayakoRestApi.Controllers
 			}
 
 			return requestBodyBuilder;
+		}
+
+		#endregion
+
+		#region News Item Comment Methods
+
+		public NewsItemCommentCollection GetNewsItemComments(int newsItemId)
+		{
+			string apiMethod = string.Format("{0}/ListAll/{1}", NewsItemCommentBaseUrl, newsItemId);
+
+			return Connector.ExecuteGet<NewsItemCommentCollection>(apiMethod);
+		}
+
+		public NewsItemComment GetNewsItemComment(int newsItemCommentId)
+		{
+			string apiMethod = string.Format("{0}/{1}", NewsItemCommentBaseUrl, newsItemCommentId);
+
+			var newsItemComments = Connector.ExecuteGet<NewsItemCommentCollection>(apiMethod);
+
+			if (newsItemComments != null && newsItemComments.Count > 0)
+			{
+				return newsItemComments[0];
+			}
+
+			return null;
+		}
+
+		public NewsItemComment CreateNewsItemComment(NewsItemCommentRequest newsItemCommentRequest)
+		{
+			newsItemCommentRequest.EnsureValidData(RequestTypes.Create);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestData("newsitemid", newsItemCommentRequest.NewsItemId);
+			parameters.AppendRequestDataNonEmptyString("contents", newsItemCommentRequest.Contents);
+			parameters.AppendRequestData("creatortype", EnumUtility.ToApiString(newsItemCommentRequest.CreatorType));
+
+			if (newsItemCommentRequest.CreatorId != null)
+			{
+				parameters.AppendRequestData("creatorid", newsItemCommentRequest.CreatorId);
+			}
+			else
+			{
+				parameters.AppendRequestDataNonEmptyString("fullname", newsItemCommentRequest.FullName);
+			}
+
+			parameters.AppendRequestDataNonEmptyString("email", newsItemCommentRequest.Email);
+			parameters.AppendRequestData("parentcommentid", newsItemCommentRequest.ParentCommentId);
+
+			var newsItemComments = Connector.ExecutePost<NewsItemCommentCollection>(NewsItemCommentBaseUrl, parameters.ToString());
+
+			if (newsItemComments != null && newsItemComments.Count > 0)
+			{
+				return newsItemComments[0];
+			}
+
+			return null;
+		}
+
+		public bool DeleteNewsItemComment(int newsItemCommentId)
+		{
+			string apiMethod = string.Format("{0}/{1}", NewsItemCommentBaseUrl, newsItemCommentId);
+
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion

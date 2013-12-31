@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<newsitemcomments>
+  <newsitemcomment>
+    <id><![CDATA[320]]></id>
+    <newsitemid><![CDATA[41]]></newsitemid>
+    <creatortype><![CDATA[2]]></creatortype>
+    <creatorid><![CDATA[1]]></creatorid>
+    <fullname><![CDATA[Jon doe]]></fullname>
+    <email />
+    <ipaddress><![CDATA[127.0.0.1]]></ipaddress>
+    <dateline><![CDATA[1340037804]]></dateline>
+    <parentcommentid><![CDATA[0]]></parentcommentid>
+    <commentstatus><![CDATA[2]]></commentstatus>
+    <useragent />
+    <referrer />
+    <parenturl><![CDATA[]]></parenturl>
+    <contents><![CDATA[Created by API on news]]></contents>
+    </newsitemcomment>
+  <newsitemcomment>
+    <id><![CDATA[321]]></id>
+    <newsitemid><![CDATA[41]]></newsitemid>
+    <creatortype><![CDATA[2]]></creatortype>
+    <creatorid><![CDATA[1]]></creatorid>
+    <fullname><![CDATA[Simaranjit Singh]]></fullname>
+    <email />
+    <ipaddress><![CDATA[127.0.0.1]]></ipaddress>
+    <dateline><![CDATA[1340037801]]></dateline>
+    <parentcommentid><![CDATA[0]]></parentcommentid>
+    <commentstatus><![CDATA[2]]></commentstatus>
+    <useragent />
+    <referrer />
+    <parenturl><![CDATA[]]></parenturl>
+    <contents><![CDATA[Created by API on news]]></contents>
+  </newsitemcomment>
+</newsitemcomments>
