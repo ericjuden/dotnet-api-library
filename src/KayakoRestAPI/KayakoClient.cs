@@ -18,6 +18,8 @@ namespace KayakoRestApi
 
 		ITicketController Tickets { get; }
 
+		ITroubleshooterController Troubleshooter { get; }
+
 		IUserController Users { get; }
 	}
 
@@ -37,6 +39,7 @@ namespace KayakoRestApi
 		private readonly INewsController _news;
 		private readonly IStaffController _staff;
 		private readonly ITicketController _tickets;
+		private readonly ITroubleshooterController _troubleshooter;
 		private readonly IUserController _users;
 
 		#endregion
@@ -92,6 +95,14 @@ namespace KayakoRestApi
 		}
 
 		/// <summary>
+		/// Provides access to Troubleshooter API Methods
+		/// </summary>
+	    public ITroubleshooterController Troubleshooter
+	    {
+		    get { return _troubleshooter; }
+	    }
+
+	    /// <summary>
 		/// Provides access to User API Methods
 		/// </summary>
 		public IUserController Users
@@ -115,6 +126,7 @@ namespace KayakoRestApi
 			_news = new NewsController(apiKey, secretKey, apiUrl, null);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, null);
+			_troubleshooter = new TroubleshooterController(apiKey, secretKey, apiUrl, null);
 			_users = new UserController(apiKey, secretKey, apiUrl, null);
         }
 
@@ -133,6 +145,7 @@ namespace KayakoRestApi
 			_news = new NewsController(apiKey, secretKey, apiUrl, null, requestType);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, null, requestType);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, null, requestType);
+			_troubleshooter = new TroubleshooterController(apiKey, secretKey, apiUrl, null, requestType);
 			_users = new UserController(apiKey, secretKey, apiUrl, null, requestType);
 		}
 
@@ -151,6 +164,7 @@ namespace KayakoRestApi
 			_news = new NewsController(apiKey, secretKey, apiUrl, proxy);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy);
+			_troubleshooter = new TroubleshooterController(apiKey, secretKey, apiUrl, proxy);
 			_users = new UserController(apiKey, secretKey, apiUrl, proxy);
 		}
 
@@ -169,6 +183,7 @@ namespace KayakoRestApi
 			_news = new NewsController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_staff = new StaffController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_tickets = new TicketController(apiKey, secretKey, apiUrl, proxy, requestType);
+			_troubleshooter = new TroubleshooterController(apiKey, secretKey, apiUrl, proxy, requestType);
 			_users = new UserController(apiKey, secretKey, apiUrl, proxy, requestType);
 		}
     }

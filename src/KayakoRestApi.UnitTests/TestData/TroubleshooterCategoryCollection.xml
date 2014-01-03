@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<troubleshootercategories>
+  <troubleshootercategory>
+    <id><![CDATA[1]]></id>
+    <staffid><![CDATA[0]]></staffid>
+    <staffname />
+    <title><![CDATA[General]]></title>
+    <description />
+    <categorytype><![CDATA[1]]></categorytype>
+    <displayorder><![CDATA[1]]></displayorder>
+    <views><![CDATA[22]]></views>
+    <uservisibilitycustom><![CDATA[0]]></uservisibilitycustom>
+    <usergroupidlist>
+    </usergroupidlist>
+    <staffvisibilitycustom><![CDATA[0]]></staffvisibilitycustom>
+    <staffgroupidlist>
+    </staffgroupidlist>
+  </troubleshootercategory>
+  <troubleshootercategory>
+    <id><![CDATA[2]]></id>
+    <staffid><![CDATA[1]]></staffid>
+    <staffname />
+    <title><![CDATA[New]]></title>
+    <description />
+    <categorytype><![CDATA[2]]></categorytype>
+    <displayorder><![CDATA[1]]></displayorder>
+    <views><![CDATA[22]]></views>
+    <uservisibilitycustom><![CDATA[1]]></uservisibilitycustom>
+    <usergroupidlist>
+      <usergroupid>1</usergroupid>
+      <usergroupid>2</usergroupid>
+    </usergroupidlist>
+    <staffvisibilitycustom><![CDATA[1]]></staffvisibilitycustom>
+    <staffgroupidlist>
+      <staffgroupid>1</staffgroupid>
+      <staffgroupid>3</staffgroupid>
+    </staffgroupidlist>
+  </troubleshootercategory>
+</troubleshootercategories>

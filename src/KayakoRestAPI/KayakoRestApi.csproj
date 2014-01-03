@@ -59,12 +59,14 @@
   <ItemGroup>
     <Compile Include="Controllers\CustomFieldController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\TroubleshooterController.cs" />
     <Compile Include="Core\Constants\ApiBaseMethods.cs" />
     <Compile Include="Core\Constants\NewsItemCommentStatus.cs" />
     <Compile Include="Core\Constants\NewsCategoryVisibilityType.cs" />
     <Compile Include="Core\Constants\NewsItemCommentCreatorType.cs" />
     <Compile Include="Core\Constants\NewsItemType.cs" />
     <Compile Include="Core\Constants\NewsItemStatus.cs" />
+    <Compile Include="Core\Constants\TroubleshooterCategoryType.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOptionCollection.cs" />
     <Compile Include="Core\CustomFields\CustomFieldOption.cs" />
     <Compile Include="Core\CustomFields\CustomField.cs" />
@@ -83,6 +85,9 @@
     <Compile Include="Core\News\NewsItemRequest.cs" />
     <Compile Include="Core\News\NewsSubscriberRequest.cs" />
     <Compile Include="Core\Test\TestData.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterCategory.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterCategoryCollection.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterCategoryRequest.cs" />
     <Compile Include="Data\UnixDateTime.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />
