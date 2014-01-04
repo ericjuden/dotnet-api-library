@@ -14,6 +14,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 		private ITroubleshooterController _troubleshooterController;
 		private Mock<IKayakoApiRequest> _kayakoApiRequest;
 		private TroubleshooterCategoryCollection _responseTroubleshooterCategoryCollection;
+		private TroubleshooterStepCollection _responseTroubleshooterStepCollection;
 
 		[SetUp]
 		public void Setup()
@@ -25,6 +26,12 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 				{
 					new TroubleshooterCategory(),
 					new TroubleshooterCategory()
+				};
+
+			_responseTroubleshooterStepCollection = new TroubleshooterStepCollection
+				{
+					new TroubleshooterStep(),
+					new TroubleshooterStep()
 				};
 		}
 
@@ -121,6 +128,65 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
 
 			var deleteSuccess = _troubleshooterController.DeleteTroubleshooterCategory(troubleshooterCategoryId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
+			Assert.IsTrue(deleteSuccess);
+		}
+
+		#endregion
+
+		#region Troubleshooter Step Methods
+
+		[Test]
+		public void GetTroubleshooterSteps()
+		{
+			const string apiMethod = "/Troubleshooter/Step";
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TroubleshooterStepCollection>(apiMethod)).Returns(_responseTroubleshooterStepCollection);
+
+			var troubleshooterSteps = _troubleshooterController.GetTroubleshooterSteps();
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TroubleshooterStepCollection>(apiMethod), Times.Once());
+
+			Assert.That(troubleshooterSteps, Is.EqualTo(_responseTroubleshooterStepCollection));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetTroubleshooterStep(int troubleshooterStepId)
+		{
+			var apiMethod = string.Format("/Troubleshooter/Step/{0}", troubleshooterStepId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TroubleshooterStepCollection>(apiMethod)).Returns(_responseTroubleshooterStepCollection);
+
+			var troubleshooterStep = _troubleshooterController.GetTroubleshooterStep(troubleshooterStepId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TroubleshooterStepCollection>(apiMethod), Times.Once());
+
+			Assert.That(troubleshooterStep, Is.EqualTo(_responseTroubleshooterStepCollection.First()));
+		}
+
+		[Test]
+		public void CreateTroubleshooterStep()
+		{
+			
+		}
+
+		[Test]
+		public void UpdateTroubleshooterStep()
+		{
+			
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void DeleteTroubleshooterStep(int troubleshooterStepId)
+		{
+			string apiMethod = string.Format("/Troubleshooter/Step/{0}", troubleshooterStepId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
+
+			var deleteSuccess = _troubleshooterController.DeleteTroubleshooterStep(troubleshooterStepId);
 
 			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
 			Assert.IsTrue(deleteSuccess);

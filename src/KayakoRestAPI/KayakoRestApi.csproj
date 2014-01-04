@@ -85,9 +85,12 @@
     <Compile Include="Core\News\NewsItemRequest.cs" />
     <Compile Include="Core\News\NewsSubscriberRequest.cs" />
     <Compile Include="Core\Test\TestData.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterStepAttachment.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterStepCollection.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterCategory.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterCategoryCollection.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterCategoryRequest.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterStep.cs" />
     <Compile Include="Data\UnixDateTime.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />

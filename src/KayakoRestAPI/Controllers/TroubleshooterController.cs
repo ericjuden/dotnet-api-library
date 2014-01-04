@@ -20,6 +20,16 @@ namespace KayakoRestApi.Controllers
 		TroubleshooterCategory UpdateTroubleshooterCategory(TroubleshooterCategoryRequest troubleshooterCategoryRequest);
 
 		bool DeleteTroubleshooterCategory(int troubleshooterCategoryId);
+
+		TroubleshooterStepCollection GetTroubleshooterSteps();
+
+		TroubleshooterStep GetTroubleshooterStep(int troubleshooterStepId);
+
+		//TroubleshooterStep CreateTroubleshooterStep(TroubleshooterCategoryRequest troubleshooterStepRequest);
+
+		//TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest);
+
+		bool DeleteTroubleshooterStep(int troubleshooterStepId);
 	}
 
 	public sealed class TroubleshooterController : BaseController, ITroubleshooterController
@@ -40,6 +50,7 @@ namespace KayakoRestApi.Controllers
 		}
 
 		private const string TroubleshooterCategoryBaseUrl = "/Troubleshooter/Category";
+		private const string TroubleshooterStepBaseUrl = "/Troubleshooter/Step";
 
 		#region Troubleshooter Category Methods
 
@@ -123,6 +134,46 @@ namespace KayakoRestApi.Controllers
 			parameters.AppendRequestDataArrayCommaSeparated("staffgroupidlist", troubleshooterCategoryRequest.StaffGroupIdList);
 
 			return parameters;
+		}
+
+		#endregion
+
+		#region Troubleshooter Step Methods
+
+		public TroubleshooterStepCollection GetTroubleshooterSteps()
+		{
+			return Connector.ExecuteGet<TroubleshooterStepCollection>(TroubleshooterStepBaseUrl);
+		}
+
+		public TroubleshooterStep GetTroubleshooterStep(int troubleshooterStepId)
+		{
+			string apiMethod = String.Format("{0}/{1}", TroubleshooterStepBaseUrl, troubleshooterStepId);
+
+			TroubleshooterStepCollection troubleshooterSteps = Connector.ExecuteGet<TroubleshooterStepCollection>(apiMethod);
+
+			if (troubleshooterSteps != null && troubleshooterSteps.Count > 0)
+			{
+				return troubleshooterSteps[0];
+			}
+
+			return null;
+		}
+
+		//public TroubleshooterStep CreateTroubleshooterStep(TroubleshooterCategoryRequest troubleshooterStepRequest)
+		//{
+			
+		//}
+
+		//public TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest)
+		//{
+			
+		//}
+
+		public bool DeleteTroubleshooterStep(int troubleshooterStepId)
+		{
+			string apiMethod = string.Format("{0}/{1}", TroubleshooterStepBaseUrl, troubleshooterStepId);
+
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion

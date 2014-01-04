@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<troubleshootersteps>
+  <troubleshooterstep>
+    <id><![CDATA[25]]></id>
+    <categoryid><![CDATA[1]]></categoryid>
+    <staffid><![CDATA[1]]></staffid>
+    <staffname><![CDATA[admin admin]]></staffname>
+    <subject><![CDATA[Troubleshooter step subject]]></subject>
+    <edited><![CDATA[0]]></edited>
+    <editedstaffid><![CDATA[0]]></editedstaffid>
+    <editedstaffname />
+    <displayorder><![CDATA[15]]></displayorder>
+    <views><![CDATA[0]]></views>
+    <allowcomments><![CDATA[1]]></allowcomments>
+    <hasattachments><![CDATA[0]]></hasattachments>
+    <attachments>
+      <attachment>
+        <id><![CDATA[3]]></id>
+        <filename><![CDATA[attachement.txt]]></filename>
+        <filesize><![CDATA[0.01 KB]]></filesize>
+        <link><![CDATA[http://jamietestingagain.kayako.com/api/Troubleshooter/Step/GetAttachment/1/1/3]]></link>
+      </attachment>
+    </attachments>
+    <parentsteps>
+      <id><![CDATA[0]]></id>
+    </parentsteps>
+    <childsteps>
+    </childsteps>
+    <redirecttickets><![CDATA[1]]></redirecttickets>
+    <ticketsubject />
+    <redirectdepartmentid><![CDATA[0]]></redirectdepartmentid>
+    <tickettypeid><![CDATA[0]]></tickettypeid>
+    <priorityid><![CDATA[0]]></priorityid>
+    <contents><![CDATA[Troubleshooter step contents]]></contents>
+  </troubleshooterstep>
+  <troubleshooterstep>
+    <id><![CDATA[28]]></id>
+    <categoryid><![CDATA[1]]></categoryid>
+    <staffid><![CDATA[1]]></staffid>
+    <staffname><![CDATA[admin admin]]></staffname>
+    <subject><![CDATA[Troubleshooter subject]]></subject>
+    <edited><![CDATA[0]]></edited>
+    <editedstaffid><![CDATA[0]]></editedstaffid>
+    <editedstaffname />
+    <displayorder><![CDATA[17]]></displayorder>
+    <views><![CDATA[0]]></views>
+    <allowcomments><![CDATA[1]]></allowcomments>
+    <hasattachments><![CDATA[0]]></hasattachments>
+    <parentsteps>
+      <id><![CDATA[0]]></id>
+    </parentsteps>
+    <childsteps>
+    </childsteps>
+    <redirecttickets><![CDATA[1]]></redirecttickets>
+    <ticketsubject />
+    <redirectdepartmentid><![CDATA[0]]></redirectdepartmentid>
+    <tickettypeid><![CDATA[0]]></tickettypeid>
+    <priorityid><![CDATA[0]]></priorityid>
+    <contents><![CDATA[Troubleshooter step contents]]></contents>
+  </troubleshooterstep>
+</troubleshootersteps>
