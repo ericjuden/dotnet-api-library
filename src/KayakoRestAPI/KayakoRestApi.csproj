@@ -61,6 +61,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\TroubleshooterController.cs" />
     <Compile Include="Core\Constants\ApiBaseMethods.cs" />
+    <Compile Include="Core\Constants\TroubleshooterStepStatus.cs" />
     <Compile Include="Core\Constants\NewsItemCommentStatus.cs" />
     <Compile Include="Core\Constants\NewsCategoryVisibilityType.cs" />
     <Compile Include="Core\Constants\NewsItemCommentCreatorType.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Core\Troubleshooter\TroubleshooterCategoryCollection.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterCategoryRequest.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterStep.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterStepRequest.cs" />
     <Compile Include="Data\UnixDateTime.cs" />
     <Compile Include="Net\ApiRequestType.cs" />
     <Compile Include="Net\HttpMethod.cs" />

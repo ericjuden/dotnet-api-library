@@ -168,13 +168,62 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 		[Test]
 		public void CreateTroubleshooterStep()
 		{
-			
+			var troubleshooterStepRequest = new TroubleshooterStepRequest
+			{
+				CategoryId = TroubleshooterCategoryType.Private,
+				Subject = "Subject",
+				Contents = "Contents",
+				StaffId = 3,
+				DisplayOrder = 15,
+				AllowComments = true,
+				EnableTicketRedirection = false,
+				RedirectDepartmentId = 4,
+				TicketTypeId = 4,
+				TicketPriorityId = 2,
+				TicketSubject = "Ticket Subject",
+				StepStatus = TroubleshooterStepStatus.Published,
+				ParentStepIdList = new [] { 1, 2, 3 }
+			};
+
+			const string apiMethod = "/Troubleshooter/Step";
+			const string parameters = "categoryid=3&subject=Subject&contents=Contents&staffid=3&displayorder=15&allowcomments=1&enableticketredirection=0&redirectdepartmentid=4&tickettypeid=4&ticketpriorityid=2&ticketsubject=Ticket Subject&stepstatus=1&parentstepidlist=1,2,3";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<TroubleshooterStepCollection>(apiMethod, parameters)).Returns(_responseTroubleshooterStepCollection);
+
+			var troubleshooterStep = _troubleshooterController.CreateTroubleshooterStep(troubleshooterStepRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<TroubleshooterStepCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(troubleshooterStep, Is.EqualTo(_responseTroubleshooterStepCollection.FirstOrDefault()));
 		}
 
 		[Test]
 		public void UpdateTroubleshooterStep()
 		{
-			
+			var troubleshooterStepRequest = new TroubleshooterStepRequest
+			{
+				StaffId = 3,
+				Subject = "Subject",
+				Contents = "Contents",
+				DisplayOrder = 4,
+				AllowComments = true,
+				EnableTicketRedirection = false,
+				RedirectDepartmentId = 3,
+				TicketTypeId = 1,
+				TicketPriorityId = 3,
+				TicketSubject = "Ticket Subject",
+				StepStatus = TroubleshooterStepStatus.Published,
+				ParentStepIdList = new [] { 1, 3, 5 }
+			};
+
+			var apiMethod = string.Format("/Troubleshooter/Step/{0}", troubleshooterStepRequest.Id);
+			const string parameters = "subject=Subject&contents=Contents&editedstaffid=3&displayorder=4&allowcomments=1&enableticketredirection=0&redirectdepartmentid=3&tickettypeid=1&ticketpriorityid=3&ticketsubject=Ticket Subject&stepstatus=1&parentstepidlist=1,3,5";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePut<TroubleshooterStepCollection>(apiMethod, parameters)).Returns(_responseTroubleshooterStepCollection);
+
+			var troubleshooterStep = _troubleshooterController.UpdateTroubleshooterStep(troubleshooterStepRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePut<TroubleshooterStepCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(troubleshooterStep, Is.EqualTo(_responseTroubleshooterStepCollection.FirstOrDefault()));
 		}
 
 		[TestCase(1)]

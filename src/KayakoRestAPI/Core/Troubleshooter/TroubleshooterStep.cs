@@ -76,7 +76,7 @@ namespace KayakoRestApi.Core.Troubleshooter
 		public int TicketTypeId { get; set; }
 
 		[XmlElement("priorityid")]
-		public int PriorityId { get; set; }
+		public int TicketPriorityId { get; set; }
 
 		[XmlElement("contents")]
 		public string Contents { get; set; }

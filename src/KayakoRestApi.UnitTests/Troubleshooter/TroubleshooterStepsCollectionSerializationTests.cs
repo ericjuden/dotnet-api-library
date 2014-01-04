@@ -43,7 +43,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 							TicketSubject = "",
 							RedirectDepartmentId = 0,
 							TicketTypeId = 0,
-							PriorityId = 0,
+							TicketPriorityId = 0,
 							Contents = "Troubleshooter step contents"
 						},
 					new TroubleshooterStep
@@ -66,7 +66,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 							TicketSubject = "",
 							RedirectDepartmentId = 0,
 							TicketTypeId = 0,
-							PriorityId = 0,
+							TicketPriorityId = 0,
 							Contents = "Troubleshooter step contents"
 						}
 				};

@@ -25,9 +25,9 @@ namespace KayakoRestApi.Controllers
 
 		TroubleshooterStep GetTroubleshooterStep(int troubleshooterStepId);
 
-		//TroubleshooterStep CreateTroubleshooterStep(TroubleshooterCategoryRequest troubleshooterStepRequest);
+		TroubleshooterStep CreateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest);
 
-		//TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest);
+		TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest);
 
 		bool DeleteTroubleshooterStep(int troubleshooterStepId);
 	}
@@ -159,21 +159,92 @@ namespace KayakoRestApi.Controllers
 			return null;
 		}
 
-		//public TroubleshooterStep CreateTroubleshooterStep(TroubleshooterCategoryRequest troubleshooterStepRequest)
-		//{
-			
-		//}
+		public TroubleshooterStep CreateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest)
+		{
+			RequestBodyBuilder parameters = PopulateRequestParameters(troubleshooterStepRequest, RequestTypes.Create);
 
-		//public TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest)
-		//{
-			
-		//}
+			TroubleshooterStepCollection troubleshooterSteps = Connector.ExecutePost<TroubleshooterStepCollection>(TroubleshooterStepBaseUrl, parameters.ToString());
+
+			if (troubleshooterSteps != null && troubleshooterSteps.Count > 0)
+			{
+				return troubleshooterSteps[0];
+			}
+
+			return null;
+		}
+
+		public TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest)
+		{
+			string apiMethod = String.Format("{0}/{1}", TroubleshooterStepBaseUrl, troubleshooterStepRequest.Id);
+			RequestBodyBuilder parameters = PopulateRequestParameters(troubleshooterStepRequest, RequestTypes.Update);
+
+			TroubleshooterStepCollection troubleshooterStep = Connector.ExecutePut<TroubleshooterStepCollection>(apiMethod, parameters.ToString());
+
+			if (troubleshooterStep != null && troubleshooterStep.Count > 0)
+			{
+				return troubleshooterStep[0];
+			}
+
+			return null;
+		}
 
 		public bool DeleteTroubleshooterStep(int troubleshooterStepId)
 		{
 			string apiMethod = string.Format("{0}/{1}", TroubleshooterStepBaseUrl, troubleshooterStepId);
 
 			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private RequestBodyBuilder PopulateRequestParameters(TroubleshooterStepRequest troubleshooterStepRequest, RequestTypes requestType)
+		{
+			troubleshooterStepRequest.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+
+			if (requestType == RequestTypes.Create)
+			{
+				parameters.AppendRequestData("categoryid", EnumUtility.ToApiString(troubleshooterStepRequest.CategoryId));
+			}
+
+			parameters.AppendRequestDataNonEmptyString("subject", troubleshooterStepRequest.Subject);
+			parameters.AppendRequestDataNonEmptyString("contents", troubleshooterStepRequest.Contents);
+
+			parameters.AppendRequestDataNonNegativeInt(requestType == RequestTypes.Create ? "staffid" : "editedstaffid",
+			                                           troubleshooterStepRequest.StaffId);
+
+			if (troubleshooterStepRequest.DisplayOrder.HasValue)
+			{
+				parameters.AppendRequestDataNonNegativeInt("displayorder", troubleshooterStepRequest.DisplayOrder.Value);
+			}
+
+			parameters.AppendRequestDataBool("allowcomments", troubleshooterStepRequest.AllowComments);
+			parameters.AppendRequestDataBool("enableticketredirection", troubleshooterStepRequest.EnableTicketRedirection);
+
+			if (troubleshooterStepRequest.RedirectDepartmentId.HasValue)
+			{
+				parameters.AppendRequestDataNonNegativeInt("redirectdepartmentid", troubleshooterStepRequest.RedirectDepartmentId.Value);
+			}
+
+			if (troubleshooterStepRequest.TicketTypeId.HasValue)
+			{
+				parameters.AppendRequestDataNonNegativeInt("tickettypeid", troubleshooterStepRequest.TicketTypeId.Value);
+			}
+
+			if(troubleshooterStepRequest.TicketPriorityId.HasValue)
+			{
+				parameters.AppendRequestDataNonNegativeInt("ticketpriorityid", troubleshooterStepRequest.TicketPriorityId.Value);
+			}
+
+			parameters.AppendRequestDataNonEmptyString("ticketsubject", troubleshooterStepRequest.TicketSubject);
+			
+			if (troubleshooterStepRequest.StepStatus.HasValue)
+			{
+				parameters.AppendRequestData("stepstatus", EnumUtility.ToApiString(troubleshooterStepRequest.StepStatus.Value));
+			}
+
+			parameters.AppendRequestDataArrayCommaSeparated("parentstepidlist", troubleshooterStepRequest.ParentStepIdList);
+
+			return parameters;
 		}
 
 		#endregion
