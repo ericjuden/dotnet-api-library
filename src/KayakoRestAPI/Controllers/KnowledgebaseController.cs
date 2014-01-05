@@ -144,7 +144,7 @@ namespace KayakoRestApi.Controllers
 			parameters.AppendRequestDataBool("staffvisibilitycustom", knowledgebaseCategoryRequest.StaffVisibilityCustom);
 			parameters.AppendRequestDataArrayCommaSeparated("staffgroupidlist", knowledgebaseCategoryRequest.StaffGroupIdList);
 
-			if (knowledgebaseCategoryRequest.StaffId.HasValue)
+			if (requestType == RequestTypes.Create && knowledgebaseCategoryRequest.StaffId.HasValue)
 			{
 				parameters.AppendRequestDataNonNegativeInt("staffid", knowledgebaseCategoryRequest.StaffId.Value);
 			}
