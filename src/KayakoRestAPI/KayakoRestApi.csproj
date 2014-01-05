@@ -91,6 +91,9 @@
     <Compile Include="Core\News\NewsItemRequest.cs" />
     <Compile Include="Core\News\NewsSubscriberRequest.cs" />
     <Compile Include="Core\Test\TestData.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterAttachment.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterAttachmentCollection.cs" />
+    <Compile Include="Core\Troubleshooter\TroubleshooterAttachmentRequest.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterComment.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterCommentCollection.cs" />
     <Compile Include="Core\Troubleshooter\TroubleshooterCommentRequest.cs" />

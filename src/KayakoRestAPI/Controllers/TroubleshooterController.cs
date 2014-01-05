@@ -38,6 +38,14 @@ namespace KayakoRestApi.Controllers
 		TroubleshooterComment CreateTroubleshooterComment(TroubleshooterCommentRequest troubleshooterCommentRequest);
 
 		bool DeleteTroubleshooterComment(int troubleshooterCommentId);
+
+		TroubleshooterAttachmentCollection GetTroubleshooterAttachments(int troubleshooterStepId);
+
+		TroubleshooterAttachment GetTroubleshooterAttachment(int troubleshooterStepId, int troubleshooterAttachmentId);
+
+		TroubleshooterAttachment CreateTroubleshooterAttachment(TroubleshooterAttachmentRequest troubleshooterAttachmentRequest);
+
+		bool DeleteTroubleshooterAttachment(int troubleshooterStepId, int troubleshooterAttachmentId);
 	}
 
 	public sealed class TroubleshooterController : BaseController, ITroubleshooterController
@@ -60,6 +68,7 @@ namespace KayakoRestApi.Controllers
 		private const string TroubleshooterCategoryBaseUrl = "/Troubleshooter/Category";
 		private const string TroubleshooterStepBaseUrl = "/Troubleshooter/Step";
 		private const string TroubleshooterCommentBaseUrl = "/Troubleshooter/Comment";
+		private const string TroubleshooterAttachmentBaseUrl = "/Troubleshooter/Attachment";
 
 		#region Troubleshooter Category Methods
 
@@ -314,6 +323,64 @@ namespace KayakoRestApi.Controllers
 			parameters.AppendRequestDataNonEmptyString("fullname", troubleshooterCommentRequest.FullName);
 			parameters.AppendRequestDataNonEmptyString("email", troubleshooterCommentRequest.Email);
 			parameters.AppendRequestDataNonNegativeInt("parentcommentid", troubleshooterCommentRequest.ParentCommentId);
+
+			return parameters;
+		}
+
+		#endregion
+
+		#region Troubleshooter Attachment Methods
+
+		public TroubleshooterAttachmentCollection GetTroubleshooterAttachments(int troubleshooterStepId)
+		{
+			string apiMethod = string.Format("{0}/ListAll/{1}", TroubleshooterAttachmentBaseUrl, troubleshooterStepId);
+
+			return Connector.ExecuteGet<TroubleshooterAttachmentCollection>(apiMethod);
+		}
+
+		public TroubleshooterAttachment GetTroubleshooterAttachment(int troubleshooterStepId, int troubleshooterAttachmentId)
+		{
+			string apiMethod = String.Format("{0}/{1}/{2}", TroubleshooterAttachmentBaseUrl, troubleshooterStepId, troubleshooterAttachmentId);
+
+			TroubleshooterAttachmentCollection troubleshooterAttachments = Connector.ExecuteGet<TroubleshooterAttachmentCollection>(apiMethod);
+
+			if (troubleshooterAttachments != null && troubleshooterAttachments.Count > 0)
+			{
+				return troubleshooterAttachments[0];
+			}
+
+			return null;
+		}
+
+		public TroubleshooterAttachment CreateTroubleshooterAttachment(TroubleshooterAttachmentRequest troubleshooterAttachmentRequest)
+		{
+			RequestBodyBuilder parameters = PopulateRequestParameters(troubleshooterAttachmentRequest, RequestTypes.Create);
+
+			TroubleshooterAttachmentCollection troubleshooterAttachments = Connector.ExecutePost<TroubleshooterAttachmentCollection>(TroubleshooterAttachmentBaseUrl, parameters.ToString());
+
+			if (troubleshooterAttachments != null && troubleshooterAttachments.Count > 0)
+			{
+				return troubleshooterAttachments[0];
+			}
+
+			return null;
+		}
+
+		public bool DeleteTroubleshooterAttachment(int troubleshooterStepId, int troubleshooterAttachmentId)
+		{
+			string apiMethod = String.Format("{0}/{1}/{2}", TroubleshooterAttachmentBaseUrl, troubleshooterStepId, troubleshooterAttachmentId);
+
+			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private RequestBodyBuilder PopulateRequestParameters(TroubleshooterAttachmentRequest troubleshooterAttachmentRequest, RequestTypes requestType)
+		{
+			troubleshooterAttachmentRequest.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestDataNonNegativeInt("troubleshooterstepid", troubleshooterAttachmentRequest.TroubleshooterStepId);
+			parameters.AppendRequestDataNonEmptyString("filename", troubleshooterAttachmentRequest.FileName);
+			parameters.AppendRequestDataNonEmptyString("contents", troubleshooterAttachmentRequest.Contents);
 
 			return parameters;
 		}

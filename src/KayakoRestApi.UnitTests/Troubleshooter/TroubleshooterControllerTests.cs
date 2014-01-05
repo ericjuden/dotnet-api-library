@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Text;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.Troubleshooter;
@@ -16,6 +18,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 		private TroubleshooterCategoryCollection _responseTroubleshooterCategoryCollection;
 		private TroubleshooterStepCollection _responseTroubleshooterStepCollection;
 		private TroubleshooterCommentCollection _responseTroubleshooterCommentCollection;
+		private TroubleshooterAttachmentCollection _responseTroubleshooterAttachmentCollection;
 
 		[SetUp]
 		public void Setup()
@@ -39,6 +42,12 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 				{
 					new TroubleshooterComment(),
 					new TroubleshooterComment()
+				};
+
+			_responseTroubleshooterAttachmentCollection = new TroubleshooterAttachmentCollection
+				{
+					new TroubleshooterAttachment(),
+					new TroubleshooterAttachment()
 				};
 		}
 
@@ -317,6 +326,78 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
 
 			var deleteSuccess = _troubleshooterController.DeleteTroubleshooterComment(troubleshooterCommentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
+			Assert.IsTrue(deleteSuccess);
+		}
+
+		#endregion
+
+		#region Troubleshooter Attachment Methods
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetTroubleshooterAttachments(int troubleshooterStepId)
+		{
+			string apiMethod = string.Format("/Troubleshooter/Attachment/ListAll/{0}", troubleshooterStepId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TroubleshooterAttachmentCollection>(apiMethod)).Returns(_responseTroubleshooterAttachmentCollection);
+
+			var troubleshooterAttachments = _troubleshooterController.GetTroubleshooterAttachments(troubleshooterStepId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TroubleshooterAttachmentCollection>(apiMethod), Times.Once());
+
+			Assert.That(troubleshooterAttachments, Is.EqualTo(_responseTroubleshooterAttachmentCollection));
+		}
+
+		[TestCase(1, 1)]
+		[TestCase(2, 3)]
+		[TestCase(4, 6)]
+		public void GetTroubleshooterAttachment(int troubleshooterStepId, int troubleshooterAttachmentId)
+		{
+			string apiMethod = string.Format("/Troubleshooter/Attachment/{0}/{1}", troubleshooterStepId, troubleshooterAttachmentId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TroubleshooterAttachmentCollection>(apiMethod)).Returns(_responseTroubleshooterAttachmentCollection);
+
+			var troubleshooterAttachment = _troubleshooterController.GetTroubleshooterAttachment(troubleshooterStepId, troubleshooterAttachmentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TroubleshooterAttachmentCollection>(apiMethod), Times.Once());
+
+			Assert.That(troubleshooterAttachment, Is.EqualTo(_responseTroubleshooterAttachmentCollection.FirstOrDefault()));
+		}
+
+		[Test]
+		public void CreateTroubleshooterAttachment()
+		{
+			var contents = Convert.ToBase64String(Encoding.UTF8.GetBytes("This is the file contents"));
+
+			var troubleshooterAttachmentRequest = new TroubleshooterAttachmentRequest
+			{
+				TroubleshooterStepId = 1,
+				FileName = "test.txt",
+				Contents = contents
+			};
+
+			const string apiMethod = "/Troubleshooter/Attachment";
+			string parameters = string.Format("troubleshooterstepid=1&filename=test.txt&contents={0}", contents);
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<TroubleshooterAttachmentCollection>(apiMethod, parameters)).Returns(_responseTroubleshooterAttachmentCollection);
+
+			var troubleshooterAttachment = _troubleshooterController.CreateTroubleshooterAttachment(troubleshooterAttachmentRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<TroubleshooterAttachmentCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(troubleshooterAttachment, Is.EqualTo(_responseTroubleshooterAttachmentCollection.FirstOrDefault()));
+		}
+
+		[TestCase(1, 1)]
+		[TestCase(2, 3)]
+		[TestCase(4, 5)]
+		public void DeleteTroubleshooterAttachment(int troubleshooterStepId, int troubleshooterAttachmentId)
+		{
+			string apiMethod = string.Format("/Troubleshooter/Attachment/{0}/{1}", troubleshooterStepId, troubleshooterAttachmentId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
+
+			var deleteSuccess = _troubleshooterController.DeleteTroubleshooterAttachment(troubleshooterStepId, troubleshooterAttachmentId);
 
 			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
 			Assert.IsTrue(deleteSuccess);

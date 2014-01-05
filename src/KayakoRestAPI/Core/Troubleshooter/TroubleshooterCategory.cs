@@ -4,7 +4,7 @@ using KayakoRestApi.Core.Constants;
 namespace KayakoRestApi.Core.Troubleshooter
 {
 	/// <summary>
-	/// Represents a news category
+	/// Represents a troubleshooter category
 	/// <remarks>
 	/// see: http://wiki.kayako.com/display/DEV/REST+-+TroubleshooterCategory#REST-TroubleshooterCategory-Response
 	/// </remarks>

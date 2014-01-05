@@ -64,6 +64,7 @@
     <Compile Include="News\NewsCategoryCollectionSerializationTests.cs" />
     <Compile Include="News\NewsControllerTests.cs" />
     <Compile Include="News\NewsSubscriberCollectionSerializationTests.cs" />
+    <Compile Include="Troubleshooter\TroubleshooterAttachmentCollectionSerializationTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterCategoryCollectionSerializationTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterCommentSerializationTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterControllerTests.cs" />
@@ -83,6 +84,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\TroubleshooterAttachmentCollection.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\KnowledgebaseCategoryCollection.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

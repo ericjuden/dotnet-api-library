@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<troubleshooterattachments>
+  <troubleshooterattachment>
+    <id><![CDATA[24]]></id>
+    <troubleshooterstepid><![CDATA[20]]></troubleshooterstepid>
+    <filename><![CDATA[file.xml]]></filename>
+    <filesize><![CDATA[45380]]></filesize>
+    <filetype><![CDATA[text/xml]]></filetype>
+    <dateline><![CDATA[1341315552]]></dateline>
+    <contents><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK==]]></contents>
+  </troubleshooterattachment>
+  <troubleshooterattachment>
+    <id><![CDATA[26]]></id>
+    <troubleshooterstepid><![CDATA[20]]></troubleshooterstepid>
+    <filename><![CDATA[file1.rar]]></filename>
+    <filesize><![CDATA[3448]]></filesize>
+    <filetype><![CDATA[application/rar]]></filetype>
+    <dateline><![CDATA[1341315640]]></dateline>
+    <contents><![CDATA[iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK==]]></contents>
+  </troubleshooterattachment>
+</troubleshooterattachments>
