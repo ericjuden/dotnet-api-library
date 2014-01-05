@@ -1,6 +1,5 @@
 ﻿using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.Knowledgebase;
-using KayakoRestApi.Core.Troubleshooter;
 using KayakoRestApi.UnitTests.Utilities;
 using NUnit.Framework;
 
@@ -21,7 +20,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 							StaffId = 1,
 							Title = "category title",
 							TotalArticles = 1,
-							CategoryType = KnowledgebaseCategoryType.Private,
+							CategoryType = KnowledgebaseCategoryType.Inherit,
 							DisplayOrder = 6,
 							AllowComments = true,
 							UserVisibilityCustom = false,
@@ -38,7 +37,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 							StaffId = 1,
 							Title = "The next one",
 							TotalArticles = 6,
-							CategoryType = KnowledgebaseCategoryType.Private,
+							CategoryType = KnowledgebaseCategoryType.Inherit,
 							DisplayOrder = 7,
 							AllowComments = true,
 							UserVisibilityCustom = false,

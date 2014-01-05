@@ -2,18 +2,21 @@
 
 namespace KayakoRestApi.Core.Constants
 {
-	public enum KnowledgebaseCategoryType
+	public enum KnowledgebaseCategoryArticleSortOrder
 	{
 		[XmlEnum(Name = "1")]
-		Global,
+		Inherit,
 
 		[XmlEnum(Name = "2")]
-		Public,
+		SortTitle,
 
 		[XmlEnum(Name = "3")]
-		Private,
+		SortRating,
 
 		[XmlEnum(Name = "4")]
-		Inherit
+		SortCreationDate,
+
+		[XmlEnum(Name = "5")]
+		SortDisplayOrder
 	}
 }
