@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<kbcategories>
+  <kbcategory>
+    <id><![CDATA[70]]></id>
+    <parentkbcategoryid><![CDATA[0]]></parentkbcategoryid>
+    <staffid><![CDATA[1]]></staffid>
+    <title><![CDATA[category title]]></title>
+    <totalarticles><![CDATA[1]]></totalarticles>
+    <categorytype><![CDATA[4]]></categorytype>
+    <displayorder><![CDATA[6]]></displayorder>
+    <allowcomments><![CDATA[1]]></allowcomments>
+    <uservisibilitycustom><![CDATA[0]]></uservisibilitycustom>
+    <usergroupidlist>
+      <usergroupid><![CDATA[1]]></usergroupid>
+    </usergroupidlist>
+    <staffvisibilitycustom><![CDATA[0]]></staffvisibilitycustom>
+    <staffgroupidlist>
+      <staffgroupid><![CDATA[1]]></staffgroupid>
+    </staffgroupidlist>
+    <allowrating><![CDATA[1]]></allowrating>
+    <ispublished><![CDATA[1]]></ispublished>
+  </kbcategory>
+  <kbcategory>
+    <id><![CDATA[79]]></id>
+    <parentkbcategoryid><![CDATA[0]]></parentkbcategoryid>
+    <staffid><![CDATA[1]]></staffid>
+    <title><![CDATA[The next one]]></title>
+    <totalarticles><![CDATA[6]]></totalarticles>
+    <categorytype><![CDATA[4]]></categorytype>
+    <displayorder><![CDATA[7]]></displayorder>
+    <allowcomments><![CDATA[1]]></allowcomments>
+    <uservisibilitycustom><![CDATA[0]]></uservisibilitycustom>
+    <usergroupidlist>
+      <usergroupid><![CDATA[1]]></usergroupid>
+    </usergroupidlist>
+    <staffvisibilitycustom><![CDATA[0]]></staffvisibilitycustom>
+    <staffgroupidlist>
+      <staffgroupid><![CDATA[1]]></staffgroupid>
+    </staffgroupidlist>
+    <allowrating><![CDATA[1]]></allowrating>
+    <ispublished><![CDATA[1]]></ispublished>
+  </kbcategory>
+</kbcategories>
