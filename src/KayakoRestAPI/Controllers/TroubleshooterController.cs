@@ -30,6 +30,14 @@ namespace KayakoRestApi.Controllers
 		TroubleshooterStep UpdateTroubleshooterStep(TroubleshooterStepRequest troubleshooterStepRequest);
 
 		bool DeleteTroubleshooterStep(int troubleshooterStepId);
+
+		TroubleshooterCommentCollection GetTroubleshooterComments(int troubleshooterStepId);
+
+		TroubleshooterComment GetTroubleshooterComment(int troubleshooterCommentId);
+
+		TroubleshooterComment CreateTroubleshooterComment(TroubleshooterCommentRequest troubleshooterCommentRequest);
+
+		bool DeleteTroubleshooterComment(int troubleshooterCommentId);
 	}
 
 	public sealed class TroubleshooterController : BaseController, ITroubleshooterController
@@ -51,6 +59,7 @@ namespace KayakoRestApi.Controllers
 
 		private const string TroubleshooterCategoryBaseUrl = "/Troubleshooter/Category";
 		private const string TroubleshooterStepBaseUrl = "/Troubleshooter/Step";
+		private const string TroubleshooterCommentBaseUrl = "/Troubleshooter/Comment";
 
 		#region Troubleshooter Category Methods
 
@@ -243,6 +252,68 @@ namespace KayakoRestApi.Controllers
 			}
 
 			parameters.AppendRequestDataArrayCommaSeparated("parentstepidlist", troubleshooterStepRequest.ParentStepIdList);
+
+			return parameters;
+		}
+
+		#endregion
+
+		#region Troubleshooter Comment Methods
+
+		public TroubleshooterCommentCollection GetTroubleshooterComments(int troubleshooterStepId)
+		{
+			string apiMethod = string.Format("{0}/ListAll/{1}", TroubleshooterCommentBaseUrl, troubleshooterStepId);
+
+			return Connector.ExecuteGet<TroubleshooterCommentCollection>(apiMethod);
+		}
+
+		public TroubleshooterComment GetTroubleshooterComment(int troubleshooterCommentId)
+		{
+			string apiMethod = String.Format("{0}/{1}", TroubleshooterCommentBaseUrl, troubleshooterCommentId);
+
+			TroubleshooterCommentCollection troubleshooterComments = Connector.ExecuteGet<TroubleshooterCommentCollection>(apiMethod);
+
+			if (troubleshooterComments != null && troubleshooterComments.Count > 0)
+			{
+				return troubleshooterComments[0];
+			}
+
+			return null;
+		}
+
+		public TroubleshooterComment CreateTroubleshooterComment(TroubleshooterCommentRequest troubleshooterCommentRequest)
+		{
+			RequestBodyBuilder parameters = PopulateRequestParameters(troubleshooterCommentRequest, RequestTypes.Create);
+
+			TroubleshooterCommentCollection troubleshooterComments = Connector.ExecutePost<TroubleshooterCommentCollection>(TroubleshooterCommentBaseUrl, parameters.ToString());
+
+			if (troubleshooterComments != null && troubleshooterComments.Count > 0)
+			{
+				return troubleshooterComments[0];
+			}
+
+			return null;
+		}
+
+		public bool DeleteTroubleshooterComment(int troubleshooterCommentId)
+		{
+			string apiMethod = string.Format("{0}/{1}", TroubleshooterCommentBaseUrl, troubleshooterCommentId);
+
+			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private RequestBodyBuilder PopulateRequestParameters(TroubleshooterCommentRequest troubleshooterCommentRequest, RequestTypes requestType)
+		{
+			troubleshooterCommentRequest.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestDataNonNegativeInt("troubleshooterstepid", troubleshooterCommentRequest.TroubleshooterStepId);
+			parameters.AppendRequestDataNonEmptyString("contents", troubleshooterCommentRequest.Contents);
+			parameters.AppendRequestData("creatortype", EnumUtility.ToApiString(troubleshooterCommentRequest.CreatorType));
+			parameters.AppendRequestDataNonNegativeInt("creatorid", troubleshooterCommentRequest.CreatorId);
+			parameters.AppendRequestDataNonEmptyString("fullname", troubleshooterCommentRequest.FullName);
+			parameters.AppendRequestDataNonEmptyString("email", troubleshooterCommentRequest.Email);
+			parameters.AppendRequestDataNonNegativeInt("parentcommentid", troubleshooterCommentRequest.ParentCommentId);
 
 			return parameters;
 		}

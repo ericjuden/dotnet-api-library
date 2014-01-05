@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<troubleshooterstepcomments>
+  <troubleshooterstepcomment>
+    <id><![CDATA[325]]></id>
+    <troubleshooterstepid><![CDATA[20]]></troubleshooterstepid>
+    <creatortype><![CDATA[1]]></creatortype>
+    <creatorid><![CDATA[1]]></creatorid>
+    <fullname><![CDATA[Jon doe]]></fullname>
+    <email />
+    <ipaddress><![CDATA[127.0.0.1]]></ipaddress>
+    <dateline><![CDATA[1341311488]]></dateline>
+    <parentcommentid><![CDATA[0]]></parentcommentid>
+    <commentstatus><![CDATA[3]]></commentstatus>
+    <useragent />
+    <referrer />
+    <parenturl><![CDATA[]]></parenturl>
+    <contents><![CDATA[Contents]]></contents>
+    </troubleshooterstepcomment>
+  <troubleshooterstepcomment>
+    <id><![CDATA[326]]></id>
+    <troubleshooterstepid><![CDATA[20]]></troubleshooterstepid>
+    <creatortype><![CDATA[2]]></creatortype>
+    <creatorid><![CDATA[1]]></creatorid>
+    <fullname><![CDATA[Mark]]></fullname>
+    <email />
+    <ipaddress><![CDATA[127.0.0.1]]></ipaddress>
+    <dateline><![CDATA[1341311488]]></dateline>
+    <parentcommentid><![CDATA[0]]></parentcommentid>
+    <commentstatus><![CDATA[1]]></commentstatus>
+    <useragent />
+    <referrer />
+    <parenturl><![CDATA[]]></parenturl>
+    <contents><![CDATA[Contents of a comment]]></contents>
+  </troubleshooterstepcomment>
+</troubleshooterstepcomments>

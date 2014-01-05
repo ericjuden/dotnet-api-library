@@ -55,6 +55,7 @@
     <Compile Include="TicketNoteTests.cs" />
     <Compile Include="TicketPostTests.cs" />
     <Compile Include="TicketSearchTests.cs" />
+    <Compile Include="Troubleshooter\TroubleshooterCommentTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterStepTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterCategoryTests.cs" />
     <Compile Include="UserTests.cs" />

@@ -15,6 +15,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 		private Mock<IKayakoApiRequest> _kayakoApiRequest;
 		private TroubleshooterCategoryCollection _responseTroubleshooterCategoryCollection;
 		private TroubleshooterStepCollection _responseTroubleshooterStepCollection;
+		private TroubleshooterCommentCollection _responseTroubleshooterCommentCollection;
 
 		[SetUp]
 		public void Setup()
@@ -32,6 +33,12 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 				{
 					new TroubleshooterStep(),
 					new TroubleshooterStep()
+				};
+
+			_responseTroubleshooterCommentCollection = new TroubleshooterCommentCollection
+				{
+					new TroubleshooterComment(),
+					new TroubleshooterComment()
 				};
 		}
 
@@ -236,6 +243,80 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
 
 			var deleteSuccess = _troubleshooterController.DeleteTroubleshooterStep(troubleshooterStepId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
+			Assert.IsTrue(deleteSuccess);
+		}
+
+		#endregion
+
+		#region Troubleshooter Comment Methods
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetTroubleshooterComments(int troubleshooterStepId)
+		{
+			string apiMethod = string.Format("/Troubleshooter/Comment/ListAll/{0}", troubleshooterStepId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TroubleshooterCommentCollection>(apiMethod)).Returns(_responseTroubleshooterCommentCollection);
+
+			var troubleshooterComments = _troubleshooterController.GetTroubleshooterComments(troubleshooterStepId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TroubleshooterCommentCollection>(apiMethod), Times.Once());
+
+			Assert.That(troubleshooterComments, Is.EqualTo(_responseTroubleshooterCommentCollection));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetTroubleshooterComment(int troubleshooterCommentId)
+		{
+			var apiMethod = string.Format("/Troubleshooter/Comment/{0}", troubleshooterCommentId);
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TroubleshooterCommentCollection>(apiMethod)).Returns(_responseTroubleshooterCommentCollection);
+
+			var troubleshooterComment = _troubleshooterController.GetTroubleshooterComment(troubleshooterCommentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TroubleshooterCommentCollection>(apiMethod), Times.Once());
+
+			Assert.That(troubleshooterComment, Is.EqualTo(_responseTroubleshooterCommentCollection.First()));
+		}
+
+		[Test]
+		public void CreateTroubleshooterComment()
+		{
+			var troubleshooterCommentRequest = new TroubleshooterCommentRequest
+			{
+				TroubleshooterStepId = 1,
+				Contents = "Contents",
+				CreatorType = TroubleshooterCommentCreatorType.User,
+				CreatorId = 1,
+				FullName = "FullName",
+				Email = "email@domain.com",
+				ParentCommentId = 3
+			};
+
+			const string apiMethod = "/Troubleshooter/Comment";
+			const string parameters = "troubleshooterstepid=1&contents=Contents&creatortype=2&creatorid=1&fullname=FullName&email=email@domain.com&parentcommentid=3";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<TroubleshooterCommentCollection>(apiMethod, parameters)).Returns(_responseTroubleshooterCommentCollection);
+
+			var troubleshooterComment = _troubleshooterController.CreateTroubleshooterComment(troubleshooterCommentRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<TroubleshooterCommentCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(troubleshooterComment, Is.EqualTo(_responseTroubleshooterCommentCollection.FirstOrDefault()));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void DeleteTroubleshooterComment(int troubleshooterCommentId)
+		{
+			string apiMethod = string.Format("/Troubleshooter/Comment/{0}", troubleshooterCommentId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(true);
+
+			var deleteSuccess = _troubleshooterController.DeleteTroubleshooterComment(troubleshooterCommentId);
 
 			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
 			Assert.IsTrue(deleteSuccess);

@@ -63,6 +63,7 @@
     <Compile Include="News\NewsControllerTests.cs" />
     <Compile Include="News\NewsSubscriberCollectionSerializationTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterCategoryCollectionSerializationTests.cs" />
+    <Compile Include="Troubleshooter\TroubleshooterCommentSerializationTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterControllerTests.cs" />
     <Compile Include="Troubleshooter\TroubleshooterStepsCollectionSerializationTests.cs" />
     <Compile Include="Utilities\AssertUtility.cs" />
@@ -80,6 +81,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\TroubleshooterCommentCollection.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\TroubleshooterStepsCollection.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

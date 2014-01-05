@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace KayakoRestApi.Core.Troubleshooter
 {
 	/// <summary>
-	/// Represents a list of news categories within the helpdesk
+	/// Represents a list of troubleshooter categories within the helpdesk
 	/// <remarks>
 	/// see: http://wiki.kayako.com/display/DEV/REST+-+TroubleshooterCategory#REST-TroubleshooterCategory-Response
 	/// </remarks>
