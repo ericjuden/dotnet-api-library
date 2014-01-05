@@ -96,9 +96,13 @@ namespace KayakoRestApi.Core.Tickets
 		public int? TemplateGroupId { get; set; }
 
 		[OptionalField]
+		[ResponseProperty("TemplateGroupName")]
+		public string TemplateGroupName { get; set; }
+
+        [OptionalField]
 		public bool? IgnoreAutoResponder { get; set; }
 
-        /// <summary>
+		/// <summary>
         /// The Id of the creation type
         /// </summary>
         [OptionalField]

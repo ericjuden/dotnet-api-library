@@ -138,6 +138,10 @@ namespace KayakoRestApi.Controllers
 		{
 		}
 
+		internal TicketController(IKayakoApiRequest kayakoApiRequest) : base(kayakoApiRequest)
+		{
+		}
+
         #region Ticket Api Methods
 
         /// <summary>
@@ -246,7 +250,11 @@ namespace KayakoRestApi.Controllers
 
 			if (ticketRequest.TemplateGroupId != null)
 			{
-				parameters.AppendRequestData("templategroupid", ticketRequest.TemplateGroupId);
+				parameters.AppendRequestData("templategroup", ticketRequest.TemplateGroupId);
+			}
+			else if (!string.IsNullOrEmpty(ticketRequest.TemplateGroupName))
+			{
+				parameters.AppendRequestData("templategroup", ticketRequest.TemplateGroupName);
 			}
 
 			if (ticketRequest.IgnoreAutoResponder != null)
@@ -315,15 +323,19 @@ namespace KayakoRestApi.Controllers
 				parameters.AppendRequestData("ownerstaffid", request.OwnerStaffId);
             }
 
-			if (request.TemplateGroupId != null)
-			{
-				parameters.AppendRequestData("templategroupid", request.TemplateGroupId);
-			}
-
 			if (request.UserId != null)
             {
 				parameters.AppendRequestData("userid", request.UserId);
             }
+
+			if (request.TemplateGroupId != null)
+			{
+				parameters.AppendRequestData("templategroup", request.TemplateGroupId);
+			}
+			else if(!string.IsNullOrEmpty(request.TemplateGroupName))
+			{
+				parameters.AppendRequestData("templategroup", request.TemplateGroupName);
+			}
 
 			string apiMethod = String.Format("/Tickets/Ticket/{0}", request.Id);
 
