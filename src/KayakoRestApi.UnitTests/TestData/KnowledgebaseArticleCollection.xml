@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<kbarticles>
+  <kbarticle>
+    <kbarticleid><![CDATA[1]]></kbarticleid>
+    <contents><![CDATA[Contents]]></contents>
+    <contentstext><![CDATA[Contents]]></contentstext>
+    <categories>
+      <categoryid><![CDATA[0]]></categoryid>
+    </categories>
+    <creator><![CDATA[2]]></creator>
+    <creatorid><![CDATA[1]]></creatorid>
+    <author><![CDATA[Simaranjit Singh]]></author>
+    <email><![CDATA[email@domain.com]]></email>
+    <subject><![CDATA[Subject]]></subject>
+    <isedited><![CDATA[1]]></isedited>
+    <editeddateline><![CDATA[1336757517]]></editeddateline>
+    <editedstaffid><![CDATA[1]]></editedstaffid>
+    <views><![CDATA[24]]></views>
+    <isfeatured><![CDATA[0]]></isfeatured>
+    <allowcomments><![CDATA[1]]></allowcomments>
+    <totalcomments><![CDATA[0]]></totalcomments>
+    <hasattachments><![CDATA[1]]></hasattachments>
+    <attachments>
+      <attachment>
+        <id><![CDATA[4]]></id>
+        <filename><![CDATA[photo.jpg]]></filename>
+        <filesize><![CDATA[88.42 KB]]></filesize>
+        <link><![CDATA[]]></link>
+      </attachment>
+      <attachment>
+        <id><![CDATA[5]]></id>
+        <filename><![CDATA[cap_ture1.png]]></filename>
+        <filesize><![CDATA[8.99 KB]]></filesize>
+        <link><![CDATA[]]></link>
+      </attachment>
+      <attachment>
+        <id><![CDATA[20]]></id>
+        <filename><![CDATA[abcde.txt]]></filename>
+        <filesize><![CDATA[0.00 KB]]></filesize>
+        <link><![CDATA[]]></link>
+      </attachment>
+    </attachments>
+    <dateline><![CDATA[1335437662]]></dateline>
+    <articlestatus><![CDATA[1]]></articlestatus>
+    <articlerating><![CDATA[0]]></articlerating>
+    <ratinghits><![CDATA[0]]></ratinghits>
+    <ratingcount><![CDATA[0]]></ratingcount>
+  </kbarticle>
+</kbarticles>

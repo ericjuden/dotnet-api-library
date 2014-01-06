@@ -62,6 +62,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\TroubleshooterController.cs" />
     <Compile Include="Core\Constants\ApiBaseMethods.cs" />
+    <Compile Include="Core\Constants\KnowledgebaseArticleStatus.cs" />
     <Compile Include="Core\Constants\KnowledgebaseCategoryArticleSortOrder.cs" />
     <Compile Include="Core\Constants\KnowledgebaseCategoryType.cs" />
     <Compile Include="Core\Constants\TroubleshooterCommentCreatorType.cs" />
@@ -78,6 +79,10 @@
     <Compile Include="Core\CustomFields\CustomField.cs" />
     <Compile Include="Core\CustomFields\CustomFieldCollection.cs" />
     <Compile Include="Controllers\CoreController.cs" />
+    <Compile Include="Core\Knowledgebase\KnowledgebaseArticle.cs" />
+    <Compile Include="Core\Knowledgebase\KnowledgebaseArticleAttachment.cs" />
+    <Compile Include="Core\Knowledgebase\KnowledgebaseArticleCollection.cs" />
+    <Compile Include="Core\Knowledgebase\KnowledgebaseArticleRequest.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCategory.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCategoryCollection.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCategoryRequest.cs" />

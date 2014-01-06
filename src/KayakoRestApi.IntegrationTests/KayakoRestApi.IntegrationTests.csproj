@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CoreTests.cs" />
     <Compile Include="CustomFieldTests.cs" />
+    <Compile Include="Knowledgebase\KnowledgebaseArticleTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseCategoryTests.cs" />
     <Compile Include="News\NewsItemCommentTests.cs" />
     <Compile Include="News\NewsCategoryTests.cs" />

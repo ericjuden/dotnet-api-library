@@ -57,6 +57,7 @@
     <Compile Include="Departments\DepartmentControllerTests.cs" />
     <Compile Include="Departments\DepartmentCollectionSerializationTests.cs" />
     <Compile Include="Departments\DepartmentRequestTests.cs" />
+    <Compile Include="Knowledgebase\KnowledgebaseArticleCollectionSerializationTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseCategoryCollectionSerializationTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseControllerTests.cs" />
     <Compile Include="Tickets\TicketControllerTests.cs" />
@@ -85,6 +86,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\KnowledgebaseArticleCollection.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\TroubleshooterAttachmentCollection.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
