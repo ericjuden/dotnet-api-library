@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -22,9 +23,25 @@ namespace KayakoTestApplication
         {
 			KayakoClient client = new KayakoClient(Api_KEY, SECRET_KEY, Api_URL, ApiRequestType.Url);
 
-			string getTest = client.Core.GetTest(1);
+	        var tickets = client.Tickets.GetTickets(new[] {1, 2, 3, 4, 5, 6}, -1, -1);
 
-			OutputData<string>("Get Test: ", getTest);
+			Console.WriteLine(string.Join(",", tickets.Select(t => t.Id.ToString()).ToArray()));
+
+			tickets = client.Tickets.GetTickets(new[] { 1, 2, 3, 4, 5, 6 }, 4, -1);
+
+			Console.WriteLine(string.Join(",", tickets.Select(t => t.Id.ToString()).ToArray()));
+
+			tickets = client.Tickets.GetTickets(new[] { 1, 2, 3, 4, 5, 6 }, 4, 0);
+
+			Console.WriteLine(string.Join(",", tickets.Select(t => t.Id.ToString()).ToArray()));
+
+			tickets = client.Tickets.GetTickets(new[] { 1, 2, 3, 4, 5, 6 }, -1, 4);
+
+			Console.WriteLine(string.Join(",", tickets.Select(t => t.Id.ToString()).ToArray()));
+
+			tickets = client.Tickets.GetTickets(new[] { 1, 2, 3, 4, 5, 6 }, 0, 4);
+
+			Console.WriteLine(string.Join(",", tickets.Select(t => t.Id.ToString()).ToArray()));
 
             Console.ReadLine();
         }

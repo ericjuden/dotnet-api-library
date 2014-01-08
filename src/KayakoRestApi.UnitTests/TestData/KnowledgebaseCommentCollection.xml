@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<kbarticlecomments>
+  <kbarticlecomment>
+    <id><![CDATA[17]]></id>
+    <kbarticleid><![CDATA[1]]></kbarticleid>
+    <creatortype><![CDATA[2]]></creatortype>
+    <creatorid><![CDATA[1]]></creatorid>
+    <fullname><![CDATA[Simaranjit Singh]]></fullname>
+    <email />
+    <ipaddress><![CDATA[127.0.0.1]]></ipaddress>
+    <dateline><![CDATA[1339786410]]></dateline>
+    <parentcommentid><![CDATA[0]]></parentcommentid>
+    <commentstatus><![CDATA[2]]></commentstatus>
+    <useragent />
+    <referrer><![CDATA[]]></referrer>
+    <parenturl><![CDATA[]]></parenturl>
+    <contents><![CDATA[Comment1]]></contents>
+  </kbarticlecomment>
+  <kbarticlecomment>
+    <id><![CDATA[19]]></id>
+    <kbarticleid><![CDATA[1]]></kbarticleid>
+    <creatortype><![CDATA[2]]></creatortype>
+    <creatorid><![CDATA[0]]></creatorid>
+    <fullname><![CDATA[John]]></fullname>
+    <email><![CDATA[john@domain.com]]></email>
+    <ipaddress><![CDATA[::1]]></ipaddress>
+    <dateline><![CDATA[1339787502]]></dateline>
+    <parentcommentid><![CDATA[0]]></parentcommentid>
+    <commentstatus><![CDATA[2]]></commentstatus>
+    <useragent><![CDATA[Mozilla/5.0 (Windows NT 6.1; rv:13.0) Gecko/20100101 Firefox/13.0]]></useragent>
+    <referrer><![CDATA[]]></referrer>
+    <parenturl><![CDATA[]]></parenturl>
+    <contents><![CDATA[Comment2]]></contents>
+  </kbarticlecomment>
+</kbarticlecomments>

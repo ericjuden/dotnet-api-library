@@ -60,6 +60,8 @@
     <Compile Include="Knowledgebase\KnowledgebaseArticleCollectionSerializationTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseCategoryCollectionSerializationTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseControllerTests.cs" />
+    <Compile Include="Knowledgebase\KnowledgebaseAttachmentCollectionSerializationTests.cs" />
+    <Compile Include="Knowledgebase\KnowledgebaseCommentSerializationTests.cs" />
     <Compile Include="Tickets\TicketControllerTests.cs" />
     <Compile Include="News\NewsItemCommentCollectionSerializationTests.cs" />
     <Compile Include="News\NewsItemCollectionSerializationTests.cs" />
@@ -86,6 +88,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\KnowledgebaseAttachmentCollection.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\KnowledgebaseCommentCollection.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\KnowledgebaseArticleCollection.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

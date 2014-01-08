@@ -16,7 +16,11 @@ namespace KayakoRestApi.Controllers
 
 		TicketCollection GetTickets(int[] departmentIds);
 
+		TicketCollection GetTickets(int[] departmentIds, int count, int start);
+
 		TicketCollection GetTickets(int[] departmentIds, int[] ticketStatusIds, int[] ownerStaffIds, int[] userIds);
+
+		TicketCollection GetTickets(int[] departmentIds, int[] ticketStatusIds, int[] ownerStaffIds, int[] userIds, int count, int start);
 
 		Ticket GetTicket(int ticketId);
 
