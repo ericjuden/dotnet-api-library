@@ -92,6 +92,7 @@
     <Compile Include="Core\Knowledgebase\KnowledgebaseAttachmentCollection.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseComment.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCommentCollection.cs" />
+    <Compile Include="Core\Knowledgebase\KnowledgebaseCommentRequest.cs" />
     <Compile Include="Core\News\NewsItemComment.cs" />
     <Compile Include="Core\News\NewsItemCommentCollection.cs" />
     <Compile Include="Core\News\NewsItemCommentRequest.cs" />

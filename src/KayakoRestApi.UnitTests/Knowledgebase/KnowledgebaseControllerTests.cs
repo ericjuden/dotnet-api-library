@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using KayakoRestApi.Controllers;
 using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.Knowledgebase;
@@ -15,6 +16,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 		private Mock<IKayakoApiRequest> _kayakoApiRequest;
 		private KnowledgebaseCategoryCollection _responseKnowledgebaseCategoryCollection;
 		private KnowledgebaseArticleCollection _responseKnowledgebaseArticleCollection;
+		private KnowledgebaseCommentCollection _responseKnowledgebaseCommentCollection;
 
 		[SetUp]
 		public void Setup()
@@ -32,6 +34,12 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 				{
 					new KnowledgebaseArticle(),
 					new KnowledgebaseArticle()
+				};
+
+			_responseKnowledgebaseCommentCollection = new KnowledgebaseCommentCollection
+				{
+					new KnowledgebaseComment(),
+					new KnowledgebaseComment()
 				};
 		}
 
@@ -256,6 +264,70 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod), Times.Once());
 
 			Assert.IsTrue(deleteSuccess);
+		}
+
+		#endregion
+
+		#region Knowledgebase Comment Methods
+		
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetKnowledgebaseCommentsForArticle(int articleId)
+		{
+			string apiMethod = String.Format("/Knowledgebase/Comment/ListAll/{0}", articleId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<KnowledgebaseCommentCollection>(apiMethod)).Returns(_responseKnowledgebaseCommentCollection);
+
+			var knowledgebaseComments = _knowledgebaseController.GetKnowledgebaseComments(articleId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<KnowledgebaseCommentCollection>(apiMethod), Times.Once());
+
+			Assert.That(knowledgebaseComments, Is.EqualTo(_responseKnowledgebaseCommentCollection));
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetKnowledgebaseCommentById(int commentId)
+		{
+			string apiMethod = String.Format("/Knowledgebase/Comment/{0}", commentId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<KnowledgebaseCommentCollection>(apiMethod)).Returns(_responseKnowledgebaseCommentCollection);
+
+			var knowledgebaseComment = _knowledgebaseController.GetKnowledgebaseComment(commentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<KnowledgebaseCommentCollection>(apiMethod), Times.Once());
+
+			Assert.That(knowledgebaseComment, Is.EqualTo(_responseKnowledgebaseCommentCollection.First()));
+		}
+
+		[Test]
+		public void CreateKnowledgebaseComment()
+		{
+			throw new NotImplementedException();
+		}
+
+		[Test]
+		public void UpdateKnowledgebaseComment()
+		{
+			throw new NotImplementedException();
+		}
+
+		[TestCase(1, true)]
+		[TestCase(2, false)]
+		[TestCase(3, true)]
+		public void DeleteKnowledgebaseComment(int commentId, bool success)
+		{
+			string apiMethod = string.Format("/Knowledgebase/Comment/{0}", commentId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(success);
+
+			var deleteSuccess = _knowledgebaseController.DeleteKnowledgebaseComment(commentId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteDelete(apiMethod));
+
+			Assert.That(deleteSuccess, Is.EqualTo(success));
 		}
 
 		#endregion

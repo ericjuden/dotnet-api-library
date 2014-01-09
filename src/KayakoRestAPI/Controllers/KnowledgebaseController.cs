@@ -33,6 +33,16 @@ namespace KayakoRestApi.Controllers
 		KnowledgebaseArticle UpdateKnowledgebaseArticle(KnowledgebaseArticleRequest knowledgebaseArticleRequest);
 
 		bool DeleteKnowledgebaseArticle(int knowledgebaseArticleId);
+
+		KnowledgebaseCommentCollection GetKnowledgebaseComments(int knowledgebaseArticleId);
+
+		KnowledgebaseComment GetKnowledgebaseComment(int knowledgebaseCommentId);
+
+		KnowledgebaseComment CreateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest);
+
+		KnowledgebaseComment UpdateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest);
+
+		bool DeleteKnowledgebaseComment(int knowledgebaseCommentId);
 	}
 
 	public sealed class KnowledgebaseController : BaseController, IKnowledgebaseController
@@ -54,6 +64,7 @@ namespace KayakoRestApi.Controllers
 
 		private const string KnowledgebaseCategoryBaseUrl = "/Knowledgebase/Category";
 		private const string KnowledgebaseArticleBaseUrl = "/Knowledgebase/Article";
+		private const string KnowledgebaseCommentBaseUrl = "/Knowledgebase/Comment";
 
 		#region Knowledgebase Category Methods
 
@@ -258,6 +269,48 @@ namespace KayakoRestApi.Controllers
 			}
 
 			return parameters;
+		}
+
+		#endregion
+
+		#region Knowledgebase Comments Methods
+
+		public KnowledgebaseCommentCollection GetKnowledgebaseComments(int knowledgebaseArticleId)
+		{
+			string apiMethod = string.Format("{0}/ListAll/{1}", KnowledgebaseCommentBaseUrl, knowledgebaseArticleId);
+
+			return Connector.ExecuteGet<KnowledgebaseCommentCollection>(apiMethod);
+		}
+
+		public KnowledgebaseComment GetKnowledgebaseComment(int knowledgebaseCommentId)
+		{
+			string apiMethod = String.Format("{0}/{1}", KnowledgebaseCommentBaseUrl, knowledgebaseCommentId);
+
+			KnowledgebaseCommentCollection knowledgebaseComments = Connector.ExecuteGet<KnowledgebaseCommentCollection>(apiMethod);
+
+			if (knowledgebaseComments != null && knowledgebaseComments.Count > 0)
+			{
+				return knowledgebaseComments[0];
+			}
+
+			return null;
+		}
+
+		public KnowledgebaseComment CreateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest)
+		{
+			throw new NotImplementedException();
+		}
+
+		public KnowledgebaseComment UpdateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool DeleteKnowledgebaseComment(int knowledgebaseCommentId)
+		{
+			string apiMethod = String.Format("{0}/{1}", KnowledgebaseCommentBaseUrl, knowledgebaseCommentId);
+
+			return Connector.ExecuteDelete(apiMethod);
 		}
 
 		#endregion
