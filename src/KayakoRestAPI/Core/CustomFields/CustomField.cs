@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
+using KayakoRestApi.Core.Constants;
 
 namespace KayakoRestApi.Core.CustomFields
 {
@@ -24,7 +22,7 @@ namespace KayakoRestApi.Core.CustomFields
 		public string Title { get; set; }
 
 		[XmlAttribute("fieldtype")]
-		public int FieldType { get; set; }
+		public CustomFieldFieldType FieldType { get; set; }
 
 		[XmlAttribute("fieldname")]
 		public string FieldName { get; set; }

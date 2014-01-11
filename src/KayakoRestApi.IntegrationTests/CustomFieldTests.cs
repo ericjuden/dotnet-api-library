@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using KayakoRestApi.Core.Constants;
-using KayakoRestApi.Core.Departments;
 using NUnit.Framework;
 using KayakoRestApi.Core.CustomFields;
 
 namespace KayakoRestApi.IntegrationTests
 {
-	[TestFixture(Description = "A set of tests testing Api methods around Cusom Fields")]
+	[TestFixture(Description = "A set of tests testing Api methods around Custom Fields")]
 	public class CustomFieldTests : UnitTestBase
 	{
         [Test]

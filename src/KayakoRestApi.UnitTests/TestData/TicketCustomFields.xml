@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customfields>
+  <group id="4" title="Test Ticket">
+    <field id="2" type="1" name="ab32ds122" title="Test">Test Plaintext Field</field>
+    <field id="3" type="9" name="fd923nds2" title="Linked Select">Product &gt; Fusion</field>
+    <field id="4" type="7" name="mcz923nxa" title="Multiple">Value1, Value2</field>
+    <field id="5" type="10" name="z13nc8923" title="Date">05/24/2011</field>
+    <field id="6" type="11" name="mds923nx92" title="File" filename="report.txt">VTFkSlJsUXRNVE01TURvZ1EzVnpkRzl0SUVacFpXeGtjeUJwYmlCVWFXTnJaWFFnVm1sbGQzTUtDbE5YU1VaVUxURXpPVEU2SUZCMVlteHBZeTlRY21sMllYUmxJRlpwYzJsaWFXeHBkSGtnVkc5bloyeGxJR2x1SUZWelpYSXZWWE5sY2lCUGNtZGhibWw2WVhScGIyNGdRM1Z6ZEc5dElFWnBaV3hrSUVkeWIzVndjd29L</field>
+  </group>
+</customfields>

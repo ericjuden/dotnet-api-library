@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\CoreControllerTests.cs" />
+    <Compile Include="CustomFields\CustomFieldCollectionSerializationTests.cs" />
+    <Compile Include="CustomFields\CustomFieldControllerTests.cs" />
     <Compile Include="Data\UnixDateTimeTests.cs" />
     <Compile Include="Departments\DepartmentControllerTests.cs" />
     <Compile Include="Departments\DepartmentCollectionSerializationTests.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Knowledgebase\KnowledgebaseControllerTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseAttachmentCollectionSerializationTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseCommentSerializationTests.cs" />
+    <Compile Include="Tickets\TicketCustomFieldCollectionSerializationTests.cs" />
     <Compile Include="Tickets\TicketControllerTests.cs" />
     <Compile Include="News\NewsItemCommentCollectionSerializationTests.cs" />
     <Compile Include="News\NewsItemCollectionSerializationTests.cs" />
@@ -88,6 +91,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestData\TicketCustomFields.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CustomFieldCollection.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\KnowledgebaseAttachmentCollection.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

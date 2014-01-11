@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customfields>
+  <customfield customfieldid="1" customfieldgroupid="1" title="Customer ID" fieldtype="1" fieldname="cn4ezfbjzyoj" defaultvalue="" isrequired="0" usereditable="0" staffeditable="1" regexpvalidate="" displayorder="1" encryptindb="0" description=""></customfield>
+  <customfield customfieldid="2" customfieldgroupid="1" title="Product" fieldtype="6" fieldname="llcut44uri9d" defaultvalue="" isrequired="0" usereditable="0" staffeditable="1" regexpvalidate="" displayorder="2" encryptindb="0" description=""></customfield>
+</customfields>

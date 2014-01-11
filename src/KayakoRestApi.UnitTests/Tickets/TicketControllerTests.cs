@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using KayakoRestApi.Core.Constants;
 using KayakoRestApi.Core.Tickets;
 using KayakoRestApi.Net;
+using KayakoRestApi.UnitTests.Utilities;
 using Moq;
 using NUnit.Framework;
 using KayakoRestApi.Controllers;
@@ -17,6 +20,7 @@ namespace KayakoRestApi.UnitTests.Tickets
 		private TicketCollection _responseTicketCollection;
 		private TicketRequest _createTicketRequestRequiredFields;
 		private string _createTicketRequiredFieldsParameters;
+		private TicketCustomFields _responseTicketCustomFields;
 
 		[SetUp]
 		public void Setup()
@@ -43,6 +47,33 @@ namespace KayakoRestApi.UnitTests.Tickets
 				};
 
 			_createTicketRequiredFieldsParameters = "subject=Subject&fullname=Fullname&email=email@email.com&contents=Contents&departmentid=1&ticketstatusid=2&ticketpriorityid=3&tickettypeid=4";
+
+			_responseTicketCustomFields = new TicketCustomFields
+				{
+					FieldGroups = new List<TicketCustomFieldGroup>
+						{
+							new TicketCustomFieldGroup
+								{
+									Id = 1,
+									Title = "Title",
+									Fields = new[]
+										{
+											new TicketCustomField
+												{
+													Type = TicketCustomFieldType.Text,
+													Name = "FieldName1",
+													FieldContent = "content1"
+												},
+											new TicketCustomField
+												{
+													Type = TicketCustomFieldType.Text,
+													Name = "FieldName2",
+													FieldContent = "content2"
+												}
+										}
+								}
+						}
+				};
 		}
 
 		#region Update Ticket
@@ -156,6 +187,41 @@ namespace KayakoRestApi.UnitTests.Tickets
 			_kayakoApiRequest.Verify(x => x.ExecutePost<TicketCollection>(apiMethod, parameters), Times.Once());
 
 			Assert.That(ticket, Is.EqualTo(_responseTicketCollection.FirstOrDefault()));
+		}
+
+		#endregion
+
+		#region Ticket Custom Field Methods
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void GetTicketCustomFields(int ticketId)
+		{
+			var apiMethod = string.Format("/Tickets/TicketCustomField/{0}", ticketId);
+
+			_kayakoApiRequest.Setup(x => x.ExecuteGet<TicketCustomFields>(apiMethod)).Returns(_responseTicketCustomFields);
+
+			var ticketCustomFields = _ticketController.GetTicketCustomFields(ticketId);
+
+			_kayakoApiRequest.Verify(x => x.ExecuteGet<TicketCustomFields>(apiMethod), Times.Once());
+			AssertUtility.ObjectsEqual(ticketCustomFields, _responseTicketCustomFields);
+		}
+
+		[TestCase(1)]
+		[TestCase(2)]
+		[TestCase(3)]
+		public void UpdateTicketCustomField(int ticketId)
+		{
+			var apiMethod = string.Format("/Tickets/TicketCustomField/{0}", ticketId);
+			const string parameters = "FieldName1=content1&FieldName2=content2";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<TicketCustomFields>(apiMethod, parameters)).Returns(_responseTicketCustomFields);
+
+			var ticketCustomFields = _ticketController.UpdateTicketCustomFields(ticketId, _responseTicketCustomFields);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<TicketCustomFields>(apiMethod, parameters), Times.Once());
+			AssertUtility.ObjectsEqual(ticketCustomFields, _responseTicketCustomFields);
 		}
 
 		#endregion

@@ -25,6 +25,10 @@ namespace KayakoRestApi.Controllers
 		{
 		}
 
+		internal CustomFieldController(IKayakoApiRequest kayakoRestApi) : base(kayakoRestApi)
+		{
+		}
+
 		#region Api Methods
 
 		/// <summary>
