@@ -9,7 +9,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 	public class KnowledgebaseAttachmentCollectionSerializationTests
 	{
 		[Test]
-		public void TroubleshooterAttachmentCollectionDeserialization()
+		public void KnowledgebaseAttachmentCollectionDeserialization()
 		{
 			var knowledgebaseAttachmentCollection = new KnowledgebaseAttachmentCollection
 				{

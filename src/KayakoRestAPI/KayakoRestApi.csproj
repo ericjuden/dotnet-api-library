@@ -85,6 +85,7 @@
     <Compile Include="Core\Knowledgebase\KnowledgebaseArticleAttachment.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseArticleCollection.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseArticleRequest.cs" />
+    <Compile Include="Core\Knowledgebase\KnowledgebaseAttachmentRequest.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCategory.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCategoryCollection.cs" />
     <Compile Include="Core\Knowledgebase\KnowledgebaseCategoryRequest.cs" />

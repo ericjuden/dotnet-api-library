@@ -41,6 +41,14 @@ namespace KayakoRestApi.Controllers
 		KnowledgebaseComment CreateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest);
 
 		bool DeleteKnowledgebaseComment(int knowledgebaseCommentId);
+
+		KnowledgebaseAttachmentCollection GetKnowledgebaseAttachments(int knowledgebaseArticleId);
+
+		KnowledgebaseAttachmentCollection GetKnowledgebaseAttachment(int knowledgebaseArticleId, int attachmentId);
+
+		KnowledgebaseAttachmentCollection CreateKnowledgebaseAttachment(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest);
+
+		bool DeleteKnowledgebaseAttachment(int knowledgebaseArticleId, int knowledgebaseAttachmentId);
 	}
 
 	public sealed class KnowledgebaseController : BaseController, IKnowledgebaseController
@@ -341,6 +349,30 @@ namespace KayakoRestApi.Controllers
 			}
 
 			return parameters;
+		}
+
+		#endregion
+
+		#region Knowledgebase Attachment Methods
+
+		public KnowledgebaseAttachmentCollection GetKnowledgebaseAttachments(int knowledgebaseArticleId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public KnowledgebaseAttachmentCollection GetKnowledgebaseAttachment(int knowledgebaseArticleId, int attachmentId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public KnowledgebaseAttachmentCollection CreateKnowledgebaseAttachment(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool DeleteKnowledgebaseAttachment(int knowledgebaseArticleId, int knowledgebaseAttachmentId)
+		{
+			throw new NotImplementedException();
 		}
 
 		#endregion

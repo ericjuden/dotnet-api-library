@@ -15,7 +15,7 @@ namespace KayakoRestApi.Core.Knowledgebase
 		[XmlElement("id")]
 		public int Id { get; set; }
 
-		[XmlElement("knowledgebasearticleid")]
+		[XmlElement("kbarticleid")]
 		public int KnowledgebaseArticleId { get; set; }
 
 		[XmlElement("filename")]
