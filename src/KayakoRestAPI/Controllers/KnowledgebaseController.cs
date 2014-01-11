@@ -44,9 +44,9 @@ namespace KayakoRestApi.Controllers
 
 		KnowledgebaseAttachmentCollection GetKnowledgebaseAttachments(int knowledgebaseArticleId);
 
-		KnowledgebaseAttachmentCollection GetKnowledgebaseAttachment(int knowledgebaseArticleId, int attachmentId);
+		KnowledgebaseAttachment GetKnowledgebaseAttachment(int knowledgebaseArticleId, int attachmentId);
 
-		KnowledgebaseAttachmentCollection CreateKnowledgebaseAttachment(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest);
+		KnowledgebaseAttachment CreateKnowledgebaseAttachment(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest);
 
 		bool DeleteKnowledgebaseAttachment(int knowledgebaseArticleId, int knowledgebaseAttachmentId);
 	}
@@ -71,6 +71,7 @@ namespace KayakoRestApi.Controllers
 		private const string KnowledgebaseCategoryBaseUrl = "/Knowledgebase/Category";
 		private const string KnowledgebaseArticleBaseUrl = "/Knowledgebase/Article";
 		private const string KnowledgebaseCommentBaseUrl = "/Knowledgebase/Comment";
+		private const string KnowledgebaseAttachmentBaseUrl = "/Knowledgebase/Attachment";
 
 		#region Knowledgebase Category Methods
 
@@ -357,22 +358,57 @@ namespace KayakoRestApi.Controllers
 
 		public KnowledgebaseAttachmentCollection GetKnowledgebaseAttachments(int knowledgebaseArticleId)
 		{
-			throw new NotImplementedException();
+			string apiMethod = string.Format("{0}/ListAll/{1}", KnowledgebaseAttachmentBaseUrl, knowledgebaseArticleId);
+
+			return Connector.ExecuteGet<KnowledgebaseAttachmentCollection>(apiMethod);
 		}
 
-		public KnowledgebaseAttachmentCollection GetKnowledgebaseAttachment(int knowledgebaseArticleId, int attachmentId)
+		public KnowledgebaseAttachment GetKnowledgebaseAttachment(int knowledgebaseArticleId, int attachmentId)
 		{
-			throw new NotImplementedException();
+			string apiMethod = string.Format("{0}/{1}/{2}", KnowledgebaseAttachmentBaseUrl, knowledgebaseArticleId, attachmentId);
+
+			KnowledgebaseAttachmentCollection knowledgebaseAttachments = Connector.ExecuteGet<KnowledgebaseAttachmentCollection>(apiMethod);
+
+			if (knowledgebaseAttachments != null && knowledgebaseAttachments.Count > 0)
+			{
+				return knowledgebaseAttachments[0];
+			}
+
+			return null;
 		}
 
-		public KnowledgebaseAttachmentCollection CreateKnowledgebaseAttachment(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest)
+		public KnowledgebaseAttachment CreateKnowledgebaseAttachment(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest)
 		{
-			throw new NotImplementedException();
+			const string apiMethod = KnowledgebaseAttachmentBaseUrl;
+			RequestBodyBuilder parameters = PopulateRequestParameters(knowledgebaseAttachmentRequest, RequestTypes.Create);
+
+			KnowledgebaseAttachmentCollection knowledgebaseAttachments = Connector.ExecutePost<KnowledgebaseAttachmentCollection>(apiMethod, parameters.ToString());
+
+			if (knowledgebaseAttachments != null && knowledgebaseAttachments.Count > 0)
+			{
+				return knowledgebaseAttachments[0];
+			}
+
+			return null;
 		}
 
 		public bool DeleteKnowledgebaseAttachment(int knowledgebaseArticleId, int knowledgebaseAttachmentId)
 		{
-			throw new NotImplementedException();
+			string apiMethod = string.Format("{0}/{1}/{2}", KnowledgebaseAttachmentBaseUrl, knowledgebaseArticleId, knowledgebaseAttachmentId);
+
+			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private RequestBodyBuilder PopulateRequestParameters(KnowledgebaseAttachmentRequest knowledgebaseAttachmentRequest, RequestTypes requestType)
+		{
+			knowledgebaseAttachmentRequest.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestDataNonNegativeInt("kbarticleid", knowledgebaseAttachmentRequest.KnowledgebaseArticleId);
+			parameters.AppendRequestDataNonEmptyString("filename", knowledgebaseAttachmentRequest.FileName);
+			parameters.AppendRequestDataNonEmptyString("contents", knowledgebaseAttachmentRequest.Contents);
+
+			return parameters;
 		}
 
 		#endregion

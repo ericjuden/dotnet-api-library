@@ -375,7 +375,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 		[TestCase(5, 6)]
 		public void GetKnowledgebaseAttachment(int knowledgebaseArticleId, int knowledgebaseAttachmentId)
 		{
-			string apiMethod = String.Format("/Knowledgebase/Attachment/{0}/{1}", knowledgebaseArticleId, knowledgebaseArticleId);
+			string apiMethod = String.Format("/Knowledgebase/Attachment/{0}/{1}", knowledgebaseArticleId, knowledgebaseAttachmentId);
 
 			_kayakoApiRequest.Setup(x => x.ExecuteGet<KnowledgebaseAttachmentCollection>(apiMethod)).Returns(_responseKnowledgebaseAttachmentCollection);
 
@@ -383,7 +383,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 
 			_kayakoApiRequest.Verify(x => x.ExecuteGet<KnowledgebaseAttachmentCollection>(apiMethod));
 
-			Assert.That(knowledgebaseAttachment, Is.EqualTo(_responseKnowledgebaseAttachmentCollection));
+			Assert.That(knowledgebaseAttachment, Is.EqualTo(_responseKnowledgebaseAttachmentCollection.First()));
 		}
 
 		[Test]
@@ -393,29 +393,29 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 
 			var knowledgebaseAttachmentRequest = new KnowledgebaseAttachmentRequest
 				{
-					//KnowledgebaseArticleId = 1,
-					//FileName = "fileName",
-					//Contents = contents
+					KnowledgebaseArticleId = 1,
+					FileName = "fileName",
+					Contents = contents
 				};
 
-			string apiMethod = "/Knowledgebase/Attachment";
-			string parameters = string.Format("kbarticleid=1&filename=fileName&contents={0}", contents);
+			const string apiMethod = "/Knowledgebase/Attachment";
+			var parameters = string.Format("kbarticleid=1&filename=fileName&contents={0}", contents);
 
-			_kayakoApiRequest.Setup(x => x.ExecutePost<KnowledgebaseAttachmentCollection>(apiMethod, parameters.ToString())).Returns(_responseKnowledgebaseAttachmentCollection);
+			_kayakoApiRequest.Setup(x => x.ExecutePost<KnowledgebaseAttachmentCollection>(apiMethod, parameters)).Returns(_responseKnowledgebaseAttachmentCollection);
 
 			var knowledgebaseAttachment = _knowledgebaseController.CreateKnowledgebaseAttachment(knowledgebaseAttachmentRequest);
 
-			_kayakoApiRequest.Verify(x => x.ExecutePost<KnowledgebaseAttachmentCollection>(apiMethod, parameters.ToString()));
+			_kayakoApiRequest.Verify(x => x.ExecutePost<KnowledgebaseAttachmentCollection>(apiMethod, parameters));
 
-			Assert.That(knowledgebaseAttachment, Is.EqualTo(_responseKnowledgebaseAttachmentCollection));
+			Assert.That(knowledgebaseAttachment, Is.EqualTo(_responseKnowledgebaseAttachmentCollection.First()));
 		}
 
-		[TestCase(1, true)]
-		[TestCase(2, false)]
-		[TestCase(3, true)]
+		[TestCase(1, 2, true)]
+		[TestCase(3, 4, false)]
+		[TestCase(5, 6, true)]
 		public void DeleteKnowledgebaseAttachment(int knowledgebaseArticleId, int knowledgebaseAttachmentId, bool success)
 		{
-			string apiMethod = string.Format("/Knowledgebase/Attachment/{0}", knowledgebaseAttachmentId);
+			var apiMethod = string.Format("/Knowledgebase/Attachment/{0}/{1}", knowledgebaseArticleId, knowledgebaseAttachmentId);
 
 			_kayakoApiRequest.Setup(x => x.ExecuteDelete(apiMethod)).Returns(success);
 

@@ -10,7 +10,7 @@ namespace KayakoRestApi.IntegrationTests.Troubleshooter
 	public class TroubleshooterAttachmentTests : UnitTestBase
 	{
 		[Test]
-		public void GetTicketAttachments()
+		public void GetTroubleshooterAttachments()
 		{
 			var troubleshooterSteps = TestSetup.KayakoApiService.Troubleshooter.GetTroubleshooterSteps();
 
@@ -31,7 +31,7 @@ namespace KayakoRestApi.IntegrationTests.Troubleshooter
 		}
 
 		[Test]
-		public void GetTicketAttachment()
+		public void GetTroubleshooterAttachment()
 		{
 			var troubleshooterSteps = TestSetup.KayakoApiService.Troubleshooter.GetTroubleshooterSteps();
 
@@ -50,18 +50,18 @@ namespace KayakoRestApi.IntegrationTests.Troubleshooter
 		}
 
 		[Test]
-		public void CreateDeleteTicketAttachment()
+		public void CreateDeleteTroubleshooterAttachment()
 		{
 			string contents = Convert.ToBase64String(Encoding.UTF8.GetBytes("This is the contents"));
 
-			var ticketAttachmentRequest = new TroubleshooterAttachmentRequest
+			var troubleshooterAttachmentRequest = new TroubleshooterAttachmentRequest
 				{
 					TroubleshooterStepId = 1,
 					FileName = "Test.txt",
 					Contents = contents
 				};
 
-			var troubleshooterAttachment = TestSetup.KayakoApiService.Troubleshooter.CreateTroubleshooterAttachment(ticketAttachmentRequest);
+			var troubleshooterAttachment = TestSetup.KayakoApiService.Troubleshooter.CreateTroubleshooterAttachment(troubleshooterAttachmentRequest);
 			
 			Assert.IsNotNull(troubleshooterAttachment);
 			Assert.That(troubleshooterAttachment.TroubleshooterStepId, Is.EqualTo(troubleshooterAttachment.TroubleshooterStepId));
