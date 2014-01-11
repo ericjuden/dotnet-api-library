@@ -40,8 +40,6 @@ namespace KayakoRestApi.Controllers
 
 		KnowledgebaseComment CreateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest);
 
-		KnowledgebaseComment UpdateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest);
-
 		bool DeleteKnowledgebaseComment(int knowledgebaseCommentId);
 	}
 
@@ -298,12 +296,16 @@ namespace KayakoRestApi.Controllers
 
 		public KnowledgebaseComment CreateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest)
 		{
-			throw new NotImplementedException();
-		}
+			RequestBodyBuilder parameters = PopulateRequestParameters(knowledgebaseCommentRequest, RequestTypes.Create);
 
-		public KnowledgebaseComment UpdateKnowledgebaseComment(KnowledgebaseCommentRequest knowledgebaseCommentRequest)
-		{
-			throw new NotImplementedException();
+			KnowledgebaseCommentCollection knowledgebaseComments = Connector.ExecutePost<KnowledgebaseCommentCollection>(KnowledgebaseCommentBaseUrl, parameters.ToString());
+
+			if (knowledgebaseComments != null && knowledgebaseComments.Count > 0)
+			{
+				return knowledgebaseComments[0];
+			}
+
+			return null;
 		}
 
 		public bool DeleteKnowledgebaseComment(int knowledgebaseCommentId)
@@ -311,6 +313,34 @@ namespace KayakoRestApi.Controllers
 			string apiMethod = String.Format("{0}/{1}", KnowledgebaseCommentBaseUrl, knowledgebaseCommentId);
 
 			return Connector.ExecuteDelete(apiMethod);
+		}
+
+		private RequestBodyBuilder PopulateRequestParameters(KnowledgebaseCommentRequest knowledgebaseCommentRequest, RequestTypes requestType)
+		{
+			knowledgebaseCommentRequest.EnsureValidData(requestType);
+
+			RequestBodyBuilder parameters = new RequestBodyBuilder();
+			parameters.AppendRequestDataNonNegativeInt("knowledgebasearticleid", knowledgebaseCommentRequest.KnowledgebaseArticleId);
+			parameters.AppendRequestDataNonEmptyString("contents", knowledgebaseCommentRequest.Contents);
+			parameters.AppendRequestData("creatortype", EnumUtility.ToApiString(knowledgebaseCommentRequest.CreatorType));
+			
+			if (knowledgebaseCommentRequest.CreatorId.HasValue)
+			{
+				parameters.AppendRequestDataNonNegativeInt("creatorid", knowledgebaseCommentRequest.CreatorId.Value);
+			}
+			else
+			{
+				parameters.AppendRequestDataNonEmptyString("fullname", knowledgebaseCommentRequest.FullName);
+			}
+
+			parameters.AppendRequestDataNonEmptyString("email", knowledgebaseCommentRequest.Email);
+
+			if (knowledgebaseCommentRequest.ParentCommentId.HasValue)
+			{
+				parameters.AppendRequestDataNonNegativeInt("parentcommentid", knowledgebaseCommentRequest.ParentCommentId.Value);
+			}
+
+			return parameters;
 		}
 
 		#endregion

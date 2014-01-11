@@ -47,6 +47,7 @@
     <Compile Include="CustomFieldTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseArticleTests.cs" />
     <Compile Include="Knowledgebase\KnowledgebaseCategoryTests.cs" />
+    <Compile Include="Knowledgebase\KnowledgebaseCommentTests.cs" />
     <Compile Include="News\NewsItemCommentTests.cs" />
     <Compile Include="News\NewsCategoryTests.cs" />
     <Compile Include="News\NewsItemTests.cs" />

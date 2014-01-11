@@ -17,6 +17,7 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 		private KnowledgebaseCategoryCollection _responseKnowledgebaseCategoryCollection;
 		private KnowledgebaseArticleCollection _responseKnowledgebaseArticleCollection;
 		private KnowledgebaseCommentCollection _responseKnowledgebaseCommentCollection;
+		private KnowledgebaseAttachmentCollection _responseKnowledgebaseAttachmentCollection;
 
 		[SetUp]
 		public void Setup()
@@ -40,6 +41,12 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 				{
 					new KnowledgebaseComment(),
 					new KnowledgebaseComment()
+				};
+
+			_responseKnowledgebaseAttachmentCollection = new KnowledgebaseAttachmentCollection
+				{
+					new KnowledgebaseAttachment(),
+					new KnowledgebaseAttachment()
 				};
 		}
 
@@ -305,13 +312,25 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 		[Test]
 		public void CreateKnowledgebaseComment()
 		{
-			throw new NotImplementedException();
-		}
+			var knowledgebaseCommentRequest = new KnowledgebaseCommentRequest
+				{
+					KnowledgebaseArticleId = 1,
+					Contents = "Contents",
+					CreatorType = KnowledgebaseCommentCreatorType.User,
+					CreatorId = 3,
+					Email = "email@domain.com",
+					ParentCommentId = 1
+				};
 
-		[Test]
-		public void UpdateKnowledgebaseComment()
-		{
-			throw new NotImplementedException();
+			const string apiMethod = "/Knowledgebase/Comment";
+			const string parameters = "knowledgebasearticleid=1&contents=Contents&creatortype=2&creatorid=3&email=email@domain.com&parentcommentid=1";
+
+			_kayakoApiRequest.Setup(x => x.ExecutePost<KnowledgebaseCommentCollection>(apiMethod, parameters)).Returns(_responseKnowledgebaseCommentCollection);
+
+			var knowledgebaseComment = _knowledgebaseController.CreateKnowledgebaseComment(knowledgebaseCommentRequest);
+
+			_kayakoApiRequest.Verify(x => x.ExecutePost<KnowledgebaseCommentCollection>(apiMethod, parameters), Times.Once());
+			Assert.That(knowledgebaseComment, Is.EqualTo(_responseKnowledgebaseCommentCollection.First()));
 		}
 
 		[TestCase(1, true)]
@@ -329,6 +348,10 @@ namespace KayakoRestApi.UnitTests.Knowledgebase
 
 			Assert.That(deleteSuccess, Is.EqualTo(success));
 		}
+
+		#endregion
+
+		#region Knowledgebase Attachment Methods
 
 		#endregion
 	}
