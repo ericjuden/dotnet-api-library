@@ -186,7 +186,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 		{
 			var troubleshooterStepRequest = new TroubleshooterStepRequest
 			{
-				CategoryId = TroubleshooterCategoryType.Private,
+				CategoryId = 1,
 				Subject = "Subject",
 				Contents = "Contents",
 				StaffId = 3,
@@ -202,7 +202,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 			};
 
 			const string apiMethod = "/Troubleshooter/Step";
-			const string parameters = "categoryid=3&subject=Subject&contents=Contents&staffid=3&displayorder=15&allowcomments=1&enableticketredirection=0&redirectdepartmentid=4&tickettypeid=4&ticketpriorityid=2&ticketsubject=Ticket Subject&stepstatus=1&parentstepidlist=1,2,3";
+			const string parameters = "categoryid=1&subject=Subject&contents=Contents&staffid=3&displayorder=15&allowcomments=1&enableticketredirection=0&redirectdepartmentid=4&tickettypeid=4&ticketpriorityid=2&ticketsubject=Ticket Subject&stepstatus=1&parentstepidlist=1,2,3";
 
 			_kayakoApiRequest.Setup(x => x.ExecutePost<TroubleshooterStepCollection>(apiMethod, parameters)).Returns(_responseTroubleshooterStepCollection);
 

@@ -40,7 +40,7 @@ namespace KayakoRestApi.IntegrationTests.Troubleshooter
 		{
 			TroubleshooterStepRequest troubleshooterStepRequest = new TroubleshooterStepRequest
 				{
-					CategoryId = TroubleshooterCategoryType.Global,
+					CategoryId = 1,
 					Subject = "Subject",
 					Contents = "Contents",
 					StaffId = 1,

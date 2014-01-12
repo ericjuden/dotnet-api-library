@@ -16,7 +16,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 					new TroubleshooterStep
 						{
 							Id = 25,
-							CategoryId = TroubleshooterCategoryType.Global,
+							CategoryId = 1,
 							StaffId = 1,
 							StaffName = "admin admin",
 							Subject = "Troubleshooter step subject",
@@ -49,7 +49,7 @@ namespace KayakoRestApi.UnitTests.Troubleshooter
 					new TroubleshooterStep
 						{
 							Id = 28,
-							CategoryId = TroubleshooterCategoryType.Global,
+							CategoryId = 1,
 							StaffId = 1,
 							StaffName = "admin admin",
 							Subject = "Troubleshooter subject",

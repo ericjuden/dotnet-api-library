@@ -19,7 +19,7 @@ namespace KayakoRestApi.Core.Troubleshooter
 		public int Id { get; set; }
 
 		[XmlElement("categoryid")]
-		public TroubleshooterCategoryType CategoryId { get; set; }
+		public int CategoryId { get; set; }
 
 		[XmlElement("staffid")]
 		public int StaffId { get; set; }

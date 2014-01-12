@@ -221,7 +221,7 @@ namespace KayakoRestApi.Controllers
 
 			if (requestType == RequestTypes.Create)
 			{
-				parameters.AppendRequestData("categoryid", EnumUtility.ToApiString(troubleshooterStepRequest.CategoryId));
+				parameters.AppendRequestData("categoryid", troubleshooterStepRequest.CategoryId);
 			}
 
 			parameters.AppendRequestDataNonEmptyString("subject", troubleshooterStepRequest.Subject);

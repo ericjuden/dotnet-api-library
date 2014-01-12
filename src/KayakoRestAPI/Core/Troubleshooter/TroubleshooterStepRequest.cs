@@ -11,7 +11,7 @@ namespace KayakoRestApi.Core.Troubleshooter
 
 		[ResponseProperty("CategoryId")]
 		[RequiredField(RequestTypes.Create)]
-		public TroubleshooterCategoryType CategoryId { get; set; }
+		public int CategoryId { get; set; }
 
 		[RequiredField(RequestTypes.Create)]
 		[ResponseProperty("Subject")]
