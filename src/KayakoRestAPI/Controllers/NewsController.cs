@@ -20,7 +20,7 @@ namespace KayakoRestApi.Controllers
 
 		bool DeleteNewsCategory(int newsCategoryId);
 
-		NewsItemCollection GetNewsItems(int newsItemId);
+		NewsItemCollection GetNewsItems(int newsCategoryId);
 
 		NewsItemCollection GetNewsItems();
 
@@ -150,9 +150,9 @@ namespace KayakoRestApi.Controllers
 
 		#region News Item Methods
 
-		public NewsItemCollection GetNewsItems(int newsItemId)
+		public NewsItemCollection GetNewsItems(int newsCategoryId)
 		{
-			string apiMethod = String.Format("{0}/ListAll/{1}", NewsItemBaseUrl, newsItemId);
+			string apiMethod = String.Format("{0}/ListAll/{1}", NewsItemBaseUrl, newsCategoryId);
 
 			return Connector.ExecuteGet<NewsItemCollection>(apiMethod);
 		}
