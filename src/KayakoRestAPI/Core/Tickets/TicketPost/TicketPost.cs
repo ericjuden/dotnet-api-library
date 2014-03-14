@@ -104,5 +104,11 @@ namespace KayakoRestApi.Core.Tickets
         /// </summary>
         [XmlElement("contents")]
         public string Contents { get; set; }
+
+		/// <summary>
+		/// Value indicating if the post is for staff to view only
+		/// </summary>
+		[XmlElement("isprivate")]
+		public bool IsPrivate { get; set; }
     }
 }

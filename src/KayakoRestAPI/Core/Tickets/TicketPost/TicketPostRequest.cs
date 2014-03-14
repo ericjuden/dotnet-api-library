@@ -34,6 +34,12 @@ namespace KayakoRestApi.Core.Tickets
         [EitherField("UserId")]
         public int? StaffId { get; set; }
 
+		/// <summary>
+		/// IsPrivate, if the ticket post is for staff to view only
+		/// </summary>
+		[RequiredField]
+		public bool IsPrivate { get; set; }
+
         public static TicketPostRequest FromResponseData(TicketPost responseData)
         {
             return TicketPostRequest.FromResponseType<TicketPost, TicketPostRequest>(responseData);

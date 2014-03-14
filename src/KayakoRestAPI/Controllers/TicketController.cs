@@ -678,6 +678,7 @@ namespace KayakoRestApi.Controllers
             parameters.AppendRequestData("ticketid", request.TicketId);
             parameters.AppendRequestData("subject", request.Subject);
             parameters.AppendRequestData("contents", request.Contents);
+			parameters.AppendRequestData("isprivate", request.IsPrivate);
 
             if (request.UserId == null && request.StaffId == null)
 			{
